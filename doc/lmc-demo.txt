@@ -1,0 +1,46 @@
+* Distance to the Large Magellanic Cloud
+
+* Dataset from http://astrostatistics.psu.edu/datasets/LMC_distance.dat
+
+* TYPE is population type
+* DM is distance modulum
+* PM is +/-
+
+data
+input TYPE $ DM PM
+datalines
+I 18.70     0.16   Feast & Catchpole 1997
+I 18.55     0.06   Laney & Stobie 1994
+I 18.55     0.10   Gieren et al. 1998, Di Benedetto 1997
+I 18.575    0.2    Groenewegen 2000
+I 18.4      0.1    Ribas et al. 2002
+I 18.42     0.07   This paper see \S 6.2
+I 18.45     0.07   This paper see \S 6.2
+I 18.59     0.09   Romaniello et al. 2000
+I 18.471    0.12   Pietrzynsky \& Gieren 2002
+I 18.54     0.10   Sarajedini et al. 2002
+I 18.54     0.18   Van Leeuwen 1997
+I 18.64     0.14   Feast 2000
+I 18.58     0.05   Panagia 1998
+II 18.45     0.09   Gratton et al. 2002 and this paper
+II 18.45     0.13   Carretta et al. 2000b and this paper
+II 18.44     0.13   Carretta et al. 2000b and this paper
+II 18.30     0.14   This paper see \S 7
+II 18.38     0.16   This paper see \S 7
+II 18.50     0.16   Cacciari et al. 2000 and this paper
+II 18.55     0.19   A97 and A00
+II 18.52     0.18   Kovacs 2000 and this paper
+II 18.40     0.15   Gratton et al. 2002 and this paper
+II 18.45     0.16   Benedict et al. 2002 and this paper
+II 18.55     0.09   Cioni et al. 2000
+II 18.69     0.26   Romaniello et al. 2000.
+
+* Does DM depend on TYPE? (Answer: No)
+proc anova
+model DM = TYPE
+means TYPE / lsd
+
+* Does PM depend on TYPE? (Answer: Yes)
+proc anova
+model PM = TYPE
+means TYPE / lsd

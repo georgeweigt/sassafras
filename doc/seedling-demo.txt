@@ -1,0 +1,43 @@
+* Compare heights of seedlings grown from seeds from five forests.
+* This is a nested design. Source tree is nested within forest.
+
+* Reference
+* http://www.ohio.edu/plantbio/staff/mccarthy/quantmet/lectures/ANOVA-III.pdf
+
+data
+input Forest $ Tree $ Height
+datalines
+A T1 15.8
+A T1 15.6
+A T1 16.0
+A T2 13.9
+A T2 14.2
+A T2 13.5
+B T3 18.5
+B T3 18.0
+B T3 18.4
+B T4 17.9
+B T4 18.1
+B T4 17.4
+C T5 12.3
+C T5 13.0
+C T5 12.7
+C T6 14.0
+C T6 13.1
+C T6 13.5
+D T7 19.5
+D T7 17.5
+D T7 19.1
+D T8 18.7
+D T8 19.0
+D T8 18.8
+E T9 16.0
+E T9 15.7
+E T9 16.1
+E T0 15.8
+E T0 15.6
+E T0 16.3
+
+proc anova
+model Height = Forest Tree*Forest
+means Forest / lsd

@@ -1,0 +1,30 @@
+* Analyze in vitro digestibility (IVD) of dried alfalfa grown at different temperatures.
+* This is a one-way completely randomized design.
+
+* References:
+* 1. "Statistical Design" by G. Casella, p. 44.
+* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/IVD.txt
+
+data
+input Temp $ IVD
+datalines
+17   94.2
+17   94.5
+17   95
+17   94.7
+22   94.5
+22   94
+22   94.6
+22   94
+27   95.1
+27   95.7
+27   95.5
+27   96.1
+32   95.2
+32   96
+32   96.1
+32   95.3
+
+proc anova
+model IVD = Temp
+means Temp / lsd

@@ -1,0 +1,26 @@
+* Compare yields for three types of strawberries.
+* This is a randomized complete block design.
+
+* References
+* 1. "Statistical Design" by G. Casella, p. 9 and 94.
+* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Strawberry.txt
+
+data
+input Block $ Treatment $ Yield
+datalines
+1   A   10.1
+1   B   6.3
+1   C   8.4
+2   A   10.8
+2   B   6.9
+2   C   9.4
+3   A   9.8
+3   B   5.3
+3   C   9
+4   A   10.5
+4   B   6.2
+4   C   9.2
+
+proc anova
+model Yield = Block Treatment
+means Treatment / lsd

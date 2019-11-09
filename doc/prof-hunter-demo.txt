@@ -1,0 +1,95 @@
+* Comparision of two experimental designs.
+
+* Reference
+* "Design of Experiments" learning series by Professor J. Stuart Hunter, Lesson 12.
+* http://www.youtube.com/watch?v=k3n9iSB6Cns
+* http://www.youtube.com/watch?v=3fwoU16MHJM
+*
+* A list of all videos in the series:
+* http://www.youtube.com/playlist?list=PLzaIpDs2EIQgXzVAPS9rviC9J7Cpyet5y
+*
+* Below are the anova tables seen in the video.
+*
+* CSS - corrected sum of squares
+* TSS - treatment sum of squares
+* BSS - block sum of squares
+* RSS - residual sum of squares
+*
+* 1st anova table
+*                    DF      MS
+* CSS      112.0055  19
+* TSS        0.8405   1
+* RSS      111.1650  18  6.1758
+*
+* 2nd anova table
+*                    DF      MS
+* CSS      112.0055  19
+* TSS        0.8405   1
+* BSS      110.4905   9
+* RSS        0.6745   9  0.0750
+*
+* 2nd design reduces RSS.
+*
+*  I  Gasoline with additive
+* II  Gasoline without additive
+*  y  Miles per 5 gallons
+
+title "Completely Randomized Design"
+
+data
+input trt $ y
+datalines
+I 74.0
+I 68.8
+I 71.2
+I 74.2
+I 71.8
+I 66.4
+I 69.8
+I 71.3
+I 69.3
+I 73.6
+II 73.2
+II 68.2
+II 70.9
+II 74.3
+II 70.7
+II 66.6
+II 69.5
+II 70.8
+II 68.8
+II 73.3
+
+proc anova
+model y = trt
+means trt / lsd
+
+title "Randomized Block Design"
+
+data
+input car $ trt $ y
+datalines
+A I 74.0
+B I 68.8
+C I 71.2
+D I 74.2
+E I 71.8
+F I 66.4
+G I 69.8
+H I 71.3
+I I 69.3
+J I 73.6
+A II 73.2
+B II 68.2
+C II 70.9
+D II 74.3
+E II 70.7
+F II 66.6
+G II 69.5
+H II 70.8
+I II 68.8
+J II 73.3
+
+proc anova
+model y = car trt
+means trt / lsd

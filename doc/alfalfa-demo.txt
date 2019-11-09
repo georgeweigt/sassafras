@@ -1,0 +1,62 @@
+* Compare yields of four types of alfalfa.
+* This is a randomized complete block design.
+
+* References
+* 1. "Statistical Design" by G. Casella, p. 97.
+* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Alfalfa.txt
+
+data
+input Variety $ Block $ Rep $ Yield
+datalines
+Ladak   1   1   3.1
+Ladak   2   1   4.06
+Ladak   3   1   4.73
+Ladak   4   1   3.1
+Ladak   1   2   3.25
+Ladak   2   2   4.26
+Ladak   3   2   4.71
+Ladak   4   2   4.21
+Ladak   1   3   3.86
+Ladak   2   3   4.53
+Ladak   3   3   5.26
+Ladak   4   3   3.84
+Narrag  1   1   4.65
+Narrag  2   1   5.64
+Narrag  3   1   4.94
+Narrag  4   1   5.38
+Narrag  1   2   5.46
+Narrag  2   2   5.48
+Narrag  3   2   5.26
+Narrag  4   2   5.68
+Narrag  1   3   4.21
+Narrag  2   3   5.09
+Narrag  3   3   5.8
+Narrag  4   3   5.82
+DuPuits 1   1   5.47
+DuPuits 2   1   5.62
+DuPuits 3   1   6.71
+DuPuits 4   1   6.87
+DuPuits 1   2   6.41
+DuPuits 2   2   6.3
+DuPuits 3   2   6.96
+DuPuits 4   2   6.28
+DuPuits 1   3   5.57
+DuPuits 2   3   6.46
+DuPuits 3   3   5.92
+DuPuits 4   3   6.46
+Flamand 1   1   6.85
+Flamand 2   1   6.33
+Flamand 3   1   6.88
+Flamand 4   1   6.23
+Flamand 1   2   6.34
+Flamand 2   2   5.83
+Flamand 3   2   6.59
+Flamand 4   2   6.52
+Flamand 1   3   5.45
+Flamand 2   3   4.33
+Flamand 3   3   6.06
+Flamand 4   3   6.81
+
+proc anova
+model Yield = Block Variety Block*Variety
+means Variety / lsd
