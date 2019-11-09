@@ -11,4 +11,4 @@ To build the manual:
 	cd ../doc
 	make
 
-The result is a pdf file.
+The result is sassafras.pdf
