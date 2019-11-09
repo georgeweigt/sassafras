@@ -1,4 +1,5 @@
-CFLAGS = -Wall -O
+CC = gcc
+CFLAGS = -Wall -O0
 
 objects = \
 main.o \
