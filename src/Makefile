@@ -1,0 +1,19 @@
+CFLAGS = -Wall -O
+
+objects = \
+main.o \
+data_step.o \
+proc_anova.o \
+proc_means.o \
+proc_print.o \
+proc_reg.o \
+scan.o \
+tdist.o
+
+default : $(objects)
+	gcc -o sassafras $(objects) -lm
+
+$(objects) : defs.h prototypes.h
+
+clean :
+	rm -f *.o a.out sassafras
