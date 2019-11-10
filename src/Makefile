@@ -1,3 +1,8 @@
+# To build a new prototypes.h:
+#
+#       gcc make-prototypes.c
+#       ./a.out >prototypes.h
+
 CC = gcc
 CFLAGS = -Wall -O0
 
