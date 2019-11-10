@@ -1,5 +1,3 @@
-
-// data_step.c
 void data_step(void);
 void parse_data_body();
 void read_file(void);
@@ -28,8 +26,6 @@ void emit(int c);
 void emit_variable();
 void emit_number();
 void catvar(int x, int obs);
-
-// main.c
 int main(int argc, char **argv);
 void run();
 void run1();
@@ -57,14 +53,10 @@ void * xrealloc(void *p, int size);
 void print_pgm();
 void stop(char *s);
 void expected(char *s);
-
-// proc_anova.c
 void proc_anova();
 void print_anova_table_part1();
 void print_anova_table_part2();
 void print_anova_table_part3();
-
-// proc_means.c
 void proc_means();
 void parse_proc_means_stmt();
 void parse_proc_means_body();
@@ -72,14 +64,10 @@ void run_proc_means();
 void f(int k);
 void g();
 void h(int varnum);
-
-// proc_print.c
 void proc_print();
 void parse_proc_print_stmt(void);
 void parse_proc_print_body(void);
 void run_proc_print(void);
-
-// proc_reg.c
 void proc_reg();
 void compute_X();
 void compute_T();
@@ -99,15 +87,11 @@ void print_parameter_estimates();
 void print_anova_table();
 void print_diag_table();
 void print_diag_table();
-
-// scan.c
 void scan(void);
 int scan1(void);
 void keyword(void);
 char * get_dataline(char *buf, int len);
 void get_next_token(void);
-
-// tdist.c
 double qt(double p, double df);
 double tdist(double t, double df);
 double qf(double p, double df1, double df2);
