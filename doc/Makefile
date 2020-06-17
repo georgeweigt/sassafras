@@ -3,6 +3,7 @@
 default:
 	pdflatex sassafras.tex
 	pdflatex sassafras.tex
+	rm -f *.aux *.log *.synctex.gz *.toc
 
 clean:
-	rm -f *.pdf *.log *.aux *.toc *.synctex.gz
+	rm -f *.aux *.log *.synctex.gz *.toc
