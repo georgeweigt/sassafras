@@ -13,7 +13,7 @@ To build the manual:
 ```
 cd doc
 make
-``
+```
 
 The result is sassafras.pdf
 
