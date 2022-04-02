@@ -10,13 +10,13 @@ make
 
 See the `doc` directory for sample infiles.
 
-Example
+For example
 
 ```
 ./sassafras ../doc/corrosion-demo.txt
 ```
 
-Output
+Result
 
 ```
                               Analysis of Variance
