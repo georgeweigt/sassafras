@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F1ECD6327F8A84B00282CE0 /* Sassafras-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sassafras-Prefix.pch"; sourceTree = "<group>"; };
 		7F3601FB1799109900F32846 /* Sassafras.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sassafras.entitlements; sourceTree = "<group>"; };
 		7F3BBE3A27F8177D00D6AC9E /* tdist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tdist.c; sourceTree = "<group>"; };
 		7F3BBE3D27F8178700D6AC9E /* scan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scan.c; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		7FB4A7C31777E13A00E9D9D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FB4A7C61777E13A00E9D9D8 /* Sassafras-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sassafras-Info.plist"; sourceTree = "<group>"; };
 		7FB4A7CA1777E13A00E9D9D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7FB4A7CC1777E13A00E9D9D8 /* Sassafras-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sassafras-Prefix.pch"; sourceTree = "<group>"; };
 		7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SassafrasAppDelegate.h; sourceTree = "<group>"; };
 		7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SassafrasAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,9 +161,9 @@
 		7FB4A7C51777E13A00E9D9D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7F1ECD6327F8A84B00282CE0 /* Sassafras-Prefix.pch */,
 				7FB4A7C61777E13A00E9D9D8 /* Sassafras-Info.plist */,
 				7FB4A7CA1777E13A00E9D9D8 /* main.m */,
-				7FB4A7CC1777E13A00E9D9D8 /* Sassafras-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
