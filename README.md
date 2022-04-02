@@ -15,6 +15,9 @@ Example
 ```
 ./sassafras ../doc/corrosion-demo.txt
 ```
+
+Output
+
 ```
                               Analysis of Variance
 
