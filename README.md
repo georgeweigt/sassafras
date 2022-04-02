@@ -8,21 +8,12 @@ make
 ./sassafras infile
 ```
 
-To build the manual:
+See the `doc` directory for sample infiles.
+
+Example
 
 ```
-cd doc
-make
-```
-
-The result is sassafras.pdf
-
-See doc directory for sample infiles.
-
-Example:
-
-```
-% ./sassafras corrosion-demo.txt 
+% ./sassafras ../doc/corrosion-demo.txt 
                               Analysis of Variance
 
    Source     DF     Sum of Squares       Mean Square     F Value     Pr > F
