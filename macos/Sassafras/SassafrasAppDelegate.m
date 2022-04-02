@@ -23,8 +23,8 @@ NSString *filename;
 {
     // Insert code here to initialize your application
 
-    [_userProgram setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:13.0]];
-    [_outputView setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:13.0]];
+    [_userProgram setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:14.0]];
+    [_outputView setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:14.0]];
 
     // Get home directory prefix
 
