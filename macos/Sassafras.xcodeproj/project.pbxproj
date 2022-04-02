@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F3BBE3B27F8177D00D6AC9E /* tdist.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BBE3A27F8177D00D6AC9E /* tdist.c */; };
+		7F3BBE3E27F8178800D6AC9E /* scan.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BBE3D27F8178700D6AC9E /* scan.c */; };
+		7F3BBE4127F8179200D6AC9E /* data_step.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BBE4027F8179200D6AC9E /* data_step.c */; };
 		7F3E162B27F7C3EE00619DFF /* proc_step.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E161527F7C3EE00619DFF /* proc_step.c */; };
 		7F3E162C27F7C3EE00619DFF /* title_stmt.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E161627F7C3EE00619DFF /* title_stmt.c */; };
 		7F3E162D27F7C3EE00619DFF /* comment_stmt.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E161727F7C3EE00619DFF /* comment_stmt.c */; };
@@ -23,9 +26,6 @@
 		7F3E163C27F7C3EE00619DFF /* proc_print.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E162827F7C3EE00619DFF /* proc_print.c */; };
 		7F3E163D27F7C3EE00619DFF /* globals.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E162927F7C3EE00619DFF /* globals.c */; };
 		7F3E163E27F7C3EE00619DFF /* by_stmt.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E162A27F7C3EE00619DFF /* by_stmt.c */; };
-		7F3E164227F7C6A900619DFF /* tdist.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E164127F7C6A900619DFF /* tdist.c */; };
-		7F3E164627F7C74100619DFF /* scan.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E164527F7C74100619DFF /* scan.c */; };
-		7F3E164B27F7C78B00619DFF /* data_step.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E164A27F7C78B00619DFF /* data_step.c */; };
 		7FB4A7BF1777E13A00E9D9D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */; };
 		7FB4A7CB1777E13A00E9D9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7CA1777E13A00E9D9D8 /* main.m */; };
 		7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */; };
@@ -34,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		7F3601FB1799109900F32846 /* Sassafras.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sassafras.entitlements; sourceTree = "<group>"; };
+		7F3BBE3A27F8177D00D6AC9E /* tdist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tdist.c; sourceTree = "<group>"; };
+		7F3BBE3D27F8178700D6AC9E /* scan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scan.c; sourceTree = "<group>"; };
+		7F3BBE4027F8179200D6AC9E /* data_step.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = data_step.c; sourceTree = "<group>"; };
 		7F3E14E027F7BFA300619DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7F3E161527F7C3EE00619DFF /* proc_step.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proc_step.c; sourceTree = "<group>"; };
 		7F3E161627F7C3EE00619DFF /* title_stmt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = title_stmt.c; sourceTree = "<group>"; };
@@ -51,11 +54,8 @@
 		7F3E162827F7C3EE00619DFF /* proc_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proc_print.c; sourceTree = "<group>"; };
 		7F3E162927F7C3EE00619DFF /* globals.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = globals.c; sourceTree = "<group>"; };
 		7F3E162A27F7C3EE00619DFF /* by_stmt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = by_stmt.c; sourceTree = "<group>"; };
-		7F3E164127F7C6A900619DFF /* tdist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tdist.c; path = ../src/tdist.c; sourceTree = "<group>"; };
-		7F3E164527F7C74100619DFF /* scan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = scan.c; path = ../src/scan.c; sourceTree = "<group>"; };
-		7F3E164A27F7C78B00619DFF /* data_step.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = data_step.c; path = ../src/data_step.c; sourceTree = "<group>"; };
 		7F3E165127F7CACC00619DFF /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		7F3E165327F7CBEE00619DFF /* prototypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prototypes.h; path = src/prototypes.h; sourceTree = "<group>"; };
+		7F3E165327F7CBEE00619DFF /* prototypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prototypes.h; sourceTree = "<group>"; };
 		7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sassafras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7FB4A7C11777E13A00E9D9D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -83,10 +83,11 @@
 		7F3E161427F7C3EE00619DFF /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7F3E165127F7CACC00619DFF /* defs.h */,
 				7F3E162A27F7C3EE00619DFF /* by_stmt.c */,
 				7F3E161A27F7C3EE00619DFF /* class_stmt.c */,
 				7F3E161727F7C3EE00619DFF /* comment_stmt.c */,
+				7F3BBE4027F8179200D6AC9E /* data_step.c */,
+				7F3E165127F7CACC00619DFF /* defs.h */,
 				7F3E162327F7C3EE00619DFF /* emit_line.c */,
 				7F3E162927F7C3EE00619DFF /* globals.c */,
 				7F3E161B27F7C3EE00619DFF /* model_stmt.c */,
@@ -96,8 +97,11 @@
 				7F3E162827F7C3EE00619DFF /* proc_print.c */,
 				7F3E161F27F7C3EE00619DFF /* proc_reg.c */,
 				7F3E161527F7C3EE00619DFF /* proc_step.c */,
+				7F3E165327F7CBEE00619DFF /* prototypes.h */,
 				7F3E162427F7C3EE00619DFF /* regress.c */,
 				7F3E161C27F7C3EE00619DFF /* run.c */,
+				7F3BBE3D27F8178700D6AC9E /* scan.c */,
+				7F3BBE3A27F8177D00D6AC9E /* tdist.c */,
 				7F3E161627F7C3EE00619DFF /* title_stmt.c */,
 				7F3E161E27F7C3EE00619DFF /* var_stmt.c */,
 			);
@@ -107,10 +111,6 @@
 		7FB4A7B21777E13A00E9D9D8 = {
 			isa = PBXGroup;
 			children = (
-				7F3E165327F7CBEE00619DFF /* prototypes.h */,
-				7F3E164A27F7C78B00619DFF /* data_step.c */,
-				7F3E164527F7C74100619DFF /* scan.c */,
-				7F3E164127F7C6A900619DFF /* tdist.c */,
 				7F3E161427F7C3EE00619DFF /* src */,
 				7FB4A7C41777E13A00E9D9D8 /* Sassafras */,
 				7FB4A7BD1777E13A00E9D9D8 /* Frameworks */,
@@ -239,7 +239,6 @@
 			files = (
 				7F3E163D27F7C3EE00619DFF /* globals.c in Sources */,
 				7F3E163E27F7C3EE00619DFF /* by_stmt.c in Sources */,
-				7F3E164627F7C74100619DFF /* scan.c in Sources */,
 				7F3E163427F7C3EE00619DFF /* proc_reg.c in Sources */,
 				7FB4A7CB1777E13A00E9D9D8 /* main.m in Sources */,
 				7F3E163327F7C3EE00619DFF /* var_stmt.c in Sources */,
@@ -248,15 +247,16 @@
 				7F3E162D27F7C3EE00619DFF /* comment_stmt.c in Sources */,
 				7F3E163B27F7C3EE00619DFF /* proc_anova.c in Sources */,
 				7F3E162F27F7C3EE00619DFF /* class_stmt.c in Sources */,
-				7F3E164B27F7C78B00619DFF /* data_step.c in Sources */,
 				7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */,
 				7F3E162E27F7C3EE00619DFF /* print.c in Sources */,
 				7F3E163027F7C3EE00619DFF /* model_stmt.c in Sources */,
+				7F3BBE3E27F8178800D6AC9E /* scan.c in Sources */,
 				7F3E163627F7C3EE00619DFF /* proc_means.c in Sources */,
+				7F3BBE4127F8179200D6AC9E /* data_step.c in Sources */,
 				7F3E163127F7C3EE00619DFF /* run.c in Sources */,
 				7F3E162C27F7C3EE00619DFF /* title_stmt.c in Sources */,
 				7F3E163727F7C3EE00619DFF /* emit_line.c in Sources */,
-				7F3E164227F7C6A900619DFF /* tdist.c in Sources */,
+				7F3BBE3B27F8177D00D6AC9E /* tdist.c in Sources */,
 				7F3E162B27F7C3EE00619DFF /* proc_step.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
