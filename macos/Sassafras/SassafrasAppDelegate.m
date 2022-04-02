@@ -19,6 +19,11 @@ NSString *filename;
 
 @implementation SassafrasAppDelegate
 
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
