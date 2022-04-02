@@ -308,25 +308,25 @@
         </menu>
         <window title="Sassafras" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="80" y="0.0" width="1440" height="601"/>
+            <rect key="contentRect" x="80" y="0.0" width="1440" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="1440" height="601"/>
+                <rect key="frame" x="0.0" y="0.0" width="1440" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="650">
-                        <rect key="frame" x="0.0" y="61" width="720" height="541"/>
+                        <rect key="frame" x="0.0" y="32" width="720" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wUV-1G-ubV">
-                            <rect key="frame" x="1" y="1" width="718" height="539"/>
+                            <rect key="frame" x="1" y="1" width="718" height="566"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" id="651">
-                                    <rect key="frame" x="0.0" y="0.0" width="718" height="539"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="718" height="566"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="718" height="539"/>
+                                    <size key="minSize" width="718" height="566"/>
                                     <size key="maxSize" width="10000000" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -337,23 +337,23 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="653">
-                            <rect key="frame" x="703" y="1" width="16" height="539"/>
+                            <rect key="frame" x="703" y="1" width="16" height="566"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="allowed" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-wO-gBk">
-                        <rect key="frame" x="720" y="61" width="720" height="541"/>
+                        <rect key="frame" x="720" y="32" width="720" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="QdR-JM-rUW">
-                            <rect key="frame" x="1" y="1" width="718" height="539"/>
+                            <rect key="frame" x="1" y="1" width="718" height="566"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" id="zgs-O1-wqu">
-                                    <rect key="frame" x="0.0" y="0.0" width="718" height="539"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="718" height="566"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="718" height="539"/>
+                                    <size key="minSize" width="718" height="566"/>
                                     <size key="maxSize" width="1000000" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -364,12 +364,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7QM-KH-Odz">
-                            <rect key="frame" x="703" y="1" width="16" height="539"/>
+                            <rect key="frame" x="703" y="1" width="16" height="566"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="625">
-                        <rect key="frame" x="14" y="13" width="65" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="626">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -380,12 +380,12 @@
                         </connections>
                     </button>
                     <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="698">
-                        <rect key="frame" x="81" y="22" width="16" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="67" y="10" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="3351" y="284.5"/>
+            <point key="canvasLocation" x="3351" y="284"/>
         </window>
         <customObject id="494" customClass="SassafrasAppDelegate">
             <connections>
