@@ -2,14 +2,18 @@ Sassafras is a shell mode program for statistical analysis.
 
 To build and run:
 
-	cd linux
-	make
-	./sassafras infile
+```
+cd linux
+make
+./sassafras infile
+```
 
 To build the manual:
 
-	cd doc
-	make
+```
+cd doc
+make
+``
 
 The result is sassafras.pdf
 
@@ -17,6 +21,7 @@ See doc directory for sample infiles.
 
 Example:
 
+```
 % ./sassafras corrosion-demo.txt 
                               Analysis of Variance
 
@@ -57,3 +62,4 @@ Example:
   C4    C2     33.833333     19.257967     48.408700       5.25      0.0005 *
   C4    C3     28.333333     13.757967     42.908700       4.40      0.0017 *
   C4    C1     29.333333     14.757967     43.908700       4.55      0.0014 *
+```
