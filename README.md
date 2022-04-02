@@ -1,6 +1,6 @@
 Sassafras is a shell mode program for statistical analysis.
 
-To build and run:
+To build and run
 
 ```
 cd linux
