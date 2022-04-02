@@ -86,6 +86,7 @@ static double dfe;
 
 static void parse_proc_anova_stmt(void);
 static void parse_proc_anova_body(void);
+static void parse_class_stmt(void);
 static void parse_model_stmt(void);
 static void parse_model_options(void);
 static void parse_explanatory_variable(void);
@@ -96,12 +97,15 @@ static void create_interaction_level_names(int);
 static void add_factorial(int);
 static void add_nested(int);
 static void prelim(void);
-static int a_compute_G(void);
+static int compute_G(void);
 static void fit(void);
 static void fit1(int, int);
 static void compute_B(void);
 static void compute_Yhat(void);
 static void compute_ss(void);
+static void print_anova_table_part1(void);
+static void print_anova_table_part2(void);
+static void print_anova_table_part3(void);
 static void model(void);
 static void compute_means(int x);
 static void print_means(int x);
@@ -168,6 +172,11 @@ parse_proc_anova_body()
 			break;
 		}
 	}
+}
+
+static void
+parse_class_stmt()
+{
 }
 
 static void
@@ -734,7 +743,7 @@ fit()
 			fit1(x, j); // fit next column
 		df[i] = npar;
 		if (gstate == -1)
-			a_compute_G();
+			compute_G();
 		compute_B();
 		compute_Yhat();
 		compute_ss();
@@ -764,14 +773,14 @@ fit1(int x, int level)
 
 	npar++;
 
-	gstate = a_compute_G();
+	gstate = compute_G();
 
 	if (gstate == -1)
 		npar--; // X'X is singular hence remove column
 }
 
 static int
-a_compute_G()
+compute_G()
 {
 	int d, i, j, k;
 	double m, max, min, t;
@@ -1038,7 +1047,7 @@ print_anova_table_part1()
 #undef A
 #define A(i, j) (a + 4 * (i))[j]
 
-void
+static void
 print_anova_table_part2()
 {
 	char **a;
@@ -1075,7 +1084,7 @@ print_anova_table_part2()
 #undef A
 #define A(i, j) (a + 6 * (i))[j]
 
-void
+static void
 print_anova_table_part3()
 {
 	int i, x;

@@ -26,7 +26,7 @@ main()
 int
 filter(const struct dirent *p)
 {
-	int len = strlen(p->d_name);
+	int len = (int) strlen(p->d_name);
 
 	if (strcmp(p->d_name, "make-prototypes.c") == 0)
 		return 0;

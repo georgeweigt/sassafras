@@ -1,178 +1,14 @@
 #include "defs.h"
 
-static int noint;
+//	npar	Number of model parameters
 
-// explanatory variables from the MODEL statement
-static int num_x;
-static int xtab[MAXVAR];
+extern int noint;
 
-// response variables from the MODEL statement
-static int num_y;
-static int ytab[MAXVAR];
+extern int num_x;
+extern int xtab[];
 
-static void parse_proc_reg_stmt(void);
-static void parse_proc_reg_body(void);
-static void parse_model_stmt(void);
-static void parse_model_options(void);
-
-void
-proc_reg()
-{
-	num_x = 0;
-	num_y = 0;
-
-	parse_proc_reg_stmt();
-
-	if (dataset == NULL)
-		stop("No data set");
-
-	parse_proc_reg_body();
-
-	regress();
-
-	print_title();
-
-	emit_line_center("Analysis of Variance");
-	emit_line("");
-
-	print_anova_table();
-	print_diag_table();
-
-	emit_line_center("Parameter Estimates");
-	emit_line("");
-
-	print_parameter_estimates();
-}
-
-static void
-parse_proc_reg_stmt()
-{
-	for (;;) {
-		scan();
-		keyword();
-		switch (token) {
-		case ';':
-			scan(); // eat the semicolon
-			return;
-		case KALPHA:
-			parse_alpha_option();
-			break;
-		case KDATA:
-			parse_data_option();
-			break;
-		default:
-			expected("proc reg option");
-		}
-	}
-}
-
-static void
-parse_proc_reg_body()
-{
-	for (;;) {
-		keyword();
-		switch (token) {
-		case 0:
-		case KDATA:
-		case KPROC:
-		case KRUN:
-			return;
-		case KMODEL:
-			parse_model_stmt();
-			break;
-		default:
-			parse_default();
-			break;
-		}
-	}
-}
-
-static void
-parse_model_stmt(void)
-{
-	int i;
-
-	noint = 0;
-
-	num_x = 0;
-	num_y = 0;
-
-	scan();
-
-	if (token != NAME)
-		expected("variable name");
-
-	// look for match in dataset
-
-	for (i = 0; i < dataset->nvar; i++)
-		if (strcmp(dataset->spec[i].name, strbuf) == 0)
-			break;
-
-	if (i == dataset->nvar) {
-		sprintf(errbuf, "Variable %s not in dataset", strbuf);
-		stop(errbuf);
-	}
-
-	ytab[num_y++] = i;
-
-	scan();
-
-	if (token != '=')
-		expected("equals sign");
-
-	for (;;) {
-
-		scan();
-
-		if ((token == ';' || token == '/') && num_x)
-			break;
-
-		if (token != NAME)
-			expected("variable name");
-
-		// look for match in dataset
-
-		for (i = 0; i < dataset->nvar; i++)
-			if (strcmp(dataset->spec[i].name, strbuf) == 0)
-				break;
-
-		if (i == dataset->nvar) {
-			sprintf(errbuf, "Variable %s not in dataset", strbuf);
-			stop(errbuf);
-		}
-
-		xtab[num_x++] = i;
-	}
-
-	if (token == '/')
-		parse_model_options();
-
-	scan(); // eat the semicolon
-}
-
-static void
-parse_model_options()
-{
-	for (;;) {
-
-		scan();
-
-		keyword();
-
-		switch (token) {
-
-		case ';':
-			return;
-
-		case KNOINT:
-			noint = 1;
-			break;
-
-		default:
-			stop("';' or MODEL option expected");
-		}
-	}
-}
+extern int num_y;
+extern int ytab[];
 
 static int nrow;
 static int ncol;
@@ -216,6 +52,9 @@ static double *_X_;
 #define G(i, j) (_G_ + (i) * ncol)[j]
 #define T(i, j) (_T_ + (i) * ncol)[j]
 #define X(i, j) (_X_ + (i) * ncol)[j]
+
+extern double tdist(double, double);
+extern double fdist(double, double, double);
 
 // X is the design matrix
 
