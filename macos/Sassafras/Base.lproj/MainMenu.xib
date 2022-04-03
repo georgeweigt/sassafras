@@ -344,7 +344,7 @@
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="625">
                         <rect key="frame" x="0.0" y="0.0" width="80" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Run  ⌘R" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="626">
+                        <buttonCell key="cell" type="square" title="Run  ⌘R" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="626">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">r</string>
