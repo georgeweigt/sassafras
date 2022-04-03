@@ -8,12 +8,12 @@ make
 ./sassafras infile
 ```
 
-See the `doc` directory for sample infiles.
+See the `infiles` directory for sample infiles.
 
 For example
 
 ```
-./sassafras ../doc/corrosion-demo.txt
+./sassafras ../infiles/corrosion-demo.txt
 ```
 
 Result
