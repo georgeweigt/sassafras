@@ -14,9 +14,6 @@
 -(IBAction)runButton:(id)sender;
 @property (unsafe_unretained) IBOutlet NSTextView *userProgram;
 @property (unsafe_unretained) IBOutlet NSTextView *outputView;
-@property (weak) IBOutlet NSMenuItem *openDocument;
-@property (weak) IBOutlet NSMenuItem *fileSaveAs;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
-@property (weak) IBOutlet NSMenuItem *demoAnovaProcedure;
 
 @end

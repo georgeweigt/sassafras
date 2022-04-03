@@ -24,7 +24,7 @@ NSString *filename;
     return YES;
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+-(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
 
@@ -42,7 +42,9 @@ extern void clear_display(void);
 
 extern int total_h;
 
-- (IBAction)openDocument:(id)sender {
+// this function is linked to file menu automatically
+
+-(IBAction)openDocument:(id)sender {
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     [panel beginWithCompletionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
@@ -57,17 +59,21 @@ extern int total_h;
     }];
 }
 
-- (IBAction)fileSave:(id)sender
+// this function is linked to file menu automatically
+
+-(IBAction)saveDocument:(id)sender
 {
     if (filename == nil)
-        [self fileSaveAs:sender];
+        [self saveDocumentAs:sender];
     else {
         NSString *s = [_userProgram string];
         [s writeToURL:[NSURL URLWithString:filename] atomically:NO encoding:NSUTF8StringEncoding error:nil];
     }
 }
 
-- (IBAction)fileSaveAs:(id)sender
+// this function is linked to file menu automatically
+
+-(IBAction)saveDocumentAs:(id)sender
 {
     NSSavePanel *panel = [NSSavePanel savePanel];
     [panel setCanSelectHiddenExtension:YES];
@@ -123,28 +129,6 @@ extern int total_h;
     s = [[NSString alloc] initWithCString:output_c_string encoding:NSASCIIStringEncoding];
     [_outputView setString:s];
     [_outputView setNeedsDisplay:YES];
-}
-
-NSString *demoAnovaProcedureString = @
-"title \"Anova Procedure Demo\"\n"
-"\n"
-"data\n"
-"input trt $ y @@\n"
-"datalines\n"
-"A 6    A 0    A 2    A 8   A 11\n"
-"A 4    A 13   A 1    A 8   A 0\n"
-"B 0    B 2    B 3    B 1   B 18\n"
-"B 4    B 14   B 9    B 1   B 9\n"
-"C 13   C 10   C 18   C 5   C 23\n"
-"C 12   C 5    C 16   C 1   C 20\n"
-"\n"
-"proc anova\n"
-"model y = trt\n"
-"means trt / lsd ttest\n";
-
-- (IBAction)demoAnovaProcedure:(id)sender {
-    [_userProgram setString:demoAnovaProcedureString];
-    [_userProgram setNeedsDisplay:YES];
 }
 
 @end
