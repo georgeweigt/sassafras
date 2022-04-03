@@ -78,11 +78,11 @@
                                     <action selector="openDocument:" target="-1" id="JV2-yI-juq"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open Recent" id="Ow7-9h-lft">
+                            <menuItem title="Open Recent" enabled="NO" id="Ow7-9h-lft">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="gK2-iI-ZKM">
+                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" autoenablesItems="NO" id="gK2-iI-ZKM">
                                     <items>
-                                        <menuItem title="Clear Menu" id="YyC-aM-ldZ">
+                                        <menuItem title="Clear Menu" enabled="NO" id="YyC-aM-ldZ">
                                             <connections>
                                                 <action selector="clearRecentDocuments:" target="-1" id="7n1-eq-4Zn"/>
                                             </connections>
@@ -113,7 +113,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="zsd-KF-tG3"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="XFA-zJ-INb">
+                            <menuItem title="Page Setup…" enabled="NO" keyEquivalent="P" id="XFA-zJ-INb">
                                 <connections>
                                     <action selector="runPageLayout:" target="-1" id="ZWg-P4-8PA"/>
                                 </connections>

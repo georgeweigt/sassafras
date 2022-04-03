@@ -11,11 +11,14 @@
 #import "SassafrasAppDelegate.h"
 
 char *input_c_string;
-extern char output_c_string[];
 char *prefix;
 int running;
-
 NSString *filename;
+
+extern char *output_buffer;
+extern int output_buffer_index;
+
+extern void run(char *);
 
 @implementation SassafrasAppDelegate
 
@@ -36,11 +39,6 @@ NSString *filename;
     NSString *s = [@"~" stringByExpandingTildeInPath];
     prefix = strdup([s UTF8String]);
 }
-
-extern void run(char *);
-extern void clear_display(void);
-
-extern int total_h;
 
 // this function is linked to file menu automatically
 
@@ -91,21 +89,20 @@ extern int total_h;
 
 -(IBAction)runButton:(id)sender
 {
-    NSString *t;
-
     if (running)
         return;
-    
+
     if (input_c_string)
         free((void *) input_c_string);
-    
+
     const char *s = [[_userProgram string] UTF8String];
-    
+
     input_c_string = strdup(s);
-    
-    clear_display();
-    t = [[NSString alloc] initWithCString:output_c_string encoding:NSASCIIStringEncoding];
-    [_outputView setString:t];
+
+    // clear
+ 
+    output_buffer_index = 0;
+    [_outputView setString:@""];
     [_outputView setNeedsDisplay:YES];
 
     // run as thread
@@ -126,7 +123,7 @@ extern int total_h;
 {
     NSString *s;
     [_progressIndicator stopAnimation:nil];
-    s = [[NSString alloc] initWithCString:output_c_string encoding:NSASCIIStringEncoding];
+    s = [[NSString alloc] initWithCString:output_buffer encoding:NSASCIIStringEncoding];
     [_outputView setString:s];
     [_outputView setNeedsDisplay:YES];
 }

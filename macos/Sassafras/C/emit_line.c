@@ -1,49 +1,59 @@
 #include "defs.h"
 
-static int len;
-char output_c_string[100000];
+char *output_buffer;
+int output_buffer_index;
+int output_buffer_length;
 
 void
 emit_line(char *s)
 {
-	int n = (int) strlen(s);
-	if (len + n + 1 > sizeof output_c_string)
-		return;
-	strcpy(output_c_string + len, s);
-	len += n;
-	strcpy(output_c_string + len, "\n");
-	len++;
+	int len = (int) strlen(s);
+
+	if (output_buffer_index + len + 2 > output_buffer_length) {
+		output_buffer_length += len + 10000;
+		output_buffer = realloc(output_buffer, output_buffer_length);
+		if (output_buffer == NULL) {
+			fprintf(stderr, "malloc kaput\n");
+			exit(1);
+		}
+	}
+
+	strcpy(output_buffer + output_buffer_index, s);
+	output_buffer_index += len;
+
+	strcpy(output_buffer + output_buffer_index, "\n");
+	output_buffer_index += 1;
 }
 
 void
 emit_line_center(char *s)
 {
-	int i, m, n;
+	int i, len, m;
 
-	n = (int) strlen(s);
+	len = (int) strlen(s);
 
-	m = (80 - n) / 2;
+	m = (80 - len) / 2;
 
 	if (m < 0)
 		m = 0;
 
-	if (len + m + n + 1 > sizeof output_c_string)
-		return;
+	if (output_buffer_index + m + len + 2 > output_buffer_length) {
+		output_buffer_length += len + 10000;
+		output_buffer = realloc(output_buffer, output_buffer_length);
+		if (output_buffer == NULL) {
+			fprintf(stderr, "malloc kaput\n");
+			exit(1);
+		}
+	}
 
 	for (i = 0; i < m; i++)
-		output_c_string[len + i] = ' ';
+		output_buffer[output_buffer_index + i] = ' ';
 
-	len += m;
+	output_buffer_index += m;
 
-	strcpy(output_c_string + len, s);
-	len += n;
-	strcpy(output_c_string + len, "\n");
-	len++;
-}
+	strcpy(output_buffer + output_buffer_index, s);
+	output_buffer_index += len;
 
-void
-clear_display()
-{
-	len = 0;
-	output_c_string[0] = '\0';
+	strcpy(output_buffer + output_buffer_index, "\n");
+	output_buffer_index += 1;
 }
