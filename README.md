@@ -5,15 +5,13 @@ To build and run
 ```
 cd src
 make
-./sassafras infile
+./sassafras file.txt
 ```
-
-See the `infiles` directory for sample infiles.
 
 For example
 
 ```
-./sassafras ../infiles/corrosion-demo.txt
+./sassafras ../test/corrosion-demo.txt
 ```
 
 Result
