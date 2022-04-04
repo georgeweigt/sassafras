@@ -11,7 +11,7 @@ make
 For example
 
 ```
-./sassafras ../test/corrosion-demo.txt
+./sassafras ../demos/corrosion-demo.txt
 ```
 
 Result
