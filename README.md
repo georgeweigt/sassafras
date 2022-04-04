@@ -3,7 +3,7 @@ Sassafras is a shell mode program for statistical analysis.
 To build and run
 
 ```
-cd linux
+cd src
 make
 ./sassafras infile
 ```
