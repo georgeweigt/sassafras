@@ -1,6 +1,6 @@
 #include "defs.h"
 
-char pgm[10000];
+char *pgm;
 char errbuf[1000];
 char *inp;
 char *token_str;
@@ -28,25 +28,15 @@ int var[MAXVAR];
 int
 main(int argc, char **argv)
 {
-	int n;
-	FILE *f;
 	if (argc < 2) {
-		printf("missing infile\n");
+		fprintf(stderr, "usage: sassafras filename\n");
 		return 0;
 	}
-	f = fopen(argv[1], "r");
-	if (f == NULL) {
-		printf("cannot open infile\n");
-		return 0;
-	}
-	n = fread(pgm, 1, sizeof pgm, f);
-	fclose(f);
-	if (n == sizeof pgm) {
-		printf("infile exceeds max\n");
-		return 0;
-	}
-	pgm[n] = 0;
-	run();
+	pgm = read_text_file(argv[1]);
+	if (pgm == NULL)
+		fprintf(stderr, "error reading file\n");
+	else
+		run();
 	return 0;
 }
 

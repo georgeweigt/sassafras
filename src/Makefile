@@ -8,6 +8,7 @@ CFLAGS = -Wall -O0
 
 objects = \
 main.o \
+read_text_file.o \
 data_step.o \
 proc_anova.o \
 proc_means.o \

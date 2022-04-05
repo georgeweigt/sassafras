@@ -86,7 +86,7 @@ enum {
 };
 
 extern struct dataset *dataset;
-extern char pgm[];
+extern char *pgm;
 extern char *inp;
 extern char *token_str;
 extern int token;
