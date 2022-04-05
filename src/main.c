@@ -34,7 +34,7 @@ main(int argc, char **argv)
 	}
 	pgm = read_text_file(argv[1]);
 	if (pgm == NULL)
-		fprintf(stderr, "error reading file\n");
+		fprintf(stderr, "error reading %s\n", argv[1]);
 	else
 		run();
 	return 0;
