@@ -1,0 +1,29 @@
+* Proc MEANS and proc REG give the same result ;
+
+data ;
+input a $ b $ y ;
+datalines ;
+2 AN 346
+3 AN 355
+4 AN 363
+5 HE 388
+5 HE 384
+2 HE 366
+3 HE 371
+3 HE 375
+4 SM 412
+5 SM 429
+2 SM 396
+2 SM 404
+;
+
+proc print ;
+
+proc means n mean clm ;
+var y ;
+class a ;
+title1 "The MEANS Procedure" ;
+
+proc reg ;
+model y = a / noint ;
+title1 "Parameter Estimates" ;

@@ -1,0 +1,17 @@
+* Titles
+
+data
+input y
+datalines
+1
+2
+3
+;
+
+title1 "Title 1"
+title2 "Title 2"
+title3 "Title 3"
+
+proc print
+
+proc print

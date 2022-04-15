@@ -1,0 +1,13 @@
+data ;
+input x $ y ;
+datalines ;
+a 1
+a 2
+b 3
+b 4
+c 5
+c 6
+;
+
+proc print ;
+var x ;

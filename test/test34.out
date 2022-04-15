@@ -1,0 +1,26 @@
+          TRT      Variable       Mean     95% CLM MIN     95% CLM MAX
+          M-4      Y            10.450           8.974          11.926
+          360      Y            10.617           9.367          11.866
+          K-24     Y            11.733           9.389          14.078
+          M-15     Y             8.717           7.685           9.748
+
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model      4           49.68324        12.42081        9.43     0.0002
+     Error     19           25.03634         1.31770                       
+     Total     23           74.71958                                       
+
+              Root MSE            1.14791     R-Square     0.6649
+              Dependent Mean     10.37917     Adj R-Sq     0.5944
+              Coeff Var          11.05977                        
+
+                              Parameter Estimates
+
+                        Estimate     Std Err     t Value     Pr > |t|
+           TRT M-4       2.79201     1.94321        1.44       0.1670
+           TRT 360       2.38612     2.08032        1.15       0.2656
+           TRT K-24      3.64592     2.04599        1.78       0.0907
+           TRT M-15      2.41851     1.62023        1.49       0.1519
+           X             0.42942     0.10575        4.06       0.0007
+

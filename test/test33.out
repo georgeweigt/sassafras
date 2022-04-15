@@ -1,0 +1,23 @@
+                     Nitrogen Content of Red Clover Plants
+
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model      5          847.04667       169.40933       14.37     0.0000
+     Error     24          282.92800        11.78867                       
+     Total     29         1129.97467                                       
+
+              Root MSE            3.43346     R-Square     0.7496
+              Dependent Mean     19.88667     Adj R-Sq     0.6975
+              Coeff Var          17.26515                        
+
+                              Parameter Estimates
+
+                          Estimate     Std Err     t Value     Pr > |t|
+        STRAIN 3DOK1      28.82000     1.53549       18.77       0.0000
+        STRAIN 3DOK5      23.98000     1.53549       15.62       0.0000
+        STRAIN 3DOK4      14.64000     1.53549        9.53       0.0000
+        STRAIN 3DOK7      19.92000     1.53549       12.97       0.0000
+        STRAIN 3DOK13     13.26000     1.53549        8.64       0.0000
+        STRAIN COMPOS     18.70000     1.53549       12.18       0.0000
+

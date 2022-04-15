@@ -1,0 +1,32 @@
+                   Randomized Complete Block With Two Factors
+
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model     10           11.33500         1.13350       78.37     0.0000
+     Error     21            0.30375         0.01446                       
+     Total     31           11.63875                                       
+
+              Root MSE            0.12027     R-Square     0.9739
+              Dependent Mean      1.15625     Adj R-Sq     0.9615
+              Coeff Var          10.40152                        
+
+                              Parameter Estimates
+
+                          Estimate     Std Err     t Value     Pr > |t|
+        Intercept          2.35625     0.07051       33.42       0.0000
+        PAINLEVEL 1       -1.15000     0.08504      -13.52       0.0000
+        PAINLEVEL 2       -1.00000     0.08504      -11.76       0.0000
+        PAINLEVEL 3       -0.82500     0.08504       -9.70       0.0000
+        PAINLEVEL 4       -0.85000     0.08504      -10.00       0.0000
+        PAINLEVEL 5       -0.47500     0.08504       -5.59       0.0000
+        PAINLEVEL 6       -0.17500     0.08504       -2.06       0.0522
+        PAINLEVEL 7       -0.07500     0.08504       -0.88       0.3878
+        PAINLEVEL 8              .           .           .            .
+        CODEINE 1         -0.46250     0.06013       -7.69       0.0000
+        CODEINE 2                .           .           .            .
+        ACUPUNCTURE 1     -0.57500     0.06013       -9.56       0.0000
+        ACUPUNCTURE 2            .           .           .            .
+        INTERACTION 1     -0.15000     0.08504       -1.76       0.0923
+        INTERACTION 2            .           .           .            .
+

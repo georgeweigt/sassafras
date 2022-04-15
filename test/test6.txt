@@ -1,0 +1,4 @@
+data
+input y
+infile "1-10.txt"
+proc print

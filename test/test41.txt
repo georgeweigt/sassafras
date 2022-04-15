@@ -1,0 +1,34 @@
+title "Missing Data Demo"
+
+data
+input nitrogen$ sulphur$ yield
+datalines
+0	0	4.48
+0	0	4.52
+0	0	4.63
+0	3	4.7
+0	3	4.65
+0	3	4.57
+0	6	5.21
+0	6	5.23
+0	6	5.28
+0	9	5.88
+0	9	5.98
+0	9	5.88
+20	0	.
+20	0	.
+20	0	.
+20	3	7.01
+20	3	7.11
+20	3	7.02
+20	6	5.88
+20	6	5.82
+20	6	5.73
+20	9	6.26
+20	9	6.26
+20	9	6.37
+;
+proc anova
+model yield = sulphur nitrogen sulphur*nitrogen
+means sulphur nitrogen / lsd
+means sulphur*nitrogen / lsd

@@ -1,0 +1,19 @@
+                            Simple Linear Regression
+
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model      1         7193.24912      7193.24912       57.08     0.0000
+     Error     17         2142.48772       126.02869                       
+     Total     18         9335.73684                                       
+
+              Root MSE            11.22625     R-Square     0.7705
+              Dependent Mean     100.02632     Adj R-Sq     0.7570
+              Coeff Var           11.22330                        
+
+                              Parameter Estimates
+
+                         Estimate      Std Err     t Value     Pr > |t|
+         Intercept     -143.02692     32.27459       -4.43       0.0004
+         HEIGHT           3.89903      0.51609        7.55       0.0000
+

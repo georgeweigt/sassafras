@@ -1,0 +1,28 @@
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model      0            2.00000             inf         inf        nan
+     Error      1            0.00000         0.00000                       
+     Total      1            2.00000                                       
+
+               Root MSE           0.00000     R-Square     1.0000
+               Dependent Mean     0.00000     Adj R-Sq     1.0000
+               Coeff Var              nan                        
+
+                              Parameter Estimates
+
+                    Estimate     Std Err     t Value     Pr > |t|
+              Y      1.00000     0.00000         inf       0.0000
+
+* Insane regression models
+data
+input y
+datalines
+-1
+1
+;
+proc reg
+model y = y / noint
+proc reg
+model y = y
+Regression model kaput, p = 2, n = 2, must have 0 < p < n

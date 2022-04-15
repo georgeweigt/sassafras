@@ -1,0 +1,17 @@
+* From STAT 650
+
+data
+input trt $ y @@
+datalines
+A 34 B 29
+A 26 B 17
+A 21 B 25
+A 22 B 28
+A 40 B 18
+A 20 B 29
+A 33 B 32
+A 39 B 31
+A 42 B 31
+;
+
+proc print

@@ -1,0 +1,7 @@
+* Test firstobs
+
+data
+infile "FishTank.txt" firstobs=2
+input Diet Tank WtGain
+
+proc print

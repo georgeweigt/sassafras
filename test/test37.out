@@ -1,0 +1,25 @@
+                              Anova Procedure Demo
+
+                              Analysis of Variance
+
+    Source     DF     Sum of Squares     Mean Square     F Value     Pr > F
+    Model      11       182.02000000     16.54727273        7.85     0.0306
+    Error       4         8.43000000      2.10750000                       
+    Total      15       190.45000000                                       
+
+             R-Square     Coeff Var     Root MSE     RESPONSE Mean
+             0.955736      3.609007     1.451723         40.225000
+
+    Source      DF         Anova SS      Mean Square     F Value     Pr > F
+    BLOCK        1     131.10250000     131.10250000       62.21     0.0014
+    A            3      40.19000000      13.39666667        6.36     0.0530
+    BLOCK*A      3       6.92750000       2.30916667        1.10     0.4476
+    B            1       2.25000000       2.25000000        1.07     0.3599
+    A*B          3       1.55000000       0.51666667        0.25     0.8612
+
+                                 Mean Response
+
+          BLOCK     N     Mean RESPONSE     95% CI MIN     95% CI MAX
+          1         8         37.362500      35.937457      38.787543
+          2         8         43.087500      41.662457      44.512543
+

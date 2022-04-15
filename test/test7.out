@@ -1,0 +1,43 @@
+                            Obs     A     B        Y
+                              1     2     AN     346
+                              2     3     AN     355
+                              3     4     AN     363
+                              4     5     HE     388
+                              5     5     HE     384
+                              6     2     HE     366
+                              7     3     HE     371
+                              8     3     HE     375
+                              9     4     SM     412
+                             10     5     SM     429
+                             11     2     SM     396
+                             12     2     SM     404
+
+                              The MEANS Procedure
+
+        A     Variable     N        Mean     95% CLM MIN     95% CLM MAX
+        2     Y            4     378.000         335.224         420.776
+        3     Y            3     367.000         340.710         393.290
+        4     Y            2     387.500          76.198         698.802
+        5     Y            3     400.333         338.462         462.204
+
+                              Parameter Estimates
+
+                              Analysis of Variance
+
+               DF     Sum of Squares     Mean Square     F Value     Pr > F
+     Model      3         1805.75000       601.91667        1.00     0.4425
+     Error      8         4833.16667       604.14583                       
+     Total     11         6638.91667                                       
+
+             Root MSE            24.57938     R-Square      0.2720
+             Dependent Mean     382.41667     Adj R-Sq     -0.0010
+             Coeff Var            6.42738                         
+
+                              Parameter Estimates
+
+                     Estimate      Std Err     t Value     Pr > |t|
+            A 2     378.00000     12.28969       30.76       0.0000
+            A 3     367.00000     14.19091       25.86       0.0000
+            A 4     387.50000     17.38025       22.30       0.0000
+            A 5     400.33333     14.19091       28.21       0.0000
+

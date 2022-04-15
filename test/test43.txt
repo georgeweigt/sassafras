@@ -1,0 +1,11 @@
+* log function
+
+data
+input log y
+logy = log(y)
+datalines
+1 10
+2 20
+3 30
+
+proc print
