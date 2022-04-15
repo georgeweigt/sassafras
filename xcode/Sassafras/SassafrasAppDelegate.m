@@ -30,12 +30,16 @@ extern void run(char *);
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-
-    [_userProgram setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:14.0]];
-    [_outputView setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:14.0]];
-
+    if (@available(macOS 10.14, *))
+    {
+        NSApp.appearance = [NSAppearance appearanceNamed: NSAppearanceNameAqua];
+    }
+    [_userProgram setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:12.0]];
+    [_outputView setFont:[NSFont fontWithName:[NSString stringWithUTF8String:"Courier"] size:12.0]];
+    [_userProgram setAutomaticSpellingCorrectionEnabled:NO];
+    [_userProgram setAutomaticQuoteSubstitutionEnabled:NO];
+    _userProgram.enabledTextCheckingTypes = 0; // need this so -- (dash dash) isn't changed
     // Get home directory prefix
-
     NSString *s = [@"~" stringByExpandingTildeInPath];
     prefix = strdup([s UTF8String]);
 }
