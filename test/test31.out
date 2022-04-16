@@ -1,7 +1,7 @@
                               Analysis of Variance
 
                DF     Sum of Squares     Mean Square     F Value     Pr > F
-     Model      0            0.00000             nan         nan     1.0000
+     Model      0            0.00000             nan         nan        nan
      Error      5           17.50000         3.50000                       
      Total      5           17.50000                                       
 

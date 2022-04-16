@@ -18,7 +18,7 @@ scan.o \
 tdist.o
 
 default : $(objects)
-	gcc -o sassafras $(objects) -lm
+	gcc -O0 -o sassafras $(objects) -lm
 
 $(objects) : defs.h prototypes.h
 

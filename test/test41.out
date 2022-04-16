@@ -49,8 +49,8 @@ SULPHUR   SULPHUR   Delta YIELD   95% CI MIN   95% CI MAX   t Value   Pr > |t|
                        Least Significant Difference Test
 
   NITROGEN  NITROGEN  Delta YIELD  95% CI MIN  95% CI MAX  t Value  Pr > |t|  
-  0         20          -1.300278   -1.359807   -1.240748   -46.85    0.0000 *
-  20        0            1.300278    1.240748    1.359807    46.85    0.0000 *
+  0         20          -1.300278   -1.359808   -1.240748   -46.85    0.0000 *
+  20        0            1.300278    1.240748    1.359808    46.85    0.0000 *
 
                                  Mean Response
 
