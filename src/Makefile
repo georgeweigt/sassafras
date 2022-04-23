@@ -1,3 +1,5 @@
+.PHONY: clean
+
 # To build a new prototypes.h:
 #
 #       gcc make-prototypes.c
@@ -17,10 +19,10 @@ proc_reg.o \
 scan.o \
 tdist.o
 
-default : $(objects)
+sassafras: $(objects)
 	gcc -O0 -o sassafras $(objects) -lm
 
-$(objects) : defs.h prototypes.h
+$(objects): defs.h prototypes.h
 
-clean :
+clean:
 	rm -f *.o a.out sassafras
