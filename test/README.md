@@ -1,4 +1,4 @@
 ```
-gcc selftest.c
-./a.out
+make
+./selftest
 ```
