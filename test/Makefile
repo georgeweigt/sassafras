@@ -1,5 +1,7 @@
+.PHONY: clean
+
 selftest: selftest.c
-	gcc -O0 selftest.c -o selftest
+	gcc -O0 -o selftest selftest.c
 
 clean:
 	rm -f selftest
