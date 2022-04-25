@@ -20,14 +20,14 @@ f(int i)
 	int n;
 	FILE *f;
 
-	sprintf(s, "test%d.txt", i);
+	sprintf(s, "test%d.in", i);
 	f = fopen(s, "r");
 	fclose(f);
 
 	if (f == NULL)
 		return 0;
 
-	sprintf(s, "../src/sassafras test%d.txt | diff - test%d.out", i, i);
+	sprintf(s, "../src/sassafras test%d.in | diff - test%d.out", i, i);
 	printf("%s\n", s);
 
 	n = system(s);
