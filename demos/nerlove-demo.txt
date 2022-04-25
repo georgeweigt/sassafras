@@ -1,5 +1,5 @@
 data
-infile "nerlove.txt"
+infile "nerlove-data"
 input COST KWH PL PF PK
 LCOST = log(COST)
 LKWH = log(KWH)
