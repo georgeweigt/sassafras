@@ -166,7 +166,7 @@ An infile statement is used to read data from a file.
 \begin{Verbatim}
 data
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 \end{Verbatim}
 
 \subsection*{Example 5}
@@ -177,7 +177,7 @@ vector Y squared element-wise.
 \begin{Verbatim}
 data
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 y2 = y ** 2
 \end{Verbatim}
 
@@ -459,7 +459,7 @@ data set and shows the default action of proc means.
 \begin{Verbatim}
 data wine
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 
 proc means
 \end{Verbatim}
@@ -489,7 +489,7 @@ Also, the desired statistics are specified.
 \begin{Verbatim}
 data wine
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 
 proc means n mean clm
 var y
@@ -509,7 +509,7 @@ to show statistics for each wine color.
 \begin{Verbatim}
 data wine
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 
 proc means n mean clm
 var y
@@ -633,7 +633,7 @@ a linear model with no intercept term.
 \begin{Verbatim}
 data
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine.txt"
+infile "wine-data"
 
 proc reg
 model y = color x1 / noint
@@ -680,7 +680,7 @@ and PK is price of capital.
 
 \begin{Verbatim}
 data
-infile "nerlove.txt"
+infile "nerlove-data"
 input COST KWH PL PF PK
 LCOST = log(COST)
 LKWH = log(KWH)
@@ -719,7 +719,7 @@ The following result is displayed.
 The following code can be pasted into R to obtain a similar result.
 
 \begin{Verbatim}
-d = read.table("nerlove.txt")
+d = read.table("nerlove-data")
 lcost = log(d[,1])
 lkwh = log(d[,2])
 lpl = log(d[,3])
@@ -1004,62 +1004,5 @@ For example, in R we have
 > pt(t,8)
 [1] 0.975
 \end{Verbatim}
-
-\end{document}
-
-\newpage
-
-\section{Example infiles}
-
-\subsection{alfalfa-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{alfalfa-demo.txt}
-
-\newpage
-\subsection{corrosion-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{corrosion-demo.txt}
-
-\newpage
-\subsection{diet-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{diet-demo.txt}
-
-\newpage
-\subsection{dry-weight-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{dry-weight-demo.txt}
-
-\newpage
-\subsection{fish-tank-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{fish-tank-demo.txt}
-
-\newpage
-\subsection{ivd-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{ivd-demo.txt}
-
-\newpage
-\subsection{lmc-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{lmc-demo.txt}
-
-\newpage
-\subsection{peanut-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{peanut-demo.txt}
-
-\newpage
-\subsection{prof-hunter-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{prof-hunter-demo.txt}
-
-\newpage
-\subsection{red-clover-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{red-clover-demo.txt}
-
-\newpage
-\subsection{seedling-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{seedling-demo.txt}
-
-\newpage
-\subsection{strawberry-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{strawberry-demo.txt}
-
-\newpage
-\subsection{trees-demo.txt}
-\lstinputlisting[language=SAS,basicstyle=\footnotesize]{trees-demo.txt}
 
 \end{document}
