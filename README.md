@@ -7,7 +7,7 @@ To build and run
 ```
 cd src
 make
-./sassafras file.txt
+./sassafras filename
 ```
 
 For example
