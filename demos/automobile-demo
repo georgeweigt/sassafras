@@ -1,0 +1,17 @@
+data auto;
+input Make $ Model $ Score @@;
+datalines;
+a a1 62 a a2 77 a a3 59
+a a1 67 a a2 73 a a3 64
+a a1 60 a a2 79 a a3 60
+b b1 72 b b2 58 b b3 80
+b b1 75 b b2 63 b b3 84
+b b1 69 b b2 57 b b3 89
+c c1 94 c c2 76 c c3 81
+c c1 90 c c2 75 c c3 85
+c c1 88 c c2 78 c c3 85
+d d1 69 d d2 73 d d3 90
+d d1 72 d d2 88 d d3 87
+d d1 76 d d2 87 d d3 92;
+proc anova
+model Score = Make Model
