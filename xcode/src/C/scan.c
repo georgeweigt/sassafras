@@ -4,9 +4,6 @@
 #include "defs.h"
 
 char strbuf[100];
-extern char *pgm;
-
-int scan1(void);
 
 void
 scan(void)

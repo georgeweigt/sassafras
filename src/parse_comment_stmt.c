@@ -1,8 +1,7 @@
-#include <stdio.h>
 #include "defs.h"
 
 void
-comment_stmt(void)
+parse_comment_stmt(void)
 {
 	while (*inp) {
 

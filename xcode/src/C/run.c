@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <setjmp.h>
-
 #include "defs.h"
 
 char *pgm;
@@ -69,7 +65,7 @@ parse_default(void)
 		scan();
 		break;
 	case '*':
-		comment_stmt();
+		parse_comment_stmt();
 		break;
 	case KTITLE:
 		title_stmt();

@@ -18,7 +18,9 @@ proc_print.o \
 proc_reg.o \
 scan.o \
 tdist.o \
+parse_by_stmt.o \
 parse_class_stmt.o \
+parse_comment_stmt.o \
 parse_var_stmt.o \
 proc_step.o
 

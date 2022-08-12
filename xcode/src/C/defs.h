@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <setjmp.h>
+#define __USE_ISOC99
 #include <math.h>
-
-#define ZZZ printf("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+#ifndef NAN
+#define NAN nan("0")
+#endif
 
 #define MAXVAR 100
 #define MAXSTAT 12
@@ -24,6 +27,14 @@ struct dataset {
 		double *v;
 	} spec[MAXVAR];
 };
+
+// tokens
+
+#define NAME 1001
+#define NUMBER 1002
+#define STRING 1003
+#define ATAT 1004
+#define STARSTAR 1005
 
 // keywords
 
@@ -74,10 +85,15 @@ enum {
 	KWELCH,
 };
 
-// global variables
-
 extern struct dataset *dataset;
-
+extern char *pgm;
+extern char *inp;
+extern char *token_str;
+extern int token;
+extern char errbuf[];
+extern char strbuf[];
+extern double token_num;
+extern FILE *infile;
 extern double alpha;
 extern int maxdec;
 extern int nstat;
@@ -93,71 +109,5 @@ extern char *title1;
 extern char *title2;
 extern char *title3;
 extern char *prefix;
-
-// functions
-
-extern void var_stmt(void);
-extern void keyword(void);
-extern char *get_dataline(char *, int);
-
-extern void scan(void);
-extern void emit_line(char *);
-extern void *xmalloc(int);
-extern void *xcalloc(int);
-extern void *xrealloc(void *, int);
-extern void syntax(void);
-extern void stop(char *);
-
-// tokens
-
-#define NAME 1001
-#define NUMBER 1002
-#define STRING 1003
-#define ATAT 1004
-#define STARSTAR 1005
-
-extern char *inp;
-extern char *token_str;
-extern int token;
-extern char errbuf[];
-extern char strbuf[]; // defined in scan.c
-extern double token_num;
-extern FILE *infile;
-
-// parsing
-
-extern void data_step(void);
-extern void proc_step(void);
-
-extern void parse_default(void);
-
-extern void parse_proc_means(void);
-extern void parse_proc_means_body(void);
-extern void run_proc_means(void);
-
-extern void parse_proc_print(void);
-extern void parse_proc_print_body(void);
-extern void run_proc_print(void);
-
-// options
-
-extern void parse_data_option(void);
-extern void parse_maxdec_option(void);
-
-// statements
-
-extern void by_stmt(void);
-extern void class_stmt(void);
-extern void comment_stmt(void);
-extern void model_stmt(void);
-extern void title_stmt(void);
-extern void title1_stmt(void);
-extern void title2_stmt(void);
-extern void title3_stmt(void);
-extern void var_stmt(void);
-
-extern double qt(double, double);
-extern void free_datasets(void);
-extern void expected(char *);
 
 #include "prototypes.h"

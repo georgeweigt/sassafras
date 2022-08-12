@@ -1,5 +1,3 @@
-void by_stmt(void);
-void comment_stmt(void);
 void data_step(void);
 void parse_data_body(void);
 void read_file(void);
@@ -31,7 +29,9 @@ void catvar(int x, int obs);
 void emit_line(char *s);
 void emit_line_center(char *s);
 void model_stmt(void);
+void parse_by_stmt(void);
 void parse_class_stmt(void);
+void parse_comment_stmt(void);
 void parse_var_stmt(void);
 void print_table_and_free(char **a, int nrow, int ncol, char *fmt);
 void print_table(char **a, int nrow, int ncol, char *fmt);

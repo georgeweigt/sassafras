@@ -94,7 +94,6 @@ extern char errbuf[];
 extern char strbuf[];
 extern double token_num;
 extern FILE *infile;
-
 extern double alpha;
 extern int maxdec;
 extern int nstat;

@@ -146,6 +146,7 @@ parse_default()
 	}
 }
 
+#if 0
 void
 parse_comment_stmt(void)
 {
@@ -161,6 +162,7 @@ parse_comment_stmt(void)
 
 	scan();
 }
+#endif
 
 void
 parse_title_stmt()
@@ -285,6 +287,7 @@ parse_maxdec_option()
 		maxdec = 8;
 }
 
+#if 0
 void
 parse_by_stmt(void)
 {
@@ -321,6 +324,7 @@ parse_by_stmt(void)
 
 	scan(); // eat the semicolon
 }
+#endif
 
 #if 0
 void
