@@ -20,37 +20,6 @@ static int ctrl;
 static int firstobs;
 FILE *infile;
 
-void parse_data_stmt(void);
-void parse_data_body(void);
-void parse_data_expr(void);
-
-void input_stmt(void);
-void datalines_stmt(void);
-void infile_stmt(void);
-void dump_data(void);
-void read_file(void);
-
-void get_data(void);
-void get_data1(void);
-void getbuf(void);
-void chkbuf(void);
-void catvar(int, int);
-int get_digits(void);
-double get_number(void);
-void get_string(void);
-
-void alloc_data_vectors(void);
-void check_data_vectors(void);
-
-void parse_expr(void);
-void parse_term(void);
-void parse_factor(void);
-void parse_log(void);
-
-void emit(int);
-void emit_variable(void);
-void emit_number(void);
-
 enum {
 	SCAN_NUM,
 	SCAN_STR,
@@ -228,8 +197,6 @@ parse_data_stmt(void)
 
 	scan();
 }
-
-extern char *prefix;
 
 void
 infile_stmt(void)

@@ -58,7 +58,7 @@ data_step(void)
 // parse statements that follow DATA statement
 
 void
-parse_data_body()
+parse_data_body(void)
 {
 	for (;;) {
 
@@ -172,7 +172,7 @@ input_stmt(void)
 }
 
 void
-parse_data_stmt()
+parse_data_stmt(void)
 {
 	struct dataset *d;
 
@@ -443,7 +443,7 @@ check_data_vectors(void)
 }
 
 void
-getbuf()
+getbuf(void)
 {
 	do {
 		if (infile)
@@ -468,7 +468,7 @@ getbuf()
 }
 
 void
-chkbuf()
+chkbuf(void)
 {
 	// check for end of input
 
@@ -549,7 +549,7 @@ get_number(void)
 // get a string from the input buffer
 
 void
-get_string()
+get_string(void)
 {
 	int i, n;
 	char *s, *t;
@@ -638,7 +638,7 @@ dump_data(void)
 }
 
 void
-free_datasets()
+free_datasets(void)
 {
 	int i;
 	struct dataset *t;
@@ -678,7 +678,7 @@ select_dataset(char *s)
 // NAME = EXPR
 
 void
-parse_data_expr()
+parse_data_expr(void)
 {
 	if (dd->nvar == MAXVAR)
 		stop("Too many variables");
@@ -695,7 +695,7 @@ parse_data_expr()
 }
 
 void
-parse_expr()
+parse_expr(void)
 {
 	switch (token) {
 	case '+':
@@ -731,7 +731,7 @@ parse_expr()
 }
 
 void
-parse_term()
+parse_term(void)
 {
 	parse_factor();
 
@@ -754,7 +754,7 @@ parse_term()
 }
 
 void
-parse_factor()
+parse_factor(void)
 {
 	switch (token) {
 	case NAME:
@@ -801,7 +801,7 @@ parse_factor()
 }
 
 void
-parse_log()
+parse_log(void)
 {
 	// look ahead
 
@@ -838,7 +838,7 @@ emit(int c)
 // Variable name is in strbuf
 
 void
-emit_variable()
+emit_variable(void)
 {
 	int i;
 	for (i = 0; i < dd->nvar; i++)
@@ -853,7 +853,7 @@ emit_variable()
 }
 
 void
-emit_number()
+emit_number(void)
 {
 	int i;
 	char *p = (char *) &token_num;
