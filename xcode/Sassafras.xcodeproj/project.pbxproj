@@ -24,7 +24,6 @@
 		7FF7429427F94E1B0086EB3A /* proc_reg.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428027F94E1A0086EB3A /* proc_reg.c */; };
 		7FF7429527F94E1B0086EB3A /* proc_means.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428227F94E1A0086EB3A /* proc_means.c */; };
 		7FF7429627F94E1B0086EB3A /* emit_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428327F94E1A0086EB3A /* emit_line.c */; };
-		7FF7429727F94E1B0086EB3A /* regress.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428427F94E1A0086EB3A /* regress.c */; };
 		7FF7429827F94E1B0086EB3A /* data_step.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428527F94E1A0086EB3A /* data_step.c */; };
 		7FF7429927F94E1B0086EB3A /* tdist.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428627F94E1A0086EB3A /* tdist.c */; };
 		7FF7429A27F94E1B0086EB3A /* proc_anova.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FF7428727F94E1A0086EB3A /* proc_anova.c */; };
@@ -61,7 +60,6 @@
 		7FF7428127F94E1A0086EB3A /* prototypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prototypes.h; sourceTree = "<group>"; };
 		7FF7428227F94E1A0086EB3A /* proc_means.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proc_means.c; sourceTree = "<group>"; };
 		7FF7428327F94E1A0086EB3A /* emit_line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emit_line.c; sourceTree = "<group>"; };
-		7FF7428427F94E1A0086EB3A /* regress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regress.c; sourceTree = "<group>"; };
 		7FF7428527F94E1A0086EB3A /* data_step.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = data_step.c; sourceTree = "<group>"; };
 		7FF7428627F94E1A0086EB3A /* tdist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tdist.c; sourceTree = "<group>"; };
 		7FF7428727F94E1A0086EB3A /* proc_anova.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proc_anova.c; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				7FF7428127F94E1A0086EB3A /* prototypes.h */,
 				7FF7428227F94E1A0086EB3A /* proc_means.c */,
 				7FF7428327F94E1A0086EB3A /* emit_line.c */,
-				7FF7428427F94E1A0086EB3A /* regress.c */,
 				7FF7428527F94E1A0086EB3A /* data_step.c */,
 				7FF7428627F94E1A0086EB3A /* tdist.c */,
 				7FF7428727F94E1A0086EB3A /* proc_anova.c */,
@@ -255,7 +252,6 @@
 				7F6A8A0628A6ACEF00DCCD77 /* demo.c in Sources */,
 				7FF7428F27F94E1B0086EB3A /* class_stmt.c in Sources */,
 				7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */,
-				7FF7429727F94E1B0086EB3A /* regress.c in Sources */,
 				7FF7429D27F94E1B0086EB3A /* by_stmt.c in Sources */,
 				7FF7428E27F94E1B0086EB3A /* print.c in Sources */,
 				7FF7429027F94E1B0086EB3A /* model_stmt.c in Sources */,
