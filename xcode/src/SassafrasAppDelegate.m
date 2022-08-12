@@ -50,8 +50,8 @@ extern void run(char *);
             NSString *s = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
             [self->_userProgram setString:s];
             [self->_userProgram setNeedsDisplay:YES];
-            filename = [[NSString alloc] initWithString:[url absoluteString]];
-            [[self->_userProgram window] setTitle:filename];
+//            filename = [[NSString alloc] initWithString:[url absoluteString]];
+//            [[self->_userProgram window] setTitle:filename];
         }
         
     }];
@@ -126,6 +126,17 @@ extern void run(char *);
     s = [[NSString alloc] initWithCString:output_buffer encoding:NSASCIIStringEncoding];
     [_outputView setString:s];
     [_outputView setNeedsDisplay:YES];
+}
+
+extern char *alfalfa_str;
+
+-(IBAction)alfalfa_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:alfalfa_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
 }
 
 @end

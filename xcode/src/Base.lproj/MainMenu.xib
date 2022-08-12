@@ -345,6 +345,19 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Demo" id="mNt-W6-yl4">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Demo" id="Hpv-jk-MCB">
+                        <items>
+                            <menuItem title="Alfalfa" id="PGM-E0-TMk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="alfalfa_demo:" target="494" id="3jA-Vu-YDp"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-105" y="120"/>
         </menu>
@@ -361,7 +374,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="QdR-JM-rUW">
                             <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" id="zgs-O1-wqu">
                                     <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
@@ -405,7 +418,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wUV-1G-ubV">
                             <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" id="651">
                                     <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>

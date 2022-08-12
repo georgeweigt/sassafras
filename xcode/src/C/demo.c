@@ -1,4 +1,4 @@
-char *alfalfa =
+char *alfalfa_str =
 "data\n"
 "input Variety $ Block $ Rep $ Yield\n"
 "datalines\n"
