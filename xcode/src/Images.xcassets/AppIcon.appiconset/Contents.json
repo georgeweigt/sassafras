@@ -41,13 +41,13 @@
       "size" : "256x256"
     },
     {
-      "filename" : "s512x512.png",
+      "filename" : "section512.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "s1024x1024.png",
+      "filename" : "section1024.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
