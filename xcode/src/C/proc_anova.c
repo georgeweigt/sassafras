@@ -86,7 +86,6 @@ static double dfe;
 
 static void parse_proc_anova_stmt(void);
 static void parse_proc_anova_body(void);
-static void parse_class_stmt(void);
 static void parse_model_stmt(void);
 static void parse_model_options(void);
 static void parse_explanatory_variable(void);
@@ -97,15 +96,12 @@ static void create_interaction_level_names(int);
 static void add_factorial(int);
 static void add_nested(int);
 static void prelim(void);
-static int compute_G(void);
+static int a_compute_G(void);
 static void fit(void);
 static void fit1(int, int);
 static void compute_B(void);
 static void compute_Yhat(void);
 static void compute_ss(void);
-static void print_anova_table_part1(void);
-static void print_anova_table_part2(void);
-static void print_anova_table_part3(void);
 static void model(void);
 static void compute_means(int x);
 static void print_means(int x);
@@ -115,7 +111,7 @@ static void print_lsd(int);
 static void print_ttest(int);
 
 void
-proc_anova()
+proc_anova(void)
 {
 	nx = 0;
 
@@ -128,7 +124,7 @@ proc_anova()
 }
 
 static void
-parse_proc_anova_stmt()
+parse_proc_anova_stmt(void)
 {
 	for (;;) {
 		scan();
@@ -147,7 +143,7 @@ parse_proc_anova_stmt()
 }
 
 static void
-parse_proc_anova_body()
+parse_proc_anova_body(void)
 {
 	for (;;) {
 		keyword();
@@ -175,12 +171,7 @@ parse_proc_anova_body()
 }
 
 static void
-parse_class_stmt()
-{
-}
-
-static void
-parse_means_stmt()
+parse_means_stmt(void)
 {
 	int i, lsd, n, ttest, x;
 	char *s;
@@ -260,7 +251,7 @@ parse_means_stmt()
 // Returns token in buf[]
 
 static void
-parse_means_item()
+parse_means_item(void)
 {
 	if (token != NAME)
 		expected("variable name");
@@ -285,7 +276,7 @@ parse_means_item()
 }
 
 static void
-parse_model_stmt()
+parse_model_stmt(void)
 {
 	int i;
 
@@ -337,7 +328,7 @@ parse_model_stmt()
 }
 
 static void
-parse_model_options()
+parse_model_options(void)
 {
 	for (;;) {
 
@@ -369,7 +360,7 @@ parse_model_options()
 // 5.	name(name name ...)
 
 static void
-parse_explanatory_variable()
+parse_explanatory_variable(void)
 {
 	int n = 1;
 
@@ -431,7 +422,7 @@ parse_explanatory_variable()
 }
 
 static int
-get_var_index()
+get_var_index(void)
 {
 	int i, n;
 	n = dataset->nvar;
@@ -594,7 +585,7 @@ add_nested(int n)
 }
 
 static void
-model()
+model(void)
 {
 	regression();
 
@@ -616,7 +607,7 @@ model()
 }
 
 static void
-regression()
+regression(void)
 {
 	prelim();
 
@@ -642,7 +633,7 @@ regression()
 }
 
 static void
-prelim()
+prelim(void)
 {
 	int i, j, k, x;
 
@@ -723,7 +714,7 @@ prelim()
 }
 
 static void
-fit()
+fit(void)
 {
 	int i, j, n, x;
 
@@ -743,7 +734,7 @@ fit()
 			fit1(x, j); // fit next column
 		df[i] = npar;
 		if (gstate == -1)
-			compute_G();
+			a_compute_G();
 		compute_B();
 		compute_Yhat();
 		compute_ss();
@@ -773,14 +764,14 @@ fit1(int x, int level)
 
 	npar++;
 
-	gstate = compute_G();
+	gstate = a_compute_G();
 
 	if (gstate == -1)
 		npar--; // X'X is singular hence remove column
 }
 
 static int
-compute_G()
+a_compute_G(void)
 {
 	int d, i, j, k;
 	double m, max, min, t;
@@ -888,7 +879,7 @@ compute_G()
 // B = G * X^T * Y
 
 static void
-compute_B()
+compute_B(void)
 {
 	int i, j;
 	double t;
@@ -911,7 +902,7 @@ compute_B()
 // Yhat = X * B
 
 static void
-compute_Yhat()
+compute_Yhat(void)
 {
 	int i, j;
 	double t;
@@ -925,7 +916,7 @@ compute_Yhat()
 }
 
 static void
-compute_ss()
+compute_ss(void)
 {
 	int i;
 
@@ -970,7 +961,7 @@ print_X()
 #define A(i, j) (a + 6 * (i))[j]
 
 void
-print_anova_table_part1()
+print_anova_table_part1(void)
 {
 	char **a;
 
@@ -1047,8 +1038,8 @@ print_anova_table_part1()
 #undef A
 #define A(i, j) (a + 4 * (i))[j]
 
-static void
-print_anova_table_part2()
+void
+print_anova_table_part2(void)
 {
 	char **a;
 
@@ -1084,8 +1075,8 @@ print_anova_table_part2()
 #undef A
 #define A(i, j) (a + 6 * (i))[j]
 
-static void
-print_anova_table_part3()
+void
+print_anova_table_part3(void)
 {
 	int i, x;
 	double msq, fval, pval;

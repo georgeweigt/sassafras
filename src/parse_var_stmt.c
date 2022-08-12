@@ -1,7 +1,7 @@
 #include "defs.h"
 
 void
-var_stmt(void)
+parse_var_stmt(void)
 {
 	int i;
 

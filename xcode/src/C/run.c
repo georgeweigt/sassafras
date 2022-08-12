@@ -7,8 +7,6 @@
 char *pgm;
 static jmp_buf jmpbuf;
 
-static void run1(char *);
-
 void
 run(char *s)
 {
@@ -64,7 +62,7 @@ run1(char *s)
 }
 
 void
-parse_default()
+parse_default(void)
 {
 	switch (token) {
 	case ';':
@@ -91,7 +89,7 @@ parse_default()
 }
 
 void
-parse_alpha_option()
+parse_alpha_option(void)
 {
 	scan(); // skip alpha token
 
@@ -110,7 +108,7 @@ parse_alpha_option()
 }
 
 void
-parse_data_option()
+parse_data_option(void)
 {
 	scan();
 	if (token != '=')
@@ -122,7 +120,7 @@ parse_data_option()
 }
 
 void
-parse_maxdec_option()
+parse_maxdec_option(void)
 {
 	scan();
 	if (token != '=')
@@ -176,7 +174,7 @@ xrealloc(void *p, int size)
 }
 
 void
-print_pgm()
+print_pgm(void)
 {
 	char c, *s, *t;
 

@@ -1,7 +1,7 @@
 #include "defs.h"
 
 void
-by_stmt(void)
+parse_class_stmt(void)
 {
 	int i;
 
@@ -31,7 +31,7 @@ by_stmt(void)
 			stop(errbuf);
 		}
 
-		by[nby++] = i;
+		class[nclass++] = i;
 	}
 
 	scan(); // eat the semicolon

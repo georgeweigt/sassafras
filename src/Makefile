@@ -17,7 +17,10 @@ proc_means.o \
 proc_print.o \
 proc_reg.o \
 scan.o \
-tdist.o
+tdist.o \
+parse_class_stmt.o \
+parse_var_stmt.o \
+proc_step.o
 
 sassafras: $(objects)
 	gcc -O0 -o sassafras $(objects) -lm

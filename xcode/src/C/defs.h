@@ -78,28 +78,21 @@ enum {
 
 extern struct dataset *dataset;
 
-// settings
-
 extern double alpha;
-
 extern int maxdec;
-
 extern int nstat;
 extern int stat[];
-
 extern int nvar;
 extern int var[];
-
 extern int nby;
 extern int by[];
-
 extern int nclass;
 extern int class[];
-
 extern char *title;
 extern char *title1;
 extern char *title2;
 extern char *title3;
+extern char *prefix;
 
 // functions
 

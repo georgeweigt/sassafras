@@ -1,7 +1,7 @@
 #include "defs.h"
 
 void
-title_stmt()
+title_stmt(void)
 {
 	scan();
 	if (token != STRING)
@@ -19,7 +19,7 @@ title_stmt()
 }
 
 void
-title1_stmt()
+title1_stmt(void)
 {
 	scan();
 	if (token != STRING)
@@ -37,7 +37,7 @@ title1_stmt()
 }
 
 void
-title2_stmt()
+title2_stmt(void)
 {
 	scan();
 	if (token != STRING)
@@ -55,7 +55,7 @@ title2_stmt()
 }
 
 void
-title3_stmt()
+title3_stmt(void)
 {
 	scan();
 	if (token != STRING)

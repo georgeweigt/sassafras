@@ -13,7 +13,7 @@ static char *fmt[9] = {
 };
 
 void
-proc_print()
+proc_print(void)
 {
 	parse_proc_print_stmt();
 
@@ -57,7 +57,7 @@ parse_proc_print_body(void)
 		case KRUN:
 			return;
 		case KVAR:
-			var_stmt();
+			parse_var_stmt();
 			break;
 		default:
 			parse_default();

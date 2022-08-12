@@ -1,10 +1,7 @@
 #include "defs.h"
 
-int nclass;
-int class[MAXVAR];
-
 void
-class_stmt(void)
+parse_var_stmt(void)
 {
 	int i;
 
@@ -25,16 +22,11 @@ class_stmt(void)
 				break;
 
 		if (i == dataset->nvar) {
-			sprintf(errbuf, "The variable %s not in the dataset", strbuf);
+			sprintf(errbuf, "Variable %s?", strbuf);
 			stop(errbuf);
 		}
 
-		if (dataset->spec[i].ltab == NULL) {
-			sprintf(errbuf, "The variable %s is not a categorical variable", strbuf);
-			stop(errbuf);
-		}
-
-		class[nclass++] = i;
+		var[nvar++] = i;
 	}
 
 	scan(); // eat the semicolon

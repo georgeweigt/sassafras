@@ -67,7 +67,7 @@ run1()
 			data_step();
 			break;
 		case KPROC:
-			procedure_step();
+			proc_step();
 			break;
 		case KRUN:
 			scan();
@@ -82,8 +82,9 @@ run1()
 	}
 }
 
+#if 0
 void
-procedure_step(void)
+proc_step(void)
 {
 	nby = 0;
 	nvar = 0;
@@ -116,6 +117,7 @@ procedure_step(void)
 		expected("procedure name");
 	}
 }
+#endif
 
 void
 parse_default()
@@ -320,6 +322,7 @@ parse_by_stmt(void)
 	scan(); // eat the semicolon
 }
 
+#if 0
 void
 parse_class_stmt(void)
 {
@@ -356,7 +359,9 @@ parse_class_stmt(void)
 
 	scan(); // eat the semicolon
 }
+#endif
 
+#if 0
 void
 parse_var_stmt(void)
 {
@@ -388,6 +393,7 @@ parse_var_stmt(void)
 
 	scan(); // eat the semicolon
 }
+#endif
 
 #define A(i, j) (a + (i) * ncol)[j]
 

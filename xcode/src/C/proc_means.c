@@ -9,7 +9,7 @@ void g(void);
 void h(int);
 
 void
-proc_means()
+proc_means(void)
 {
 	parse_proc_means_stmt();
 
@@ -24,7 +24,7 @@ proc_means()
 }
 
 void
-parse_proc_means_stmt()
+parse_proc_means_stmt(void)
 {
 	for (;;) {
 		scan();
@@ -71,7 +71,7 @@ parse_proc_means_stmt()
 }
 
 void
-parse_proc_means_body()
+parse_proc_means_body(void)
 {
 	for (;;) {
 		keyword();
@@ -82,10 +82,10 @@ parse_proc_means_body()
 		case KRUN:
 			return;
 		case KCLASS:
-			class_stmt();
+			parse_class_stmt();
 			break;
 		case KVAR:
-			var_stmt();
+			parse_var_stmt();
 			break;
 		default:
 			parse_default();
@@ -97,7 +97,7 @@ parse_proc_means_body()
 #define A(i, j) (a + (i) * ncol)[j]
 
 void
-run_proc_means()
+run_proc_means(void)
 {
 	int i, j, k, n;
 	char *t;
@@ -258,7 +258,7 @@ f(int k)
 // to here after category filter is set up
 
 void
-g()
+g(void)
 {
 	int i, j, level, varnum;
 

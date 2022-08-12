@@ -16,7 +16,7 @@ static void parse_model_stmt(void);
 static void parse_model_options(void);
 
 void
-proc_reg()
+proc_reg(void)
 {
 	num_x = 0;
 	num_y = 0;
@@ -45,7 +45,7 @@ proc_reg()
 }
 
 static void
-parse_proc_reg_stmt()
+parse_proc_reg_stmt(void)
 {
 	for (;;) {
 		scan();
@@ -67,7 +67,7 @@ parse_proc_reg_stmt()
 }
 
 static void
-parse_proc_reg_body()
+parse_proc_reg_body(void)
 {
 	for (;;) {
 		keyword();
@@ -151,7 +151,7 @@ parse_model_stmt(void)
 }
 
 static void
-parse_model_options()
+parse_model_options(void)
 {
 	for (;;) {
 
@@ -220,7 +220,7 @@ static double *_X_;
 // X is the design matrix
 
 void
-compute_X()
+compute_X(void)
 {
 	int i, j, k, l, m, n, x, y;
 	double v;
@@ -286,7 +286,7 @@ compute_X()
 // T = X^T * X
 
 void
-compute_T()
+compute_T(void)
 {
 	int i, j, k, l, m;
 	double t;
@@ -313,7 +313,7 @@ compute_T()
 // T is clobbered
 
 int
-compute_G()
+compute_G(void)
 {
 	int d, i, j, k;
 	double m, max, min, t;
@@ -409,7 +409,7 @@ compute_G()
 // B = G * X^T * Y
 
 static void
-compute_B()
+compute_B(void)
 {
 	int i, j, l;
 	double t;
@@ -440,7 +440,7 @@ compute_B()
 // mse = sse / (nrow - npar)
 
 void
-compute_mse()
+compute_mse(void)
 {
 	int i, j, k;
 	double yhat;
@@ -489,7 +489,7 @@ compute_mse()
 // C = mse * G
 
 void
-compute_C()
+compute_C(void)
 {
 	int i, j;
 	for (i = 0; i < npar; i++)
@@ -500,7 +500,7 @@ compute_C()
 // SE[i] = sqrt(C[i][i])
 
 void
-compute_SE()
+compute_SE(void)
 {
 	int i;
 	for (i = 0; i < npar; i++)
@@ -508,7 +508,7 @@ compute_SE()
 }
 
 void
-compute_TVAL()
+compute_TVAL(void)
 {
 	int i;
 	for (i = 0; i < npar; i++)
@@ -516,7 +516,7 @@ compute_TVAL()
 }
 
 void
-compute_PVAL()
+compute_PVAL(void)
 {
 	int i, n;
 	n = nrow - npar;
@@ -525,7 +525,7 @@ compute_PVAL()
 }
 
 void
-print_B()
+print_B(void)
 {
 	int i;
 	printf("B =\n");
@@ -534,7 +534,7 @@ print_B()
 }
 
 void
-print_X()
+print_X(void)
 {
 	int i, j;
 	printf("X =\n");
@@ -546,7 +546,7 @@ print_X()
 }
 
 void
-print_T()
+print_T(void)
 {
 	int i, j;
 	printf("T =\n");
@@ -558,7 +558,7 @@ print_T()
 }
 
 void
-print_G()
+print_G(void)
 {
 	int i, j;
 	printf("G =\n");
@@ -570,7 +570,7 @@ print_G()
 }
 
 void
-print_Z()
+print_Z(void)
 {
 	int i;
 	printf("Z =\n");
@@ -579,7 +579,7 @@ print_Z()
 }
 
 void
-regress()
+regress(void)
 {
 	int i, x;
 
@@ -682,7 +682,7 @@ regress()
 #define A(i, j) (a + 5 * (i))[j]
 
 void
-print_parameter_estimates()
+print_parameter_estimates(void)
 {
 	int i, j, k, m, n, x;
 	static char s[100];
@@ -763,7 +763,7 @@ print_parameter_estimates()
 #define A(i, j) (a + 6 * (i))[j]
 
 void
-print_anova_table()
+print_anova_table(void)
 {
 	int i, j;
 	char **a, s[100];
@@ -849,7 +849,7 @@ print_anova_table()
 // diag table style for proc glm
 
 void
-print_diag_table()
+print_diag_table(void)
 {
 	char *a[2][4], s[100];
 
@@ -890,7 +890,7 @@ print_diag_table()
 #else
 
 void
-print_diag_table()
+print_diag_table(void)
 {
 	char *a[3][4], s[100];
 

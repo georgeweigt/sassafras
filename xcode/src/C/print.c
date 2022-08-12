@@ -131,7 +131,7 @@ print_table(char **a, int nrow, int ncol, char *fmt)
 }
 
 void
-print_title()
+print_title(void)
 {
 	if (title)
 		emit_line_center(title);
