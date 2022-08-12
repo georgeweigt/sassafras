@@ -214,7 +214,7 @@ parse_data_stmt()
 	d->next = dd;
 	dd = d;
 
-	d->max = 100;
+	d->max = 1000;
 
 	scan();
 
@@ -470,10 +470,7 @@ check_data_vectors(void)
 	int i;
 	if (dd->nobs < dd->max)
 		return;
-	if (dd->max < 10000)
-		dd->max *= 10;
-	else
-		dd->max += 10000;
+	dd->max += 1000;
 	for (i = 0; i < dd->nvar; i++)
 		dd->spec[i].v = xrealloc(dd->spec[i].v, dd->max * sizeof (double));
 }
