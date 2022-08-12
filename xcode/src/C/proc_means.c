@@ -4,10 +4,6 @@ static char **a, s[MAXVAR + MAXSTAT + 1];
 static int row, nrow, ncol;
 static int filter[MAXVAR];
 
-void f(int);
-void g(void);
-void h(int);
-
 void
 proc_means(void)
 {
@@ -435,7 +431,7 @@ h(int varnum)
 			x = variance;
 			break;
 		default:
-			x = nan(NULL);
+			x = NAN;
 			break;
 		}
 		if (isnan(x))
