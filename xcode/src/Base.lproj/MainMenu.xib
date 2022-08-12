@@ -355,6 +355,12 @@
                                     <action selector="alfalfa_demo:" target="494" id="3jA-Vu-YDp"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Dry Weight" id="EHJ-U6-0gD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="dry_weight_demo:" target="494" id="0wm-fu-1TQ"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

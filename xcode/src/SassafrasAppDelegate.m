@@ -139,4 +139,15 @@ extern char *alfalfa_str;
     [self->_userProgram setNeedsDisplay:YES];
 }
 
+extern char *dry_weight_str;
+
+-(IBAction)dry_weight_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:dry_weight_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
 @end

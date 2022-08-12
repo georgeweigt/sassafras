@@ -54,3 +54,27 @@ char *alfalfa_str =
 "proc anova\n"
 "model Yield = Block Variety Block*Variety\n"
 "means Variety / lsd\n";
+
+char *dry_weight_str =
+"data\n"
+"input Fert $ DryWeight\n"
+"datalines\n"
+"A	1.02\n"
+"A	0.79\n"
+"A	1\n"
+"A	0.59\n"
+"A	0.97\n"
+"B	1\n"
+"B	1.21\n"
+"B	1.22\n"
+"B	0.96\n"
+"B	0.79\n"
+"C	0.99\n"
+"C	1.36\n"
+"C	1.22\n"
+"C	1.12\n"
+"C	1.17\n"
+"\n"
+"proc anova\n"
+"model DryWeight = Fert\n"
+"means Fert / lsd\n";
