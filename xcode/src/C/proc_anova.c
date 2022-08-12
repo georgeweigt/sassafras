@@ -932,7 +932,7 @@ compute_ss(void)
 #if 0
 
 static void
-print_T()
+print_T(void)
 {
 	int i, j;
 	printf("T =\n");
@@ -944,7 +944,7 @@ print_T()
 }
 
 static void
-print_X()
+print_X(void)
 {
 	int i, j;
 	printf("X =\n");
