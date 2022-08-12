@@ -13,7 +13,7 @@ static char *fmt[9] = {
 };
 
 void
-proc_print()
+proc_print(void)
 {
 	parse_proc_print_stmt();
 
