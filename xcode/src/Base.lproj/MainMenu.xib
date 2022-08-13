@@ -364,6 +364,18 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Help" id="deN-0G-kXN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="QFg-QJ-b36">
+                        <items>
+                            <menuItem title="Sassafras Help" keyEquivalent="?" id="Byk-Do-DYN">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="Z8g-7B-G9a"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-105" y="120"/>
         </menu>

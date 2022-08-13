@@ -1,6 +1,7 @@
 char *alfalfa_str =
+"* Alfalfa\n"
 "data\n"
-"input Variety $ Block $ Rep $ Yield\n"
+"input Variety$ Block$ Rep$ Yield\n"
 "datalines\n"
 "Ladak   1   1   3.1\n"
 "Ladak   2   1   4.06\n"
@@ -56,8 +57,9 @@ char *alfalfa_str =
 "means Variety / lsd\n";
 
 char *dry_weight_str =
+"* Dry Weight\n"
 "data\n"
-"input Fert $ DryWeight\n"
+"input Fert$ DryWeight\n"
 "datalines\n"
 "A	1.02\n"
 "A	0.79\n"
