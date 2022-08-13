@@ -1,7 +1,3 @@
-[Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
-
-Sassafras is a shell mode program for statistical analysis.
-
 To build and run
 
 ```
