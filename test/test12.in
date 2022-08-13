@@ -1,4 +1,4 @@
-* No default data set
-proc reg;
-model y = x
+* No default data set ;
+proc reg ;
+model y = x ;
 

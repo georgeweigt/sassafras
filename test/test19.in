@@ -1,6 +1,6 @@
-data
-input y
-datalines
+data ;
+input y ;
+datalines ;
 1
 2
 3
@@ -8,4 +8,4 @@ datalines
 5
 6
 ;
-proc means clm
+proc means clm ;

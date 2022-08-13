@@ -1,8 +1,8 @@
-* Two-way ANOVA with missing cells from STAT 650
+* Two-way ANOVA with missing cells from STAT 650 ;
 
-data
-input a b y;
-datalines
+data ;
+input a b y ;
+datalines ;
 1 1 15
 1 1 16
 1 1 14
@@ -23,5 +23,5 @@ datalines
 3 3 23
 ;
 
-proc reg
-model y = a b
+proc reg ;
+model y = a b ;

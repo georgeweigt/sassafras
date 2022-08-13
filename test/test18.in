@@ -1,7 +1,7 @@
-* Test firstobs
+* Test firstobs ;
 
-data
-infile "fish-tank-data" firstobs=2
-input Diet Tank WtGain
+data ;
+infile "fish-tank-data" firstobs=2 ;
+input Diet Tank WtGain ;
 
-proc print
+proc print ;
