@@ -14,15 +14,15 @@
                     Estimate     Std Err     t Value     Pr > |t|
               Y      1.00000     0.00000         inf       0.0000
 
-* Insane regression models
-data
-input y
-datalines
+* Insane regression models ;
+data ;
+input y ;
+datalines ;
 -1
 1
 ;
-proc reg
-model y = y / noint
-proc reg
-model y = y
+proc reg ;
+model y = y / noint ;
+proc reg ;
+model y = y ;
 Regression model kaput, p = 2, n = 2, must have 0 < p < n

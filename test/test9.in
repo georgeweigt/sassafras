@@ -1,14 +1,14 @@
-* Insane regression models
+* Insane regression models ;
 
-data
-input y
-datalines
+data ;
+input y ;
+datalines ;
 -1
 1
 ;
 
-proc reg
-model y = y / noint
+proc reg ;
+model y = y / noint ;
 
-proc reg
-model y = y
+proc reg ;
+model y = y ;

@@ -1,10 +1,10 @@
-* Salinity data from STAT 650
+* Salinity data from STAT 650 ;
 
-data
-input y x
-x2=x**2
-x3=x**3
-datalines
+data ;
+input y x ;
+x2=x**2 ;
+x3=x**3 ;
+datalines ;
 59.5 1.6
 53.3 1.6
 56.8 1.6
@@ -25,9 +25,9 @@ datalines
 46.1 10.2
 ;
 
-proc reg
-model y = x
+proc reg ;
+model y = x ;
 
-proc reg
-model y = x x2 x3
+proc reg ;
+model y = x x2 x3 ;
 

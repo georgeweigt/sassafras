@@ -1,4 +1,4 @@
-* From SAS Manual p. 5437
+* From SAS Manual p. 5437;
 title 'Simple Linear Regression';
 data Class;
 input Name $ Height Weight Age @@;
