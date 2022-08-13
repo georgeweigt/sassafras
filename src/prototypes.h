@@ -41,6 +41,7 @@ void parse_maxdec_option();
 void print_table_and_free(char **a, int nrow, int ncol, char *fmt);
 void print_table(char **a, int nrow, int ncol, char *fmt);
 void print_title();
+void emit_line_init(void);
 void emit_line(char *s);
 void emit_line_center(char *s);
 void * xmalloc(int size);

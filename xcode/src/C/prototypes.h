@@ -26,6 +26,7 @@ void emit(int c);
 void emit_variable(void);
 void emit_number(void);
 void catvar(int x, int obs);
+void emit_line_init(void);
 void emit_line(char *s);
 void emit_line_center(char *s);
 void model_stmt(void);

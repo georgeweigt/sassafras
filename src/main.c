@@ -56,6 +56,7 @@ run1()
 {
 	if (setjmp(jmpbuf))
 		return;
+	emit_line_init();
 	inp = pgm;
 	scan();
 	for (;;) {
@@ -412,6 +413,11 @@ print_title()
 
 	if (title || title1 || title2 || title3)
 		emit_line("");
+}
+
+void
+emit_line_init(void)
+{
 }
 
 void

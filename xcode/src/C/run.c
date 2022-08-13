@@ -27,6 +27,8 @@ run1(char *s)
 	if (setjmp(jmpbuf))
 		return;
 
+	emit_line_init();
+
 	pgm = s;
 
 	inp = s;

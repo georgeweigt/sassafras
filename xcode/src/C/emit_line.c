@@ -5,17 +5,25 @@ int output_buffer_index;
 int output_buffer_length;
 
 void
+emit_line_init(void)
+{
+	output_buffer_index = 0;
+	emit_line(""); // make realloc happen if first time
+	output_buffer_index = 0;
+}
+
+void
 emit_line(char *s)
 {
 	int len = (int) strlen(s);
 
+	// +2 for newline and null
+
 	if (output_buffer_index + len + 2 > output_buffer_length) {
 		output_buffer_length += len + 10000;
 		output_buffer = realloc(output_buffer, output_buffer_length);
-		if (output_buffer == NULL) {
-			fprintf(stderr, "malloc kaput\n");
+		if (output_buffer == NULL)
 			exit(1);
-		}
 	}
 
 	strcpy(output_buffer + output_buffer_index, s);
