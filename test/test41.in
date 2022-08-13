@@ -1,8 +1,8 @@
-title "Missing Data Demo"
+title "Missing Data Demo" ;
 
-data
-input nitrogen$ sulphur$ yield
-datalines
+data ;
+input nitrogen$ sulphur$ yield ;
+datalines ;
 0	0	4.48
 0	0	4.52
 0	0	4.63
@@ -28,7 +28,7 @@ datalines
 20	9	6.26
 20	9	6.37
 ;
-proc anova
-model yield = sulphur nitrogen sulphur*nitrogen
-means sulphur nitrogen / lsd
-means sulphur*nitrogen / lsd
+proc anova ;
+model yield = sulphur nitrogen sulphur*nitrogen ;
+means sulphur nitrogen / lsd ;
+means sulphur*nitrogen / lsd ;

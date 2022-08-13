@@ -1,8 +1,8 @@
-* From STAT 650, two-way Anova with missing data.
+* From STAT 650, two-way Anova with missing data. ;
 
-data
-input a$ b$ y
-datalines
+data ;
+input a$ b$ y ;
+datalines ;
 1 1 15
 1 1 16
 1 1 14
@@ -23,6 +23,6 @@ datalines
 3 3 23
 ;
 
-proc anova
-model y = a b a*b
-means a b a*b
+proc anova ;
+model y = a b a*b ;
+means a b a*b ;

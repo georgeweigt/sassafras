@@ -1,4 +1,4 @@
-* From SAS manual, p. 5634.
+* From SAS manual, p. 5634. ;
 
 data insurance;
 input time size type @@;

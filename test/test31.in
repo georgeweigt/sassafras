@@ -1,6 +1,6 @@
-data
-input y
-datalines
+data ;
+input y ;
+datalines ;
 1
 2
 3
@@ -9,4 +9,4 @@ datalines
 6
 ;
 
-proc reg
+proc reg ;

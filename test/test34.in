@@ -1,6 +1,6 @@
-data
-input trt $ x y
-datalines
+data ;
+input trt $ x y ;
+datalines ;
 M-4	20	12.8
 M-4	17	11
 M-4	20	10.9
@@ -27,9 +27,9 @@ M-15	15	9.3
 M-15	11	8.2
 ;
 
-proc means mean clm
-var y
-class trt
+proc means mean clm ;
+var y ;
+class trt ;
 
-proc reg
-model y = trt x / noint
+proc reg ;
+model y = trt x / noint ;

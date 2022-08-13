@@ -1,4 +1,4 @@
-* From SAS Manual, p. 730
+* From SAS Manual, p. 730 ;
 
 data PainRelief;
 input PainLevel $ Codeine $ Acupuncture $ Relief @@;

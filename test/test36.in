@@ -1,8 +1,8 @@
-* From SAS Manual p. 737
+* From SAS Manual p. 737 ;
 
 data;
-input Block $ A $ B $ Response
-datalines
+input Block $ A $ B $ Response ;
+datalines ;
 1 4 2 40.0
 1 4 1 39.5
 1 1 2 37.9
@@ -21,6 +21,6 @@ datalines
 2 3 2 42.8
 ;
 
-proc anova
-model Response = Block A Block*A B A*B
+proc anova ;
+model Response = Block A Block*A B A*B ;
 
