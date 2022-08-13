@@ -1,29 +1,40 @@
 <html>
 <body style="font-size:16pt">
 
-<h1>Data step</h1>
+<a href="#quickstart">Quick start</a><br>
+<a href="#datastep">Data step</a><br>
+<a href="#anovaprocedure">Anova procedure</a><br>
+
+<h1 id="quickstart">Quick start</h1>
+
+1. From the Demo menu, select Dry Weight.<br><br>
+
+2. In the program window, observe that the program begins with a data step followed by a procedure step.<br><br>
+
+3. Click the Run button to run the program.
+
+<h1 id="datastep">Data step</h1>
 
 A data step reads data into the program.<br>
 
 <h3>Synopsis</h3>
 
 <pre>
-data <i>name</i> ;
+     data <i>name</i> ;
 
-  infile "<i>filename</i>" dlm="<i>delims</i>" firstobs=<i>n</i> ;
+     infile "<i>filename</i>" dlm="<i>delims</i>" firstobs=<i>n</i> ;
 
-  input <i>list</i> ;
+     input <i>var-list</i> @@ ;
 
-  input <i>list</i> @@ ;
+     <i>var</i> = <i>arithmetic-expression</i> ;
 
-  <i>var</i> = <i>arithmetic-expression</i> ;
-
-  datalines ;
+     datalines ; <i>data</i> ;
 </pre>
 
-1. <i>name</i> is optional.<br><br>
+1. <tt>data</tt> is the first statement in a data step.
+<i>name</i> is optional.<br><br>
 
-2. Settings <i>dlm</i> and <i>firstobs</i> are optional.<br><br>
+2. Settings <tt>dlm</tt> and <tt>firstobs</tt> are optional.<br><br>
 
 3. <i>delims</i> is a sequence of delimiter characters.
 The default is tab, comma, and space.<br><br>
@@ -31,15 +42,14 @@ The default is tab, comma, and space.<br><br>
 4. <i>n</i> is the starting record number.
 This setting is used to skip header records in a file.<br><br>
 
-5. <i>list</i> is a list of variable names separated by spaces.
+5. <i>var-list</i> is a list of variable names separated by spaces.
 For each categorical variable place a <tt>$</tt> after the variable name.<br><br>
 
-6. <tt>@@</tt> is a format option. See Example 2 below.<br><br>
+6. <tt>@@</tt> is an optional input format setting.<br><br>
 
 7. Optional <i>var</i> = <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
 
-8. The <tt>datalines</tt> statement is followed by data.
-At the end of the data a semicolon terminates the statement.<br><br>
+8. If used, <tt>datalines</tt> is the last statement in a data step.<br><br>
 
 <h3>Example 1</h3>
 
@@ -89,7 +99,7 @@ C 12   C 5    C 16   C 1   C 20
 </pre>
 
 <h3>Example 4</h3>
-An infile statement reads data from a file.
+Use <tt>infile</tt> to read data from a file.
 For Sassafras installed from the Mac App Store, data files must be put in the directory Library/Containers/com.gweigt.sassafras/Data/
 
 <pre>
@@ -108,6 +118,8 @@ infile "wine.txt" ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 y2 = y ** 2 ;
 </pre>
+
+<h1 id="anovaprocedure">Anova procedure</h1>
 
 </body>
 </html>

@@ -1,12 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Sassafras Help</title>
-</head>
+<html>
 <body style="font-size:16pt">
 
-Sassafras
+<a href="#quickstart">Quick start</a><br>
+<a href="#datastep">Data step</a><br>
+<a href="#anovaprocedure">Anova procedure</a><br>
+
+<h1 id="quickstart">Quick start</h1>
+
+1. From the Demo menu, select Dry Weight.<br><br>
+
+2. In the program window, observe that the program begins with a data step followed by a procedure step.<br><br>
+
+3. Click the Run button to run the program.
+
+<h1 id="datastep">Data step</h1>
+
+A data step reads data into the program.<br>
+
+<h3>Synopsis</h3>
+
+<pre>
+     data <i>name</i> ;
+
+     infile "<i>filename</i>" dlm="<i>delims</i>" firstobs=<i>n</i> ;
+
+     input <i>var-list</i> @@ ;
+
+     <i>var</i> = <i>arithmetic-expression</i> ;
+
+     datalines ; <i>data</i> ;
+</pre>
+
+1. <tt>data</tt> is the first statement in a data step.
+<i>name</i> is optional.<br><br>
+
+2. Settings <tt>dlm</tt> and <tt>firstobs</tt> are optional.<br><br>
+
+3. <i>delims</i> is a sequence of delimiter characters.
+The default is tab, comma, and space.<br><br>
+
+4. <i>n</i> is the starting record number.
+This setting is used to skip header records in a file.<br><br>
+
+5. <i>var-list</i> is a list of variable names separated by spaces.
+For each categorical variable place a <tt>$</tt> after the variable name.<br><br>
+
+6. <tt>@@</tt> is an optional input format setting.<br><br>
+
+7. Optional <i>var</i> = <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
+
+8. If used, <tt>datalines</tt> is the last statement in a data step.<br><br>
+
+<h3>Example 1</h3>
+
+The following example is a minimalist data step with in-line data.<br>
+
+<pre>
+data ;
+input y ;
+datalines ;
+1
+2
+3
+4
+5
+6
+;
+</pre>
+
+<h3>Example 2</h3>
+
+Use <tt>@@</tt> at the end of an input statement to read multiple records per input line.
+
+<pre>
+data ;
+input y @@ ;
+datalines ;
+1 2 3
+4 5 6
+;
+</pre>
+
+<h3>Example 3</h3>
+
+A dollar sign after an input variable indicates that the variable is categorical instead of numerical.
+
+<pre>
+data ;
+input trt $ y @@ ;
+datalines ;
+A 6    A 0    A 2    A 8   A 11
+A 4    A 13   A 1    A 8   A 0
+B 0    B 2    B 3    B 1   B 18
+B 4    B 14   B 9    B 1   B 9
+C 13   C 10   C 18   C 5   C 23
+C 12   C 5    C 16   C 1   C 20
+;
+</pre>
+
+<h3>Example 4</h3>
+Use <tt>infile</tt> to read data from a file.
+For Sassafras installed from the Mac App Store, data files must be put in the directory Library/Containers/com.gweigt.sassafras/Data/
+
+<pre>
+data ;
+infile "wine.txt" ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+</pre>
+
+<h3>Example 5</h3>
+
+The following example adds variable <tt>y2</tt> which is <tt>y</tt> squared.
+
+<pre>
+data ;
+infile "wine.txt" ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+y2 = y ** 2 ;
+</pre>
+
+<h1 id="anovaprocedure">Anova procedure</h1>
 
 </body>
 </html>
