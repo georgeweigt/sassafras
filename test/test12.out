@@ -1,3 +1,4 @@
 * No default data set ;
 proc reg ;
+model
 No data set

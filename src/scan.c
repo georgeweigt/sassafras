@@ -21,12 +21,6 @@ scan(void)
 		strbuf[1] = 0;
 		token = ';';
 	}
-#if 0
-	if (token < 128)
-		printf("token = %c\n", token);
-	else
-		printf("token = %d\n", token);
-#endif
 }
 
 int
@@ -34,7 +28,9 @@ scan1(void)
 {
 	int i, n;
 
-	while (*inp == '\t' || *inp == ' ')
+	// skip spaces
+
+	while (*inp && *inp <= ' ')
 		inp++;
 
 	token_str = inp;
@@ -44,16 +40,6 @@ scan1(void)
 	if (*inp == '\0') {
 		strbuf[0] = 0;
 		return 0;
-	}
-
-	// end of line?
-
-	if (*inp == '\n' || *inp == '\r') {
-		while (isspace(*inp))
-			inp++;
-		strbuf[0] = ';';
-		strbuf[1] = 0;
-		return ';';
 	}
 
 	// name?
