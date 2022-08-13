@@ -1,8 +1,8 @@
 char *alfalfa_str =
-"* Alfalfa\n"
-"data\n"
-"input Variety$ Block$ Rep$ Yield\n"
-"datalines\n"
+"* Alfalfa ;\n"
+"data ;\n"
+"input Variety $ Block $ Rep $ Yield ;\n"
+"datalines ;\n"
 "Ladak   1   1   3.1\n"
 "Ladak   2   1   4.06\n"
 "Ladak   3   1   4.73\n"
@@ -51,16 +51,16 @@ char *alfalfa_str =
 "Flamand 2   3   4.33\n"
 "Flamand 3   3   6.06\n"
 "Flamand 4   3   6.81\n"
-"\n"
-"proc anova\n"
-"model Yield = Block Variety Block*Variety\n"
-"means Variety / lsd\n";
+";\n"
+"proc anova ;\n"
+"model Yield = Block Variety Block*Variety ;\n"
+"means Variety / lsd ;\n";
 
 char *dry_weight_str =
-"* Dry Weight\n"
-"data\n"
-"input Fert$ DryWeight\n"
-"datalines\n"
+"* Dry Weight ;\n"
+"data ;\n"
+"input Fert $ DryWeight ;\n"
+"datalines ;\n"
 "A	1.02\n"
 "A	0.79\n"
 "A	1\n"
@@ -76,7 +76,7 @@ char *dry_weight_str =
 "C	1.22\n"
 "C	1.12\n"
 "C	1.17\n"
-"\n"
-"proc anova\n"
-"model DryWeight = Fert\n"
-"means Fert / lsd\n";
+";\n"
+"proc anova ;\n"
+"model DryWeight = Fert ;\n"
+"means Fert / lsd ;\n";
