@@ -1,0 +1,113 @@
+<html>
+<body style="font-size:16pt">
+
+<h1>Data step</h1>
+
+A data step reads data into the program.<br>
+
+<h3>Synopsis</h3>
+
+<pre>
+data <i>name</i> ;
+
+  infile "<i>filename</i>" dlm="<i>delims</i>" firstobs=<i>n</i> ;
+
+  input <i>list</i> ;
+
+  input <i>list</i> @@ ;
+
+  <i>var</i> = <i>arithmetic-expression</i> ;
+
+  datalines ;
+</pre>
+
+1. <i>name</i> is optional.<br><br>
+
+2. Settings <i>dlm</i> and <i>firstobs</i> are optional.<br><br>
+
+3. <i>delims</i> is a sequence of delimiter characters.
+The default is tab, comma, and space.<br><br>
+
+4. <i>n</i> is the starting record number.
+This setting is used to skip header records in a file.<br><br>
+
+5. <i>list</i> is a list of variable names separated by spaces.
+For each categorical variable place a <tt>$</tt> after the variable name.<br><br>
+
+6. <tt>@@</tt> is a format option. See Example 2 below.<br><br>
+
+7. Optional <i>var</i> = <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
+
+8. The <tt>datalines</tt> statement is followed by data.
+At the end of the data a semicolon terminates the statement.<br><br>
+
+<h3>Example 1</h3>
+
+The following example is a minimalist data step with in-line data.<br>
+
+<pre>
+data ;
+input y ;
+datalines ;
+1
+2
+3
+4
+5
+6
+;
+</pre>
+
+<h3>Example 2</h3>
+
+Use <tt>@@</tt> at the end of an input statement to read multiple records per input line.
+
+<pre>
+data ;
+input y @@ ;
+datalines ;
+1 2 3
+4 5 6
+;
+</pre>
+
+<h3>Example 3</h3>
+
+A dollar sign after an input variable indicates that the variable is categorical instead of numerical.
+
+<pre>
+data ;
+input trt $ y @@ ;
+datalines ;
+A 6    A 0    A 2    A 8   A 11
+A 4    A 13   A 1    A 8   A 0
+B 0    B 2    B 3    B 1   B 18
+B 4    B 14   B 9    B 1   B 9
+C 13   C 10   C 18   C 5   C 23
+C 12   C 5    C 16   C 1   C 20
+;
+</pre>
+
+<h3>Example 4</h3>
+An infile statement reads data from a file.
+For Sassafras installed from the Mac App Store, data files must be put in the directory Library/Containers/com.gweigt.sassafras/Data/
+
+<pre>
+data ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine.txt" ;
+</pre>
+
+<h3>Example 5</h3>
+
+The following example adds variable <tt>y2</tt> which is <tt>y</tt> squared.
+
+<pre>
+data ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine.txt" ;
+y2 = y ** 2 ;
+</pre>
+
+</body>
+</html>

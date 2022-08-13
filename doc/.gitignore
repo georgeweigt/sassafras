@@ -1,2 +1,5 @@
-*.pdf
-*.swp
+*.aux
+*.log
+*.synctex.gz
+*.toc
+sassafras.pdf
