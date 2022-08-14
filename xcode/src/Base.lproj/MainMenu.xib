@@ -373,6 +373,12 @@
                                     <action selector="peanut_demo:" target="494" id="peanut2"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Redclover" id="redclover1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="redclover_demo:" target="494" id="redclover2"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Strawberry" id="strawberry1">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>

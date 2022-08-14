@@ -172,6 +172,17 @@ extern char *peanut_str;
     [self->_userProgram setNeedsDisplay:YES];
 }
 
+extern char *redclover_str;
+
+-(IBAction)redclover_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:redclover_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
 extern char *strawberry_str;
 
 -(IBAction)strawberry_demo:(id)sender
