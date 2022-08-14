@@ -17,6 +17,8 @@ run(char *s)
 
 	// clean up
 
+	// always gets here, even on stop
+
 	if (infile) {
 		fclose(infile);
 		infile = NULL;
