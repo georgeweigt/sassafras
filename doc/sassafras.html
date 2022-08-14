@@ -5,6 +5,11 @@
 <a href="#datastep">Data step</a><br>
 <a href="#anovaprocedure">Anova procedure</a><br>
 <a href="#meansprocedure">Means procedure</a><br>
+<a href="#printprocedure">Print procedure</a><br>
+<a href="#regprocedure">Reg procedure</a><br>
+
+<br>
+<hr>
 
 <h1 id="quickstart">Quick start</h1>
 
@@ -14,43 +19,54 @@
 
 3. Click the Run button to run the program.
 
+<br><br><hr>
+
 <h1 id="datastep">Data step</h1>
 
 A data step reads data into the program.<br>
 
 <h3>Synopsis</h3>
 
-<pre>
-     data <i>name</i> ;
+<tt>data</tt> &nbsp; <i>name</i> &nbsp; <tt>;</tt><br><br>
 
-     infile "<i>filename</i>" dlm="<i>delims</i>" firstobs=<i>n</i> ;
+<tt>infile</tt>
+&nbsp;
+"<i>filename</i>"
+&nbsp;
+<tt>dlm</tt> <tt>=</tt> "<i>delims</i>"
+&nbsp;
+<tt>firstobs</tt> <tt>=</tt> <i>n</i>
+&nbsp;
+<tt>;</tt><br><br>
 
-     input <i>var-list</i> @@ ;
+<tt>input</tt> &nbsp; <i>var-list</i> &nbsp; <tt>@@</tt> &nbsp; <tt>;</tt><br><br>
 
-     <i>var</i> = <i>arithmetic-expression</i> ;
+<i>var</i> <tt>=</tt> <i>arithmetic-expression</i> &nbsp; <tt>;</tt><br><br>
 
-     datalines ; <i>data</i> ;
-</pre>
+<tt>datalines</tt> &nbsp; <tt>;</tt> &nbsp; <i>data</i> &nbsp; <tt>;</tt><br><br>
 
-1. <tt>data</tt> is the first statement in a data step.
+<br>
+
+1. &nbsp; <tt>data</tt> is the first statement in a data step.
 <i>name</i> is optional.<br><br>
 
-2. Settings <tt>dlm</tt> and <tt>firstobs</tt> are optional.<br><br>
+2. &nbsp; Settings <tt>dlm</tt> and <tt>firstobs</tt> are optional.<br><br>
 
-3. <i>delims</i> is a sequence of delimiter characters.
+3. &nbsp; <i>delims</i> is a sequence of delimiter characters.
 The default is tab, comma, and space.<br><br>
 
-4. <i>n</i> is the starting record number.
+4. &nbsp; <i>n</i> is the starting record number.
 This setting is used to skip header records in a file.<br><br>
 
-5. <i>var-list</i> is a list of variable names separated by spaces.
+5. &nbsp; <i>var-list</i> is a list of variable names separated by spaces.
 For each categorical variable place a <tt>$</tt> after the variable name.<br><br>
 
-6. <tt>@@</tt> is an optional input format setting.<br><br>
+6. &nbsp; <tt>@@</tt> is optional.
+When used, newlines in the data are ignored.<br><br>
 
-7. Optional <i>var</i> = <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
+7. &nbsp; Optional <i>var</i> <tt>=</tt> <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
 
-8. If used, <tt>datalines</tt> is the last statement in a data step.<br><br>
+8. &nbsp; If used, <tt>datalines</tt> is the last statement in a data step.<br><br>
 
 <h3>Example 1</h3>
 
@@ -120,6 +136,8 @@ input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 y2 = y ** 2 ;
 </pre>
 
+<hr>
+
 <h1 id="anovaprocedure">Anova procedure</h1>
 
 The anova procedure fits a classification model to data using ordinary least squares.
@@ -128,32 +146,29 @@ The anova procedure fits a classification model to data using ordinary least squ
 
 <tt>proc</tt> &nbsp; <tt>anova</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
 
-<tt>model</tt> &nbsp; <i>y</i> <tt>=</tt> <i>list</i> &nbsp; <tt>;</tt><br><br>
+<tt>model</tt> &nbsp; <i>y</i> <tt>=</tt> <i>var-list</i> &nbsp; <tt>;</tt><br><br>
 
-<tt>means</tt> &nbsp; <i>list</i> &nbsp; <tt>/</tt> &nbsp; <tt>lsd</tt> &nbsp; <tt>ttest</tt> &nbsp; <tt>alpha</tt> <tt>=</tt> <i>value</i> &nbsp; <tt>;</tt><br><br>
+<tt>means</tt> &nbsp; <i>var-list</i> &nbsp; <tt>/</tt> &nbsp; <tt>lsd</tt> &nbsp; <tt>ttest</tt> &nbsp; <tt>alpha</tt> <tt>=</tt> <i>value</i> &nbsp; <tt>;</tt><br><br>
 
 <br>
 
-1. <tt>data</tt> <tt>=</tt> </tt><i>name</i> is optional.
+1. &nbsp; <tt>data</tt> <tt>=</tt> </tt><i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
-2. <i>y</i> is the response variable which must be numerical.<br><br>
+2. &nbsp; <i>y</i> is the response variable which must be numerical.<br><br>
 
-3. <i>list</i> is one or more explanatory variables or interaction terms separated by spaces.
+3. &nbsp; <i>var-list</i> is a list of one or more explanatory variables or interaction terms separated by spaces.
 All explanatory variables must be categorical.
 Interaction terms are specified using the syntax <tt>A*B</tt>.<br><br>
 
-4. <tt>means</tt> prints the mean of variables and interaction terms in <i>list</i>.
-The <tt>means</tt> statement can include one or more of the following options.<br><br>
+4. &nbsp; Optional <tt>means</tt> statement prints the mean of variables and interaction terms in <i>var-list</i>.
+The <tt>means</tt> statement can include options in any order.<br><br>
 
-&nbsp;
-<tt>lsd</tt> -- Compare treatment means using least significance difference<br><br>
-
-&nbsp;
-<tt>ttest</tt> -- Compare treatment means using two sample <i>t</i>-tests<br><br>
-
-&nbsp;
-<tt>alpha</tt> -- Set the level of significance. Default is 0.05.<br><br>
+<table style="font-size:16pt">
+<tr><td><tt>lsd</tt></td><td>Compare treatment means using least significance difference</td></tr>
+<tr><td><tt>ttest</tt></td><td>Compare treatment means using two sample <i>t</i>-tests</td></tr>
+<tr><td><tt>alpha</tt></td><td>Set the level of significance. Default is 0.05.</td></tr>
+</table>
 
 <h3>Example</h3>
 
@@ -173,54 +188,7 @@ model y = trt ;
 means trt / lsd ttest ;
 </pre>
 
-The following result is displayed.
-
 <hr>
-<pre>
-                              Analysis of Variance
-
-    Source     DF     Sum of Squares      Mean Square     F Value     Pr > F
-    Model       2       293.60000000     146.80000000        3.98     0.0305
-    Error      27       995.10000000      36.85555556                       
-    Total      29      1288.70000000                                        
-
-                R-Square     Coeff Var     Root MSE       Y Mean
-                0.227826     76.846553     6.070878     7.900000
-
-     Source     DF         Anova SS      Mean Square     F Value     Pr > F
-     TRT         2     293.60000000     146.80000000        3.98     0.0305
-
-                                 Mean Response
-
-             TRT      N        Mean Y     95% CI MIN     95% CI MAX
-             A       10      5.300000       1.360938       9.239062
-             B       10      6.100000       2.160938      10.039062
-             C       10     12.300000       8.360938      16.239062
-
-                       Least Significant Difference Test
-
-  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
-  A      B      -0.800000     -6.370676      4.770676      -0.29      0.7705  
-  A      C      -7.000000    -12.570676     -1.429324      -2.58      0.0157 *
-  B      A       0.800000     -4.770676      6.370676       0.29      0.7705  
-  B      C      -6.200000    -11.770676     -0.629324      -2.28      0.0305 *
-  C      A       7.000000      1.429324     12.570676       2.58      0.0157 *
-  C      B       6.200000      0.629324     11.770676       2.28      0.0305 *
-
-                               Two Sample t-Test
-
-  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
-  A      B      -0.800000     -5.922306      4.322306      -0.33      0.7466  
-  A      C      -7.000000    -12.664270     -1.335730      -2.60      0.0182 *
-  B      A       0.800000     -4.322306      5.922306       0.33      0.7466  
-  B      C      -6.200000    -12.467653      0.067653      -2.08      0.0523  
-  C      A       7.000000      1.335730     12.664270       2.60      0.0182 *
-  C      B       6.200000     -0.067653     12.467653       2.08      0.0523  
-</pre>
-<hr>
-
-Note that the LSD test has greater power than the <i>t</i>-test.
-Of course, this is the reason to use linear modeling in the first place.
 
 <h1 id="meansprocedure">Means procedure</h1>
 
@@ -248,7 +216,7 @@ The means procedure prints statistics for a data set.
 
 <br>
 
-1. &nbsp; The settings that follow the <tt>means</tt> keyword are all optional.
+1. &nbsp; <tt>data</tt>, <tt>alpha</tt>, <tt>maxdec</tt>, and <i>stats</i> are all optional.
 The settings can appear in any order.<br><br>
 
 2. &nbsp; If <tt>data</tt> is omitted then data from the previous data step is used.<br><br>
@@ -261,7 +229,7 @@ The default is 0.05.<br><br>
 The default is 3.<br><br>
 
 5. &nbsp; <i>stats</i> is a list of keywords from the following table.
-If <tt>stats</tt> is omitted then the default list is <tt>n</tt> <tt>mean</tt> <tt>std</tt> <tt>min</tt> <tt>max</tt>.<br><br>
+If <i>stats</i> is omitted then the default list is <tt>n</tt> <tt>mean</tt> <tt>std</tt> <tt>min</tt> <tt>max</tt>.<br><br>
 
 <table style="font-size:16pt">
 
@@ -295,6 +263,69 @@ If <tt>var</tt> is omitted then statistics for all variables are printed.<br><br
 
 7. &nbsp; Optional <tt>class</tt> statement prints statistics for levels of the variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.<br><br>
+
+<hr>
+
+<h1 id="printprocedure">Print procedure</h1>
+
+The print procedure prints a data set.
+
+<h3>Synopsis</h3>
+
+<tt>proc</tt> &nbsp; <tt>print</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
+
+<tt>var</tt> &nbsp;  <i>var-list</i> &nbsp; <tt>;</tt><br><br>
+
+<br>
+
+1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
+If omitted, data from the previous data step is used.<br><br>
+
+2. &nbsp; Optional <tt>var</tt> statement specifies variables to print in <i>var-list</i>.
+Variable names in <i>var-list</i> are separated by spaces.
+If <tt>var</tt> is omitted, all variables are printed.<br><br>
+
+<h3>Example</h3>
+
+<pre>
+data ;
+input trt $ y @@ ;
+datalines ;
+A 6    A 0    A 2    A 8   A 11
+A 4    A 13   A 1    A 8   A 0
+B 0    B 2    B 3    B 1   B 18
+B 4    B 14   B 9    B 1   B 9
+;
+proc print ;
+</pre>
+
+<hr>
+
+<h1 id="regprocedure">Reg procedure</h1>
+
+The reg procedure fits a linear model to data using ordinary least squares.
+The response variable must be numerical.
+For models with no intercept, anova results will differ from R.
+This is because R switches to uncorrected sums of squares for models with no intercept.
+
+<h3>Synopsis</h3>
+
+<tt>proc</tt> &nbsp; <tt>reg</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
+
+<tt>model</tt> &nbsp; <i>y</i> <tt>=</tt> <i>var-list</i> &nbsp; <tt>/</tt> &nbsp; <tt>noint</tt> &nbsp; <tt>;</tt><br><br>
+
+<br>
+
+1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
+If omitted, data from the previous data step is used.<br><br>
+
+2. &nbsp; <i>y</i> is the response variable which must be numerical.<br><br>
+
+3. &nbsp; <i>var-list</i> is a list of explanatory variables separated by spaces.<br><br>
+
+4. &nbsp; The <tt>noint</tt> option, if used, fits a linear model with no intercept term.<br><br>
+
+<h3>Example</h3>
 
 </body>
 </html>
