@@ -140,7 +140,10 @@ y2 = y ** 2 ;
 
 <h1 id="anovaprocedure">Anova procedure</h1>
 
-The anova procedure fits a classification model to data using ordinary least squares.
+The anova procedure fits a classification model to data using ordinary least squares.<br><br>
+
+To use this procedure, all explanatory variables are required to be categorical.
+Otherwise, use <tt>proc</tt> <tt>reg</tt>.
 
 <h3>Synopsis</h3>
 
@@ -155,37 +158,47 @@ The anova procedure fits a classification model to data using ordinary least squ
 1. &nbsp; <tt>data</tt> <tt>=</tt> </tt><i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
-2. &nbsp; <i>y</i> is the response variable which must be numerical.<br><br>
+2. &nbsp; <i>y</i> is the response variable which is required to be numerical.<br><br>
 
-3. &nbsp; <i>var-list</i> is a list of one or more explanatory variables or interaction terms separated by spaces.
-All explanatory variables must be categorical.
+3. &nbsp; <i>var-list</i> is a list of explanatory variables and interaction terms separated by spaces.
 Interaction terms are specified using the syntax <tt>A*B</tt>.<br><br>
 
-4. &nbsp; Optional <tt>means</tt> statement prints the mean of variables and interaction terms in <i>var-list</i>.
-The <tt>means</tt> statement can include options in any order.<br><br>
+4. &nbsp; Optional <tt>means</tt> statement prints the mean of variables and interaction terms in <i>var-list</i>.<br><br>
+
+5. &nbsp; The <tt>means</tt> statement can include the following options in any order.<br><br>
 
 <table style="font-size:16pt">
-<tr><td><tt>lsd</tt></td><td>Compare treatment means using least significance difference</td></tr>
-<tr><td><tt>ttest</tt></td><td>Compare treatment means using two sample <i>t</i>-tests</td></tr>
+<tr><td><tt>lsd</tt></td><td>Compare treatment means using least significance difference.</td></tr>
+<tr><td><tt>ttest</tt></td><td>Compare treatment means using two sample <i>t</i>-tests.</td></tr>
 <tr><td><tt>alpha</tt></td><td>Set the level of significance. Default is 0.05.</td></tr>
 </table>
 
 <h3>Example</h3>
 
 <pre>
+* Strawberry ;
+* Compare yields for three types of strawberries. ;
+* This is a randomized complete block design. ;
+* https://archived.stat.ufl.edu/casella/StatDesign/WebDataSets/Strawberry.txt ;
 data ;
-input trt $ y @@ ;
+input Block $ Treatment $ Yield ;
 datalines ;
-A 6    A 0    A 2    A 8   A 11
-A 4    A 13   A 1    A 8   A 0
-B 0    B 2    B 3    B 1   B 18
-B 4    B 14   B 9    B 1   B 9
-C 13   C 10   C 18   C 5   C 23
-C 12   C 5    C 16   C 1   C 20
+1   A   10.1
+1   B   6.3
+1   C   8.4
+2   A   10.8
+2   B   6.9
+2   C   9.4
+3   A   9.8
+3   B   5.3
+3   C   9
+4   A   10.5
+4   B   6.2
+4   C   9.2
 ;
 proc anova ;
-model y = trt ;
-means trt / lsd ttest ;
+model Yield = Block Treatment ;
+means Treatment / lsd ;
 </pre>
 
 <hr>
@@ -257,12 +270,23 @@ If <i>stats</i> is omitted then the default list is <tt>n</tt> <tt>mean</tt> <tt
 
 <br>
 
-6. &nbsp; Optional <tt>var</tt> statement prints statistics for each variable in <i>var-list</i>.
+6. &nbsp; Optional <tt>var</tt> statement prints statistics for variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.
-If <tt>var</tt> is omitted then statistics for all variables are printed.<br><br>
+If <tt>var</tt> is omitted then statistics for all numerical variables are printed.<br><br>
 
-7. &nbsp; Optional <tt>class</tt> statement prints statistics for levels of the variables in <i>var-list</i>.
+7. &nbsp; Optional <tt>class</tt> statement prints statistics for levels of categorical variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.<br><br>
+
+<h3>Example</h3>
+
+<pre>
+data ;
+infile "wine.txt" ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+proc means n mean clm ;
+var y ;
+class color ;
+</pre>
 
 <hr>
 
@@ -281,9 +305,9 @@ The print procedure prints a data set.
 1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
-2. &nbsp; Optional <tt>var</tt> statement specifies variables to print in <i>var-list</i>.
+2. &nbsp; Optional <tt>var</tt> statement prints variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.
-If <tt>var</tt> is omitted, all variables are printed.<br><br>
+If <tt>var</tt> is omitted then all variables are printed.<br><br>
 
 <h3>Example</h3>
 
@@ -304,9 +328,11 @@ proc print ;
 <h1 id="regprocedure">Reg procedure</h1>
 
 The reg procedure fits a linear model to data using ordinary least squares.
+<!--
 The response variable must be numerical.
 For models with no intercept, anova results will differ from R.
 This is because R switches to uncorrected sums of squares for models with no intercept.
+-->
 
 <h3>Synopsis</h3>
 
@@ -319,13 +345,57 @@ This is because R switches to uncorrected sums of squares for models with no int
 1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
-2. &nbsp; <i>y</i> is the response variable which must be numerical.<br><br>
+2. &nbsp; <i>y</i> is the response variable which is required to be numerical.<br><br>
 
 3. &nbsp; <i>var-list</i> is a list of explanatory variables separated by spaces.<br><br>
 
 4. &nbsp; The <tt>noint</tt> option, if used, fits a linear model with no intercept term.<br><br>
 
 <h3>Example</h3>
+
+<pre>
+* Trees ;
+data ;
+input Girth Height Volume ;
+LG = log(Girth) ;
+LH = log(Height) ;
+LV = log(Volume) ;
+datalines ;
+  8.3     70   10.3
+  8.6     65   10.3
+  8.8     63   10.2
+ 10.5     72   16.4
+ 10.7     81   18.8
+ 10.8     83   19.7
+ 11.0     66   15.6
+ 11.0     75   18.2
+ 11.1     80   22.6
+ 11.2     75   19.9
+ 11.3     79   24.2
+ 11.4     76   21.0
+ 11.4     76   21.4
+ 11.7     69   21.3
+ 12.0     75   19.1
+ 12.9     74   22.2
+ 12.9     85   33.8
+ 13.3     86   27.4
+ 13.7     71   25.7
+ 13.8     64   24.9
+ 14.0     78   34.5
+ 14.2     80   31.7
+ 14.5     74   36.3
+ 16.0     72   38.3
+ 16.3     77   42.6
+ 17.3     81   55.4
+ 17.5     82   55.7
+ 17.9     80   58.3
+ 18.0     80   51.5
+ 18.0     80   51.0
+ 20.6     87   77.0
+;
+proc reg ;
+model LV = LG LH ;
+</pre>
 
 </body>
 </html>
