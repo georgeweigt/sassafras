@@ -1,6 +1,7 @@
 * Dryweight ;
 * Compare dry weights of geraniums grown with three types of fertilizer. ;
 * https://archived.stat.ufl.edu/casella/StatDesign/WebDataSets/DryWeight.txt ;
+
 data ;
 input Fert $ DryWeight ;
 datalines ;
@@ -20,6 +21,7 @@ C	1.22
 C	1.12
 C	1.17
 ;
+
 proc anova ;
 model DryWeight = Fert ;
 means Fert / lsd ;

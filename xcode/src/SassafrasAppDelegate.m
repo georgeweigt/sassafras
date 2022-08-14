@@ -50,10 +50,9 @@ extern void run(char *);
             NSString *s = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
             [self->_userProgram setString:s];
             [self->_userProgram setNeedsDisplay:YES];
-//            filename = [[NSString alloc] initWithString:[url absoluteString]];
-//            [[self->_userProgram window] setTitle:filename];
+            filename = [[NSString alloc] initWithString:[url absoluteString]];
+            // [[self->_userProgram window] setTitle:filename];
         }
-        
     }];
 }
 
@@ -82,7 +81,7 @@ extern void run(char *);
             NSString *s = [self->_userProgram string];
             [s writeToURL:url atomically:NO encoding:NSUTF8StringEncoding error:nil];
             filename = [[NSString alloc] initWithString:[url absoluteString]];
-            [[self->_userProgram window] setTitle:filename];
+            // [[self->_userProgram window] setTitle:filename];
         }
     }];
 }

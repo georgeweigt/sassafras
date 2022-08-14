@@ -1,13 +1,13 @@
-* Compare fish weight gains for three types of diets.
-* Tanks are nested within diets.
+* Compare fish weight gains for three types of diets. ;
+* Tanks are nested within diets. ;
 
-* References
-* 1. "Statistical Design" by G. Casella, p. 6.
-* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/FishTank.txt
+* References ;
+* 1. "Statistical Design" by G. Casella, p. 6. ;
+* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/FishTank.txt ;
 
-data
-input Diet $ Tank $ WtGain
-datalines
+data ;
+input Diet $ Tank $ WtGain ;
+datalines ;
 1	1	9.759
 1	1	7.399
 1	1	-0.209
@@ -80,7 +80,8 @@ datalines
 3	12	45.344
 3	12	46.702
 3	12	50.091
+;
 
-proc anova
-model WtGain = Diet Tank*Diet
-means Diet / lsd
+proc anova ;
+model WtGain = Diet Tank*Diet ;
+means Diet / lsd ;
