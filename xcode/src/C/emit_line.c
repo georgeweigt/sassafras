@@ -17,7 +17,7 @@ emit_line(char *s)
 {
 	int len = (int) strlen(s);
 
-	// +2 for newline and null
+	// +2 for newline and nul chars
 
 	if (output_buffer_index + len + 2 > output_buffer_length) {
 		output_buffer_length += len + 10000;
@@ -48,10 +48,8 @@ emit_line_center(char *s)
 	if (output_buffer_index + m + len + 2 > output_buffer_length) {
 		output_buffer_length += len + 10000;
 		output_buffer = realloc(output_buffer, output_buffer_length);
-		if (output_buffer == NULL) {
-			fprintf(stderr, "malloc kaput\n");
+		if (output_buffer == NULL)
 			exit(1);
-		}
 	}
 
 	for (i = 0; i < m; i++)

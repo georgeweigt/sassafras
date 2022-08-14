@@ -149,7 +149,7 @@ xmalloc(int size)
 {
 	void *p = malloc(size);
 	if (p == NULL)
-		stop("Out of memory");
+		exit(1);
 	return p;
 }
 
@@ -158,7 +158,7 @@ xcalloc(int size)
 {
 	void *p = calloc(1, size);
 	if (p == NULL)
-		stop("Out of memory");
+		exit(1);
 	return p;
 }
 
@@ -167,7 +167,7 @@ xrealloc(void *p, int size)
 {
 	p = realloc(p, size);
 	if (p == NULL)
-		stop("Out of memory");
+		exit(1);
 	return p;
 }
 

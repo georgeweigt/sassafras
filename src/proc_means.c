@@ -317,7 +317,7 @@ h(int varnum)
 	double sum = NAN;
 
 	double stddev = NAN;
-	double stderr = NAN;
+	double stderror = NAN;
 
 	double range = NAN;
 
@@ -356,7 +356,7 @@ h(int varnum)
 			max = x;
 			sum = 0.0;
 			stddev = 0.0;
-			stderr = 0.0;
+			stderror = 0.0;
 		}
 
 		m = mean;
@@ -379,7 +379,7 @@ h(int varnum)
 	if (n > 1) {
 		variance /= (n - 1);
 		stddev = sqrt(variance);
-		stderr = stddev / sqrt(n);
+		stderror = stddev / sqrt(n);
 	}
 
 	t1 = qt(1 - alpha, n - 1.0);
@@ -389,13 +389,13 @@ h(int varnum)
 		w = maxdec;
 		switch (stat[i]) {
 		case KCLM1:
-			x = mean - t2 * stderr;
+			x = mean - t2 * stderror;
 			break;
 		case KCLM2:
-			x = mean + t2 * stderr;
+			x = mean + t2 * stderror;
 			break;
 		case KLCLM:
-			x = mean - t1 * stderr;
+			x = mean - t1 * stderror;
 			break;
 		case KMAX:
 			x = max;
@@ -422,10 +422,10 @@ h(int varnum)
 			break;
 		case KSTDERR:
 		case KSTDMEAN:
-			x = stderr;
+			x = stderror;
 			break;
 		case KUCLM:
-			x = mean + t1 * stderr;
+			x = mean + t1 * stderror;
 			break;
 		case KVAR:
 			x = variance;
