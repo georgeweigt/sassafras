@@ -7,7 +7,6 @@
 <a href="#meansprocedure">Means procedure</a><br>
 <a href="#printprocedure">Print procedure</a><br>
 <a href="#regprocedure">Reg procedure</a><br>
-<a href="#runstatement">Run statement</a><br>
 <a href="#titlestatement">Title statement</a><br>
 
 <br>
@@ -405,16 +404,6 @@ model LV = LG LH ;
 
 <hr>
 
-<h1 id="runstatement">Run statement</h1>
-
-<tt>run</tt> statements are optional.
-
-<h3>Example</h3>
-
-<tt>run</tt> &nbsp; <tt>;</tt><br>
-
-<hr>
-
 <h1 id="titlestatement">Title statement</h1>
 
 Report titles can be set with the <tt>title</tt> statement.
@@ -422,7 +411,10 @@ The title is printed at the top of procedure results.
 
 <h3>Example</h3>
 
-<tt>title</tt> &nbsp; "<tt>Randomized Block Design</tt>" &nbsp; <tt>;</tt><br>
+<pre>
+title "Randomized Block Design" ;
+proc anova ;
+</pre>
 
 <hr>
 
