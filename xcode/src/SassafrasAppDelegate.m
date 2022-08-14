@@ -139,13 +139,57 @@ extern char *alfalfa_str;
     [self->_userProgram setNeedsDisplay:YES];
 }
 
-extern char *dry_weight_str;
+extern char *dryweight_str;
 
--(IBAction)dry_weight_demo:(id)sender
+-(IBAction)dryweight_demo:(id)sender
 {
     if (running)
         return;
-    NSString *s = [[NSString alloc] initWithCString:dry_weight_str encoding:NSASCIIStringEncoding];
+    NSString *s = [[NSString alloc] initWithCString:dryweight_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
+extern char *fishtank_str;
+
+-(IBAction)fishtank_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:fishtank_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
+extern char *peanut_str;
+
+-(IBAction)peanut_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:peanut_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
+extern char *strawberry_str;
+
+-(IBAction)strawberry_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:strawberry_str encoding:NSASCIIStringEncoding];
+    [self->_userProgram setString:s];
+    [self->_userProgram setNeedsDisplay:YES];
+}
+
+extern char *trees_str;
+
+-(IBAction)trees_demo:(id)sender
+{
+    if (running)
+        return;
+    NSString *s = [[NSString alloc] initWithCString:trees_str encoding:NSASCIIStringEncoding];
     [self->_userProgram setString:s];
     [self->_userProgram setNeedsDisplay:YES];
 }

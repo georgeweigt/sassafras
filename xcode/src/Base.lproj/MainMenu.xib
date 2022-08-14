@@ -349,16 +349,40 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Demo" id="Hpv-jk-MCB">
                         <items>
-                            <menuItem title="Alfalfa" id="PGM-E0-TMk">
+                            <menuItem title="Alfalfa" id="alfalfa1">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="alfalfa_demo:" target="494" id="3jA-Vu-YDp"/>
+                                    <action selector="alfalfa_demo:" target="494" id="alfalfa2"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Dry Weight" id="EHJ-U6-0gD">
+                            <menuItem title="Dryweight" id="dryweight1">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="dry_weight_demo:" target="494" id="0wm-fu-1TQ"/>
+                                    <action selector="dryweight_demo:" target="494" id="dryweight2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Fishtank" id="fishtank1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="fishtank_demo:" target="494" id="fishtank2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Peanut" id="peanut1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="peanut_demo:" target="494" id="peanut2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Strawberry" id="strawberry1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="strawberry_demo:" target="494" id="strawberry2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Trees" id="trees1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="trees_demo:" target="494" id="trees2"/>
                                 </connections>
                             </menuItem>
                         </items>
