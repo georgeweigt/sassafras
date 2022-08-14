@@ -27,6 +27,8 @@ run1(char *s)
 	if (setjmp(jmpbuf))
 		return;
 
+	free_all();
+
 	emit_line_init();
 
 	pgm = s;
@@ -216,4 +218,15 @@ expected(char *s)
 	else
 		sprintf(errbuf, "Expected %s instead of \"%s\"", s, strbuf);
 	stop(errbuf);
+}
+
+#define FREE(x) if (x) { free(x); x = NULL; }
+
+void
+free_all(void)
+{
+	FREE(title);
+	FREE(title1);
+	FREE(title2);
+	FREE(title3);
 }

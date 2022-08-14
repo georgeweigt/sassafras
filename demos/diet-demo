@@ -1,12 +1,12 @@
-* This is a split plot design.
+* This is a split plot design. ;
 
-* References
-* 1. "Statistical Design" by G. Casella, p. 171.
-* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Diet.txt
+* References ;
+* 1. "Statistical Design" by G. Casella, p. 171. ;
+* 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Diet.txt ;
 
-data
-input Diet $ Subject $ Time $ BP
-datalines
+data ;
+input Diet $ Subject $ Time $ BP ;
+datalines ;
 1   1   AM   123
 1   1   PM   135
 1   2   AM   120
@@ -31,21 +31,22 @@ datalines
 4   11  PM   147
 4   12  AM   138
 4   12  PM   154
+;
 
-proc anova
-model BP = Diet Subject*Diet Time Time*Diet
-means Diet / lsd
+proc anova ;
+model BP = Diet Subject*Diet Time Time*Diet ;
+means Diet / lsd ;
 
-* Subject is nested within Diet.
+* Subject is nested within Diet. ;
 
-* Replacing Subject*Diet with just Subject yields
-* the same result because each subject is uniquely
-* identified.
+* Replacing Subject*Diet with just Subject yields ;
+* the same result because each subject is uniquely ;
+* identified. ;
 
-* Anova in the book includes Time*Subject*Diet.
-* It turns out that
-* MS(Time*Subject*Diet) = MSE = 16.17
+* Anova in the book includes Time*Subject*Diet. ;
+* It turns out that ;
+* MS(Time*Subject*Diet) = MSE = 16.17 ;
 
-* Proc anova computes F(*) = MS(*)/MSE
-* Correct F(Diet) = MS(Diet)/MS(Subject*Diet)
-* Hence F(Diet) = 624.49/7.33 = 85.20
+* Proc anova computes F(*) = MS(*)/MSE ;
+* Correct F(Diet) = MS(Diet)/MS(Subject*Diet) ;
+* Hence F(Diet) = 624.49/7.33 = 85.20 ;

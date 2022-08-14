@@ -1,44 +1,44 @@
-* Comparision of two experimental designs.
+* Comparision of two experimental designs. ;
 
-* Reference
-* "Design of Experiments" learning series by Professor J. Stuart Hunter, Lesson 12.
-* http://www.youtube.com/watch?v=k3n9iSB6Cns
-* http://www.youtube.com/watch?v=3fwoU16MHJM
+* Reference ;
+* "Design of Experiments" learning series by Professor J. Stuart Hunter, Lesson 12. ;
+* http://www.youtube.com/watch?v=k3n9iSB6Cns ;
+* http://www.youtube.com/watch?v=3fwoU16MHJM ;
 *
-* A list of all videos in the series:
-* http://www.youtube.com/playlist?list=PLzaIpDs2EIQgXzVAPS9rviC9J7Cpyet5y
-*
-* Below are the anova tables seen in the video.
-*
-* CSS - corrected sum of squares
-* TSS - treatment sum of squares
-* BSS - block sum of squares
-* RSS - residual sum of squares
-*
-* 1st anova table
-*                    DF      MS
-* CSS      112.0055  19
-* TSS        0.8405   1
-* RSS      111.1650  18  6.1758
-*
-* 2nd anova table
-*                    DF      MS
-* CSS      112.0055  19
-* TSS        0.8405   1
-* BSS      110.4905   9
-* RSS        0.6745   9  0.0750
-*
-* 2nd design reduces RSS.
-*
-*  I  Gasoline with additive
-* II  Gasoline without additive
-*  y  Miles per 5 gallons
+* A list of all videos in the series: ;
+* http://www.youtube.com/playlist?list=PLzaIpDs2EIQgXzVAPS9rviC9J7Cpyet5y ;
 
-title "Completely Randomized Design"
+* Below are the anova tables seen in the video. ;
 
-data
-input trt $ y
-datalines
+* CSS - corrected sum of squares ;
+* TSS - treatment sum of squares ;
+* BSS - block sum of squares ;
+* RSS - residual sum of squares ;
+
+* 1st anova table ;
+*                    DF      MS ;
+* CSS      112.0055  19 ;
+* TSS        0.8405   1 ;
+* RSS      111.1650  18  6.1758 ;
+
+* 2nd anova table ;
+*                    DF      MS ;
+* CSS      112.0055  19 ;
+* TSS        0.8405   1 ;
+* BSS      110.4905   9 ;
+* RSS        0.6745   9  0.0750 ;
+
+* 2nd design reduces RSS. ;
+
+*  I  Gasoline with additive ;
+* II  Gasoline without additive ;
+*  y  Miles per 5 gallons ;
+
+title "Completely Randomized Design" ;
+
+data ;
+input trt $ y ;
+datalines ;
 I 74.0
 I 68.8
 I 71.2
@@ -59,16 +59,17 @@ II 69.5
 II 70.8
 II 68.8
 II 73.3
+;
 
-proc anova
-model y = trt
-means trt / lsd
+proc anova ;
+model y = trt ;
+means trt / lsd ;
 
-title "Randomized Block Design"
+title "Randomized Block Design" ;
 
-data
-input car $ trt $ y
-datalines
+data ;
+input car $ trt $ y ;
+datalines ;
 A I 74.0
 B I 68.8
 C I 71.2
@@ -89,7 +90,8 @@ G II 69.5
 H II 70.8
 I II 68.8
 J II 73.3
+;
 
-proc anova
-model y = car trt
-means trt / lsd
+proc anova ;
+model y = car trt ;
+means trt / lsd ;

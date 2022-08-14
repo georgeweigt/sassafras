@@ -1,10 +1,11 @@
-data
-infile "nerlove-data"
-input COST KWH PL PF PK
-LCOST = log(COST)
-LKWH = log(KWH)
-LPL = log(PL)
-LPF = log(PF)
-LPK = log(PK)
-proc reg
-model LCOST = LKWH LPL LPF LPK
+data ;
+infile "nerlove-data" ;
+input COST KWH PL PF PK ;
+LCOST = log(COST) ;
+LKWH = log(KWH) ;
+LPL = log(PL) ;
+LPF = log(PF) ;
+LPK = log(PK) ;
+
+proc reg ;
+model LCOST = LKWH LPL LPF LPK ;

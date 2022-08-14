@@ -1,15 +1,15 @@
-* Reference
-* "Split-Plot Designs: What, Why, and How" by Bradley Jones, Christopher L. Nachtsheim
-* jmp.info/software/pdf/30612.pdf
+* Reference ;
+* "Split-Plot Designs: What, Why, and How" by Bradley Jones, Christopher L. Nachtsheim ;
+* jmp.info/software/pdf/30612.pdf ;
 
-* W - Whole plot (furnace)
-* T - Temperature
-* C - Coating
-* Y - Corrosion resistance of steel bars
+* W - Whole plot (furnace) ;
+* T - Temperature ;
+* C - Coating ;
+* Y - Corrosion resistance of steel bars ;
 
-data
-input W $ T $ C $ Y
-datalines
+data ;
+input W $ T $ C $ Y ;
+datalines ;
 1 360 C2 73
 1 360 C3 83
 1 360 C1 67
@@ -34,10 +34,11 @@ datalines
 6 360 C4 54
 6 360 C2 8
 6 360 C3 46
+;
 
-proc anova
-model Y = T C T*C W
-means C / lsd
+proc anova ;
+model Y = T C T*C W ;
+means C / lsd ;
 
 * Proc anova computes F(T) = MS(T)/MSE = 106.47
 * Correct value is F(T) = MS(T)/MS(W) = 2.75 and

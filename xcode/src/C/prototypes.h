@@ -85,6 +85,7 @@ void * xrealloc(void *p, int size);
 void print_pgm(void);
 void stop(char *s);
 void expected(char *s);
+void free_all(void);
 void scan(void);
 int scan1(void);
 void keyword(void);

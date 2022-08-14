@@ -1,12 +1,12 @@
-* Compare heights of seedlings grown from seeds from five forests.
-* This is a nested design. Source tree is nested within forest.
+* Compare heights of seedlings grown from seeds from five forests. ;
+* This is a nested design. Source tree is nested within forest. ;
 
-* Reference
-* http://www.ohio.edu/plantbio/staff/mccarthy/quantmet/lectures/ANOVA-III.pdf
+* Reference ;
+* http://www.ohio.edu/plantbio/staff/mccarthy/quantmet/lectures/ANOVA-III.pdf ;
 
-data
-input Forest $ Tree $ Height
-datalines
+data ;
+input Forest $ Tree $ Height ;
+datalines ;
 A T1 15.8
 A T1 15.6
 A T1 16.0
@@ -37,7 +37,8 @@ E T9 16.1
 E T0 15.8
 E T0 15.6
 E T0 16.3
+;
 
-proc anova
-model Height = Forest Tree*Forest
-means Forest / lsd
+proc anova ;
+model Height = Forest Tree*Forest ;
+means Forest / lsd ;

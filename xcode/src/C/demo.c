@@ -59,7 +59,10 @@ char *alfalfa_str =
 "\n"
 "proc anova ;\n"
 "model Yield = Block Variety Block*Variety ;\n"
-"means Variety / lsd ;\n";
+"means Variety / lsd ;\n"
+"\n"
+"run ;\n"
+;
 
 char *dryweight_str =
 "* Dryweight ;\n"
@@ -88,7 +91,10 @@ char *dryweight_str =
 "\n"
 "proc anova ;\n"
 "model DryWeight = Fert ;\n"
-"means Fert / lsd ;\n";
+"means Fert / lsd ;\n"
+"\n"
+"run ;\n"
+;
 
 char *fishtank_str =
 "* Fishtank ;\n"
@@ -175,7 +181,10 @@ char *fishtank_str =
 "\n"
 "proc anova ;\n"
 "model WtGain = Diet Tank*Diet ;\n"
-"means Diet / lsd ;\n";
+"means Diet / lsd ;\n"
+"\n"
+"run ;\n"
+;
 
 char *peanut_str =
 "* Peanut ;\n"
@@ -206,7 +215,10 @@ char *peanut_str =
 "\n"
 "proc anova ;\n"
 "model Yield = Row Column Treatment ;\n"
-"means Treatment / lsd ;\n";
+"means Treatment / lsd ;\n"
+"\n"
+"run ;\n"
+;
 
 char *redclover_str =
 "* Redclover ;\n"
@@ -245,7 +257,10 @@ char *redclover_str =
 "\n"
 "proc anova ;\n"
 "model Yield = Sulphur Nitrogen Sulphur*Nitrogen ;\n"
-"means Sulphur*Nitrogen ;\n";
+"means Sulphur*Nitrogen ;\n"
+"\n"
+"run ;\n"
+;
 
 char *strawberry_str =
 "* Strawberry ;\n"
@@ -272,7 +287,10 @@ char *strawberry_str =
 "\n"
 "proc anova ;\n"
 "model Yield = Block Treatment ;\n"
-"means Treatment / lsd ;\n";
+"means Treatment / lsd ;\n"
+"\n"
+"run ;\n"
+;
 
 char *trees_str =
 "* Trees ;\n"
@@ -317,4 +335,7 @@ char *trees_str =
 ";\n"
 "\n"
 "proc reg ;\n"
-"model LV = LG LH ;\n";
+"model LV = LG LH ;\n"
+"\n"
+"run ;\n"
+;
