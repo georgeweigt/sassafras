@@ -1,6 +1,6 @@
 #include "defs.h"
 
-char strbuf[100];
+char strbuf[1000];
 
 void
 scan(void)

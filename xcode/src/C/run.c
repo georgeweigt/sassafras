@@ -3,13 +3,17 @@
 char *pgm;
 static jmp_buf jmpbuf;
 
+#define FREE(x) if (x) { free(x); x = NULL; }
+
 void
 run(char *s)
 {
 	if (s == NULL)
 		return;
 
-	run1(s);
+	emit_line_init();
+
+	run_nib(s);
 
 	// clean up
 
@@ -19,17 +23,18 @@ run(char *s)
 	}
 
 	free_datasets();
+
+	FREE(title);
+	FREE(title1);
+	FREE(title2);
+	FREE(title3);
 }
 
 void
-run1(char *s)
+run_nib(char *s)
 {
 	if (setjmp(jmpbuf))
 		return;
-
-	free_all();
-
-	emit_line_init();
 
 	pgm = s;
 
@@ -218,15 +223,4 @@ expected(char *s)
 	else
 		sprintf(errbuf, "Expected %s instead of \"%s\"", s, strbuf);
 	stop(errbuf);
-}
-
-#define FREE(x) if (x) { free(x); x = NULL; }
-
-void
-free_all(void)
-{
-	FREE(title);
-	FREE(title1);
-	FREE(title2);
-	FREE(title3);
 }

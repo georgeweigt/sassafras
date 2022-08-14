@@ -14,10 +14,7 @@ char *input_c_string;
 char *prefix;
 int running;
 NSString *filename;
-
 extern char *output_buffer;
-extern int output_buffer_index;
-
 extern void run(char *);
 
 @implementation SassafrasAppDelegate
@@ -100,7 +97,6 @@ extern void run(char *);
 
     // clear
  
-    output_buffer_index = 0;
     [_outputView setString:@""];
     [_outputView setNeedsDisplay:YES];
 
