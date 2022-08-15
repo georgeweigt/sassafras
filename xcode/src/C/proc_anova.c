@@ -609,14 +609,6 @@ model(void)
 static void
 regression(void)
 {
-	FREE(miss)
-	FREE(B)
-	FREE(GG)
-	FREE(TT)
-	FREE(XX)
-	FREE(Y)
-	FREE(Yhat)
-
 	prelim();
 
 	fit();
@@ -644,6 +636,14 @@ static void
 prelim(void)
 {
 	int i, j, k, x;
+
+	FREE(miss)
+	FREE(B)
+	FREE(GG)
+	FREE(TT)
+	FREE(XX)
+	FREE(Y)
+	FREE(Yhat)
 
 	// missing data
 
