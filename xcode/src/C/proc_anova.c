@@ -609,6 +609,14 @@ model(void)
 static void
 regression(void)
 {
+	FREE(miss)
+	FREE(B)
+	FREE(GG)
+	FREE(TT)
+	FREE(XX)
+	FREE(Y)
+	FREE(Yhat)
+
 	prelim();
 
 	fit();
@@ -637,8 +645,7 @@ prelim(void)
 {
 	int i, j, k, x;
 
-	if (miss)
-		free(miss);
+	// missing data
 
 	miss = (int *) xmalloc(dataset->nobs * sizeof (int));
 
@@ -670,15 +677,6 @@ prelim(void)
 	for (i = 0; i < nx; i++) {
 		x = xtab[i];
 		ncol += dataset->spec[x].num_levels;
-	}
-
-	if (B) {
-		free(B);
-		free(GG);
-		free(TT);
-		free(XX);
-		free(Y);
-		free(Yhat);
 	}
 
 	B = (double *) xmalloc(ncol * sizeof (double));

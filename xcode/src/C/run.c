@@ -3,8 +3,6 @@
 char *pgm;
 static jmp_buf jmpbuf;
 
-#define FREE(x) if (x) { free(x); x = NULL; }
-
 void
 run(char *s)
 {
@@ -15,9 +13,7 @@ run(char *s)
 
 	run_nib(s);
 
-	// clean up
-
-	// always gets here, even on stop
+	// clean up (always gets here, even on stop)
 
 	if (infile) {
 		fclose(infile);
@@ -26,10 +22,10 @@ run(char *s)
 
 	free_datasets();
 
-	FREE(title);
-	FREE(title1);
-	FREE(title2);
-	FREE(title3);
+	FREE(title)
+	FREE(title1)
+	FREE(title2)
+	FREE(title3)
 }
 
 void

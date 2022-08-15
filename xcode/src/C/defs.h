@@ -110,4 +110,6 @@ extern char *title2;
 extern char *title3;
 extern char *prefix;
 
+#define FREE(x) if (x) { free(x); x = NULL; }
+
 #include "prototypes.h"

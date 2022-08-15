@@ -600,18 +600,16 @@ regress(void)
 			ncol += dataset->spec[x].num_levels;
 	}
 
-	if (Z) {
-		free(Z);
-		free(Y);
-		free(B);
-		free(SE);
-		free(TVAL);
-		free(PVAL);
-		free(_C_);
-		free(_G_);
-		free(_T_);
-		free(_X_);
-	}
+	FREE(Z)
+	FREE(Y)
+	FREE(B)
+	FREE(SE)
+	FREE(TVAL)
+	FREE(PVAL)
+	FREE(_C_)
+	FREE(_G_)
+	FREE(_T_)
+	FREE(_X_)
 
 	Z = xmalloc(ncol * sizeof (int));
 
@@ -685,7 +683,7 @@ void
 print_parameter_estimates(void)
 {
 	int i, j, k, m, n, x;
-	static char s[100];
+	static char s[1000];
 
 	m = ncol + 1;
 
@@ -711,7 +709,7 @@ print_parameter_estimates(void)
 		else {
 			n = dataset->spec[x].num_levels;
 			for (j = 0; j < n; j++) {
-				sprintf(s, "%s %s", dataset->spec[x].name, dataset->spec[x].ltab[j]); // FIXME check for buffer overrun
+				snprintf(s, sizeof s, "%s %s", dataset->spec[x].name, dataset->spec[x].ltab[j]);
 				A(k++, 0) = strdup(s);
 			}
 		}
