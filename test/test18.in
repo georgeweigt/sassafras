@@ -1,7 +1,7 @@
 * Test firstobs ;
 
 data ;
-infile "fish-tank-data" firstobs=2 ;
+infile "fishtank.txt" firstobs=2 ;
 input Diet Tank WtGain ;
 
 proc print ;
