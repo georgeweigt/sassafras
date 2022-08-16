@@ -1,0 +1,241 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\parindent=0pt
+\begin{document}
+
+Consider the following anova program and its output.
+
+{\scriptsize\begin{verbatim}
+data ;
+input trt $ y @@ ;
+datalines ;
+A 6    A 0    A 2    A 8   A 11
+A 4    A 13   A 1    A 8   A 0
+B 0    B 2    B 3    B 1   B 18
+B 4    B 14   B 9    B 1   B 9
+C 13   C 10   C 18   C 5   C 23
+C 12   C 5    C 16   C 1   C 20
+;
+
+proc anova ;
+model y = trt ;
+means trt / lsd ttest ;
+\end{verbatim}}
+
+{\scriptsize\begin{verbatim}
+                              Analysis of Variance
+
+    Source     DF     Sum of Squares      Mean Square     F Value     Pr > F
+    Model       2       293.60000000     146.80000000        3.98     0.0305
+    Error      27       995.10000000      36.85555556                       
+    Total      29      1288.70000000                                        
+
+                R-Square     Coeff Var     Root MSE       Y Mean
+                0.227826     76.846553     6.070878     7.900000
+
+     Source     DF         Anova SS      Mean Square     F Value     Pr > F
+     TRT         2     293.60000000     146.80000000        3.98     0.0305
+
+                                 Mean Response
+
+             TRT      N        Mean Y     95% CI MIN     95% CI MAX
+             A       10      5.300000       1.360937       9.239063
+             B       10      6.100000       2.160937      10.039063
+             C       10     12.300000       8.360937      16.239063
+
+                       Least Significant Difference Test
+
+  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
+  A      B      -0.800000     -6.370677      4.770677      -0.29      0.7705  
+  A      C      -7.000000    -12.570677     -1.429323      -2.58      0.0157 *
+  B      A       0.800000     -4.770677      6.370677       0.29      0.7705  
+  B      C      -6.200000    -11.770677     -0.629323      -2.28      0.0305 *
+  C      A       7.000000      1.429323     12.570677       2.58      0.0157 *
+  C      B       6.200000      0.629323     11.770677       2.28      0.0305 *
+
+                               Two Sample t-Test
+
+  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
+  A      B      -0.800000     -5.922307      4.322307      -0.33      0.7466  
+  A      C      -7.000000    -12.664270     -1.335730      -2.60      0.0182 *
+  B      A       0.800000     -4.322307      5.922307       0.33      0.7466  
+  B      C      -6.200000    -12.467653      0.067653      -2.08      0.0523  
+  C      A       7.000000      1.335730     12.664270       2.60      0.0182 *
+  C      B       6.200000     -0.067653     12.467653       2.08      0.0523  
+\end{verbatim}}
+
+Let us take a closer look at the mean response table.
+
+{\scriptsize\begin{verbatim}
+                                 Mean Response
+
+             TRT      N        Mean Y     95% CI MIN     95% CI MAX
+             A       10      5.300000       1.360937       9.239063
+             B       10      6.100000       2.160937      10.039063
+             C       10     12.300000       8.360937      16.239063
+\end{verbatim}}
+
+Recall that the confidence interval a treatment mean is
+\begin{equation*}
+\bar y\pm t(1-\alpha/2,\text{dfe})\cdot\sqrt{\frac{\text{MSE}}{n}}
+\end{equation*}
+
+Recall that MSE is an estimate of model variance.
+From the analysis of variance table at the top of the output we have
+
+{\scriptsize\begin{verbatim}
+    Source     DF     Sum of Squares      Mean Square
+    Error      27       995.10000000      36.85555556
+\end{verbatim}}
+
+Hence
+\begin{equation*}
+\text{dfe}=27,
+\quad
+\text{MSE}=36.8556
+\end{equation*}
+
+The confidence interval for the mean of treatment A can be checked by typing the following into R.
+
+{\scriptsize\begin{verbatim}
+ybar = 5.3
+n = 10
+MSE = 36.8556
+dfe = 27
+alpha = 0.05
+t = qt(1 - alpha/2, dfe)
+ybar - t * sqrt(MSE/n)
+ybar + t * sqrt(MSE/n)
+\end{verbatim}}
+
+R prints the following results.
+
+{\scriptsize\begin{verbatim}
+[1] 1.360934
+[1] 9.239066
+\end{verbatim}}
+
+The R results match the mean response table for treatment A.
+
+{\scriptsize\begin{verbatim}
+             TRT      N        Mean Y     95% CI MIN     95% CI MAX
+             A       10      5.300000       1.360937       9.239063
+\end{verbatim}}
+
+\newpage
+
+Let us now consider the first result in the least significant difference table.
+
+{\scriptsize\begin{verbatim}
+                       Least Significant Difference Test
+
+  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
+  A      B      -0.800000     -6.370677      4.770677      -0.29      0.7705  
+\end{verbatim}}
+
+The least significant difference of two treatment means $\bar y_A$ and $\bar y_B$ is
+\begin{equation*}
+\text{LSD}=t(1-\alpha/2,\text{dfe})\times\sqrt{\text{MSE}\times
+\left(\frac{1}{n_A}+\frac{1}{n_B}\right)}
+\end{equation*}
+
+The corresponding confidence interval is
+\begin{equation*}
+\bar y_A-\bar y_B\pm\text{LSD}
+\end{equation*}
+
+The LSD result can be checking by typing the following into R.
+
+{\scriptsize\begin{verbatim}
+ybarA = 5.3
+ybarB = 6.1
+nA = 10
+nB = 10
+MSE = 36.8556
+dfe = 27
+alpha = 0.05
+LSD = qt(1 - alpha/2, dfe) * sqrt(MSE * (1/nA + 1/nB))
+ybarA - ybarB - LSD
+ybarA - ybarB + LSD
+\end{verbatim}}
+
+R prints the following results.
+
+{\scriptsize\begin{verbatim}
+[1] -6.37068
+[1] 4.77068
+\end{verbatim}}
+
+The R results match the confidence interval in the LSD table.
+
+{\scriptsize\begin{verbatim}
+  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
+  A      B      -0.800000     -6.370677      4.770677      -0.29      0.7705  
+\end{verbatim}}
+
+\end{document}
+
+The two sample $t$-test is computed as follows.
+\begin{align*}
+SSE&=\widehat{Var}_i\cdot(n_i-1)+\widehat{Var}_j\cdot(n_j-1)\\
+dfe&=n_i+n_j-2\\
+MSE&=\frac{SSE}{dfe}\\
+SE&=\sqrt{MSE\cdot\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}\\
+t^*&=\frac{\bar y_i-\bar y_j}{SE}
+\end{align*}
+
+$SSE$ is the sum of squares error recovered from
+variance estimates, $dfe$ is the degrees of freedom error, $MSE$
+is mean square error, $SE$ is the standard error, and $t^*$ is the
+test statistic.
+%If $t^*$ is greater than the critical value $t(1-\alpha/2,dfe)$ then
+%reject $H_0$ and conclude that the means are different.
+The confidence interval is
+\[
+\bar y_i-\bar y_j\pm t(1-\alpha/2,dfe)\cdot SE
+\]
+The null hypothesis is that the two treatment means are equal.
+\[
+H_0:\bar y_i=\bar y_j
+\]
+If $|t^*|$ is greater than the critical value $t(1-\alpha/2,dfe)$,
+or equivalently, if the confidence interval does not cross zero,
+then reject $H_0$ and conclude that the treatment means are not equal.
+The following R session uses the above equations
+to duplicate the Sassafras result for
+treatments A and B.
+
+\begin{verbatim}
+> YA = c(6,0,2,8,11,4,13,1,8,0)
+> YB = c(0,2,3,1,18,4,14,9,1,9)
+> sse = var(YA) * (length(YA) - 1) + var(YB) * (length(YB) - 1)
+> dfe = length(YA) + length(YB) - 2
+> mse = sse / dfe
+> se = sqrt(mse * (1 / length(YA) + 1 / length(YB)))
+> t = (mean(YA) - mean(YB)) / se
+> mean(YA) - mean(YB) - qt(0.975,dfe) * se
+[1] -5.922307
+> mean(YA) - mean(YB) + qt(0.975,dfe) * se
+[1] 4.322307
+> 2 * (1 - pt(abs(t),dfe))
+[1] 0.746606
+\end{verbatim}
+
+The same result is obtained with the t-test function.
+
+\begin{verbatim}
+> t.test(YA,YB,var.equal=TRUE)
+
+	Two Sample t-test
+
+data:  YA and YB
+t = -0.3281, df = 18, p-value = 0.7466
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.922307  4.322307
+sample estimates:
+mean of x mean of y 
+      5.3       6.1 
+\end{verbatim}
+
+\end{document}
