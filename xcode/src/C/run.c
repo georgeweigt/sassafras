@@ -142,26 +142,10 @@ parse_maxdec_option(void)
 		maxdec = 8;
 }
 
-// syntax error
-
-void
-syntax(void)
-{
-}
-
 void *
 xmalloc(int size)
 {
 	void *p = malloc(size);
-	if (p == NULL)
-		exit(1);
-	return p;
-}
-
-void *
-xcalloc(int size)
-{
-	void *p = calloc(1, size);
 	if (p == NULL)
 		exit(1);
 	return p;
