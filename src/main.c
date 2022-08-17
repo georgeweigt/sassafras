@@ -1,7 +1,5 @@
 #include "defs.h"
 
-char *prefix = ".";
-
 int
 main(int argc, char **argv)
 {

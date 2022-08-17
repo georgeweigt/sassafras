@@ -208,13 +208,7 @@ infile_stmt(void)
 
 	switch (token) {
 	case STRING:
-		if (*strbuf == '/')
-			strcpy(filename, strbuf);
-		else {
-			strcpy(filename, prefix);
-			strcat(filename, "/");
-			strcat(filename, strbuf);
-		}
+		strcpy(filename, strbuf);
 		break;
 	case KCARDS:
 	case KDATALINES:

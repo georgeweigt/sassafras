@@ -11,7 +11,6 @@
 #import "SassafrasAppDelegate.h"
 
 char *input_c_string;
-char *prefix;
 int running;
 NSString *filename;
 extern char *output_buffer;
@@ -33,8 +32,8 @@ extern void run(char *);
     [_userProgram setAutomaticQuoteSubstitutionEnabled:NO];
     _userProgram.enabledTextCheckingTypes = 0; // need this so -- (dash dash) isn't changed
     // Get home directory prefix
-    NSString *s = [@"~" stringByExpandingTildeInPath];
-    prefix = strdup([s UTF8String]);
+    // NSString *s = [@"~" stringByExpandingTildeInPath];
+    // prefix = strdup([s UTF8String]);
 }
 
 // this function is linked to file menu automatically
