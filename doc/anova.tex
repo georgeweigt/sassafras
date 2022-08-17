@@ -178,69 +178,70 @@ The R results match the confidence interval in the LSD table.
   A      B      -0.800000     -6.370677      4.770677      -0.29      0.7705  
 \end{verbatim}}
 
-\end{document}
+\newpage
 
-The two sample $t$-test is computed as follows.
-\begin{align*}
-SSE&=\widehat{Var}_i\cdot(n_i-1)+\widehat{Var}_j\cdot(n_j-1)\\
-dfe&=n_i+n_j-2\\
-MSE&=\frac{SSE}{dfe}\\
-SE&=\sqrt{MSE\cdot\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}\\
-t^*&=\frac{\bar y_i-\bar y_j}{SE}
-\end{align*}
+Let us take a closer look at the first line of the $t$-test table.
 
-$SSE$ is the sum of squares error recovered from
-variance estimates, $dfe$ is the degrees of freedom error, $MSE$
-is mean square error, $SE$ is the standard error, and $t^*$ is the
-test statistic.
-%If $t^*$ is greater than the critical value $t(1-\alpha/2,dfe)$ then
-%reject $H_0$ and conclude that the means are different.
-The confidence interval is
-\[
-\bar y_i-\bar y_j\pm t(1-\alpha/2,dfe)\cdot SE
-\]
-The null hypothesis is that the two treatment means are equal.
-\[
-H_0:\bar y_i=\bar y_j
-\]
-If $|t^*|$ is greater than the critical value $t(1-\alpha/2,dfe)$,
-or equivalently, if the confidence interval does not cross zero,
-then reject $H_0$ and conclude that the treatment means are not equal.
-The following R session uses the above equations
-to duplicate the Sassafras result for
-treatments A and B.
+{\scriptsize\begin{verbatim}
+                               Two Sample t-Test
 
-\begin{verbatim}
-> YA = c(6,0,2,8,11,4,13,1,8,0)
-> YB = c(0,2,3,1,18,4,14,9,1,9)
-> sse = var(YA) * (length(YA) - 1) + var(YB) * (length(YB) - 1)
-> dfe = length(YA) + length(YB) - 2
-> mse = sse / dfe
-> se = sqrt(mse * (1 / length(YA) + 1 / length(YB)))
-> t = (mean(YA) - mean(YB)) / se
-> mean(YA) - mean(YB) - qt(0.975,dfe) * se
+  TRT    TRT      Delta Y    95% CI MIN    95% CI MAX    t Value    Pr > |t|  
+  A      B      -0.800000     -5.922307      4.322307      -0.33      0.7466  
+\end{verbatim}}
+
+The $t$-test confidence interval is
+\begin{equation*}
+(\bar y_A-\bar y_B)\pm t(1-\alpha/2,\text{dfe})\times\text{SE}
+\end{equation*}
+where
+\begin{equation*}
+\text{SE}=\sqrt{
+\frac{\sum(y_A-\bar y_A)^2+\sum(y_B-\bar y_B)^2}{\text{dfe}}
+\times
+\left(\frac{1}{n_A}+\frac{1}{n_B}\right)
+}
+\end{equation*}
+and
+\begin{equation*}
+\text{dfe}=n_A+n_B-2
+\end{equation*}
+
+The confidence interval can be checked by typing the following into R.
+
+{\scriptsize\begin{verbatim}
+yA = c(6,0,2,8,11,4,13,1,8,0)
+yB = c(0,2,3,1,18,4,14,9,1,9)
+nA = length(yA)
+nB = length(yB)
+dfe = nA + nB - 2
+SSE = var(yA) * (nA - 1) + var(yB) * (nB - 1)
+MSE = SSE / dfe
+SE = sqrt(MSE * (1/nA + 1/nB))
+alpha = 0.05
+t = qt(1 - alpha/2, dfe) * SE
+mean(yA) - mean(yB) - t
+mean(yA) - mean(yB) + t
+\end{verbatim}}
+
+R prints the following result which matches the above $t$-test table.
+
+{\scriptsize\begin{verbatim}
 [1] -5.922307
-> mean(YA) - mean(YB) + qt(0.975,dfe) * se
 [1] 4.322307
-> 2 * (1 - pt(abs(t),dfe))
-[1] 0.746606
-\end{verbatim}
+\end{verbatim}}
 
-The same result is obtained with the t-test function.
+R's $t$-test function gives the same result.
 
-\begin{verbatim}
-> t.test(YA,YB,var.equal=TRUE)
+{\scriptsize\begin{verbatim}
+t.test(yA,yB,var.equal=TRUE)
 
 	Two Sample t-test
 
-data:  YA and YB
-t = -0.3281, df = 18, p-value = 0.7466
+data:  yA and yB
+t = -0.32812, df = 18, p-value = 0.7466
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -5.922307  4.322307
-sample estimates:
-mean of x mean of y 
-      5.3       6.1 
-\end{verbatim}
+\end{verbatim}}
 
 \end{document}
