@@ -94,7 +94,7 @@ Hence
 \begin{equation*}
 \text{dfe}=27,
 \quad
-\text{MSE}=36.8556
+\text{MSE}=36.85555556
 \end{equation*}
 
 The confidence interval for the mean of treatment A can be checked by typing the following into R.
@@ -102,7 +102,7 @@ The confidence interval for the mean of treatment A can be checked by typing the
 {\scriptsize\begin{verbatim}
 ybar = 5.3
 n = 10
-MSE = 36.8556
+MSE = 36.85555556
 dfe = 27
 alpha = 0.05
 SE = sqrt(MSE / n)
@@ -114,8 +114,8 @@ ybar + t
 R prints the following results.
 
 {\scriptsize\begin{verbatim}
-[1] 1.360934
-[1] 9.239066
+[1] 1.360937
+[1] 9.239063
 \end{verbatim}}
 
 The R results match the mean response table for treatment A.
@@ -155,7 +155,7 @@ ybarA = 5.3
 ybarB = 6.1
 nA = 10
 nB = 10
-MSE = 36.8556
+MSE = 36.85555556
 dfe = 27
 alpha = 0.05
 SE = sqrt(MSE * (1/nA + 1/nB))
@@ -167,8 +167,8 @@ ybarA - ybarB + LSD
 R prints the following results.
 
 {\scriptsize\begin{verbatim}
-[1] -6.37068
-[1] 4.77068
+[1] -6.370677
+[1] 4.770677
 \end{verbatim}}
 
 The R results match the confidence interval in the LSD table.
@@ -195,11 +195,9 @@ The $t$-test confidence interval is
 \end{equation*}
 where
 \begin{equation*}
-\text{SE}=\sqrt{
-\frac{\sum(y_A-\bar y_A)^2+\sum(y_B-\bar y_B)^2}{\text{dfe}}
-\times
-\left(\frac{1}{n_A}+\frac{1}{n_B}\right)
-}
+\text{SE}=\sqrt{\frac{\text{SSE}}{\text{dfe}}\times\left(\frac{1}{n_A}+\frac{1}{n_B}\right)},
+\quad
+\text{SSE}=\sum(y_A-\bar y_A)^2+\sum(y_B-\bar y_B)^2
 \end{equation*}
 and
 \begin{equation*}
