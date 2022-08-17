@@ -4,6 +4,7 @@
 \begin{document}
 
 Consider the following anova program and its output.
+Note that the least significant difference test has more power than the $t$-test.
 
 {\scriptsize\begin{verbatim}
 data ;
@@ -77,10 +78,12 @@ Let us take a closer look at the mean response table.
 
 Recall that the confidence interval for a treatment mean is
 \begin{equation*}
-\bar y\pm t(1-\alpha/2,\text{dfe})\times\sqrt{\frac{\text{MSE}}{n}}
+\bar y\pm t(1-\alpha/2,\text{dfe})\times\text{SE},
+\quad
+\text{SE}=\sqrt{\frac{\text{MSE}}{n}}
 \end{equation*}
 
-Recall that MSE is an estimate of model variance.
+Recall that SE is standard error and MSE (mean square error) is estimated model variance.
 From the analysis of variance table at the top of the output we have
 
 {\scriptsize\begin{verbatim}
@@ -103,9 +106,10 @@ n = 10
 MSE = 36.8556
 dfe = 27
 alpha = 0.05
-t = qt(1 - alpha/2, dfe)
-ybar - t * sqrt(MSE/n)
-ybar + t * sqrt(MSE/n)
+SE = sqrt(MSE / n)
+t = qt(1 - alpha/2, dfe) * SE
+ybar - t
+ybar + t
 \end{verbatim}}
 
 R prints the following results.
@@ -135,8 +139,9 @@ Let us take a closer look at the first line of the least significant difference 
 
 The least significant difference of two treatment means $\bar y_A$ and $\bar y_B$ is
 \begin{equation*}
-\text{LSD}=t(1-\alpha/2,\text{dfe})\times\sqrt{\text{MSE}\times
-\left(\frac{1}{n_A}+\frac{1}{n_B}\right)}
+\text{LSD}=t(1-\alpha/2,\text{dfe})\times\text{SE},
+\quad
+\text{SE}=\sqrt{\text{MSE}\times\left(\frac{1}{n_A}+\frac{1}{n_B}\right)}
 \end{equation*}
 
 The corresponding confidence interval is
@@ -154,7 +159,8 @@ nB = 10
 MSE = 36.8556
 dfe = 27
 alpha = 0.05
-LSD = qt(1 - alpha/2, dfe) * sqrt(MSE * (1/nA + 1/nB))
+SE = sqrt(MSE * (1/nA + 1/nB))
+LSD = qt(1 - alpha/2, dfe) * SE
 ybarA - ybarB - LSD
 ybarA - ybarB + LSD
 \end{verbatim}}
