@@ -65,6 +65,82 @@ means trt / lsd ttest ;
   C      B       6.200000     -0.067653     12.467653       2.08      0.0523  
 \end{verbatim}}
 
+\newpage
+
+Let us take a closer look at the analysis of variance table.
+
+{\scriptsize\begin{verbatim}
+                              Analysis of Variance
+
+    Source     DF     Sum of Squares      Mean Square     F Value     Pr > F
+    Model       2       293.60000000     146.80000000        3.98     0.0305
+    Error      27       995.10000000      36.85555556                       
+    Total      29      1288.70000000
+\end{verbatim}}
+
+This is how the values are computed.
+
+{\scriptsize\begin{center}\begin{tabular}{lccccc}
+Source & DF & Sum of Squares & Mean Square & $F$-value & $p$-value
+\\
+Model
+& $p-1$
+& SSR
+& $\text{MSR}=\text{SSR}/(p-1)$
+& $F^*=\text{MSR}/\text{MSE}$
+& $1-F(F^*,p-1,n-p)$\\
+Error
+& $n-p$
+& SSE
+& $\text{MSE}=\text{SSE}/(n-p)$
+& &\\
+Total
+& $n-1$
+& SST
+& & &
+\end{tabular}\end{center}}
+
+In the above table, $n$ is the number of observations and $p$ is the 
+number of model parameters including the intercept term if there is one.
+The sums of squares are computed as follows where
+$y$ are observed values and $\hat y$ are values predicted by the model.
+\begin{align*}
+\text{SSR}&=\sum(\hat y_i-\bar y)^2
+\\
+\text{SSE}&=\sum(y_i-\hat y_i)^2
+\\
+\text{SST}&=\sum(y_i-\bar y)^2
+\end{align*}
+
+%Recall that MSE is an estimate of model variance.
+%\begin{equation*}
+%\text{MSE}=\frac{\text{SSE}}{n-p}=\hat\sigma^2
+%\end{equation*}
+
+The $p$-value in the anova table is used for checking that the regression model
+is better than the mean of all the data $\bar y$.
+The null hypothesis is that the model is no better than the mean, that is
+\begin{equation*}
+H_0:\text{SSE}=\text{SST}
+\end{equation*}
+
+%The test for $H_0$ is known as an omnibus test because an
+%equivalent hypothesis is that all of the model parameters are zero.
+%\[
+%H_0:\beta_1=\beta_2=\cdots=\beta_{p-1}=0
+%\]
+
+Under $H_0$ we have $\text{SSR}=0$ hence $\text{MSR}=0$ and
+\begin{equation*}
+H_0:F^*=0
+\end{equation*}
+
+%The test statistic $F^*$ is used because it has a well-known distribution, i.e., the $F$-distribution.
+Recall that the $p$-value is (loosely) the probability that $H_0$ is true.
+Hence for small $p$-values, reject $H_0$ and conclude that the regression model is better than the mean.
+
+\newpage
+
 Let us take a closer look at the mean response table.
 
 {\scriptsize\begin{verbatim}
