@@ -78,7 +78,8 @@ Let us take a closer look at the analysis of variance table.
     Total      29      1288.70000000
 \end{verbatim}}
 
-This is how the values are computed.
+This is how the table values are computed where $n$ is the number of observations
+and $p$ is the number of model parameters.
 
 {\scriptsize\begin{center}\begin{tabular}{lccccc}
 Source & DF & Sum of Squares & Mean Square & $F$-value & $p$-value
@@ -100,10 +101,7 @@ Total
 & & &
 \end{tabular}\end{center}}
 
-In the above table, $n$ is the number of observations and $p$ is the 
-number of model parameters including the intercept term if there is one.
-The sums of squares are computed as follows where
-$y$ are observed values and $\hat y$ are values predicted by the model.
+The sums of squares are computed as follows where $y$ are observed values and $\hat y$ are values predicted by the model.
 \begin{align*}
 \text{SSR}&=\sum(\hat y_i-\bar y)^2
 \\
@@ -118,7 +116,7 @@ $y$ are observed values and $\hat y$ are values predicted by the model.
 %\end{equation*}
 
 The $p$-value in the anova table is used for checking that the regression model
-is better than the mean of all the data $\bar y$.
+is better than the mean $\bar y$.
 The null hypothesis is that the model is no better than the mean, that is
 \begin{equation*}
 H_0:\text{SSE}=\text{SST}
