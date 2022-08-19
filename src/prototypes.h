@@ -94,7 +94,6 @@ char * get_dataline(char *buf, int len);
 void get_next_token(void);
 double qt(double p, double df);
 double tdist(double t, double df);
-double qf(double p, double df1, double df2);
 double fdist(double t, double df1, double df2);
 double gammln(double xx);
 double betai(double a, double b, double x);

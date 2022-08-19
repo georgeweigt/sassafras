@@ -38,30 +38,6 @@ tdist(double t, double df)
 	return a;
 }
 
-// F-distribution quantile function, like qf() in R
-
-double
-qf(double p, double df1, double df2)
-{
-	int i;
-	double a, t, t1, t2;
-	if (isnan(p) || isnan(df1) || isnan(df2) || df1 < 1.0 || df2 < 1.0)
-		return NAN;
-	t1 = 0.0;
-	t2 = 1000.0;
-	for (i = 0; i < 100; i++) {
-		t = 0.5 * (t1 + t2);
-		a = fdist(t, df1, df2);
-		if (fabs(a - p) < 1e-10)
-			break;
-		if (a < p)
-			t1 = t;
-		else
-			t2 = t;
-	}
-	return t;
-}
-
 // F-distribution cdf, like pf() in R
 
 double
