@@ -87,7 +87,7 @@ parse_default(void)
 		title3_stmt();
 		break;
 	default:
-		stop("Did you mean keyword proc?");
+		stop("Unexpected token, did you mean proc?");
 	}
 }
 
