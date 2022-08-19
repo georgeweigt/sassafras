@@ -1,3 +1,5 @@
+* See Boik p. 355 ;
+
 data ;
 input Fert $ Wheat $ y ;
 datalines ;
@@ -27,5 +29,5 @@ F T 19.8
 ;
 
 proc anova ;
-model y = Fert Wheat ;
+model y = Fert Wheat Fert*Wheat ;
 means Fert Wheat ;
