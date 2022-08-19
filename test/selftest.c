@@ -1,41 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // for system()
+#include <string.h>
+#include <sys/types.h>
+#include <dirent.h>
 
-char s[100];
-
-int f(int);
+int filter(const struct dirent *p);
+int check(char *);
 
 int
 main()
 {
-	int i = 0;
-	while (f(++i))
-		;
-//	printf("%d test files checked and passed\n", i - 1);
+	int count = 0, i, n;
+	struct dirent **p;
+
+	n = scandir(".", &p, filter, alphasort);
+
+	for (i = 0; i < n; i++)
+		count += check(p[i]->d_name);
+
+	printf("%d diffs failed\n", count);
 }
 
 int
-f(int i)
+filter(const struct dirent *p)
 {
-	int n;
-	FILE *f;
+	int len = strlen(p->d_name);
+	return len > 3 && strcmp(p->d_name + len - 3, ".in") == 0;
+}
 
-	sprintf(s, "test%d.in", i);
-	f = fopen(s, "r");
-	fclose(f);
-
-	if (f == NULL)
-		return 0;
-
-	sprintf(s, "../src/sassafras test%d.in | diff - test%d.out", i, i);
-	printf("%s\n", s);
-
-	n = system(s);
-
-//	if (n) {
-//		printf("diff returned %d\n", n);
-//		exit(1);
-//	}
-
-	return 1;
+int
+check(char *filename)
+{
+	static char buf[100];
+	*strchr(filename, '.') = '\0';
+	sprintf(buf, "../src/sassafras %s.in | diff - %s.out", filename, filename);
+	printf("%s\n", buf);
+	return system(buf) != 0;
 }
