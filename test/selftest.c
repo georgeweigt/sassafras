@@ -31,8 +31,10 @@ filter(const struct dirent *p)
 int
 check(char *filename)
 {
-	static char buf[100];
-	*strchr(filename, '.') = '\0';
+	char *s;
+	static char buf[1000];
+	s = strchr(filename, '.');
+	*s = '\0';
 	sprintf(buf, "../src/sassafras %s.in | diff - %s.out", filename, filename);
 	printf("%s\n", buf);
 	return system(buf) != 0;
