@@ -1,15 +1,17 @@
 #include "defs.h"
 
-// t-distribution cdf, like pt() in R
-
-// used for computing p-values
+// t-distribution cdf, like pt() in R, used for computing p-values
 
 double
 tdist(double t, double df)
 {
 	double x;
-	if (!isfinite(t) || !isfinite(df) || df < 1.0)
+	if (isnan(t) || !isfinite(df) || df <= 0.0)
 		return NAN;
+	if (t == INFINITY)
+		return 1.0; // pt(Inf,1) == 1
+	if (t == -INFINITY)
+		return 0.0; // pt(-Inf,1) == 0
 	x = (t + sqrt(t * t + df)) / (2.0 * sqrt(t * t + df));
 	return incbeta(df / 2.0, df / 2.0, x);
 }
@@ -23,14 +25,18 @@ qt(double p, double df)
 {
 	int i;
 	double a, t, t1, t2;
-	if (!isfinite(p) || !isfinite(df) || df < 1.0)
+	if (isnan(p) || p < 0.0 || p > 1.0 || !isfinite(df) || df <= 0.0)
 		return NAN;
-	t1 = -1000.0;
-	t2 = 1000.0;
+	if (p == 0.0)
+		return -INFINITY; // qt(0,1) == -Inf
+	if (p == 1.0)
+		return INFINITY; // qt(1,1) == Inf
+	t1 = -1e5;
+	t2 = 1e5;
 	for (i = 0; i < 100; i++) {
 		t = 0.5 * (t1 + t2);
 		a = tdist(t, df);
-		if (fabs(a - p) < 1e-10)
+		if (fabs(a - p) < 1e-9)
 			break;
 		if (a < p)
 			t1 = t;
@@ -45,9 +51,11 @@ qt(double p, double df)
 double
 fdist(double t, double df1, double df2)
 {
-	if (!isfinite(t) || !isfinite(df1) || !isfinite(df2) || df1 < 1.0 || df2 < 1.0)
+	if (isnan(t) || !isfinite(df1) || !isfinite(df2) || df1 <= 0.0 || df2 <= 0.0)
 		return NAN;
-	if (t < 0.0)
-		return 0.0;
+	if (t == INFINITY)
+		return 1.0; // pf(Inf,1,1) == 1
+	if (t <= 0.0)
+		return 0.0; // pf(0,1,1) == 0
 	return incbeta(df1 / 2.0, df2 / 2.0, t / (t + df2 / df1));
 }
