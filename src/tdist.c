@@ -1,6 +1,24 @@
 #include "defs.h"
 
+// t-distribution cdf, like pt() in R
+
+// used for computing p-values
+
+double
+tdist(double t, double df)
+{
+	double a;
+	if (isnan(t) || isnan(df) || df < 1.0)
+		return NAN;
+	a = 0.5 * betai(0.5 * df, 0.5, df / (df + t * t));
+	if (t > 0.0)
+		a = 1.0 - a;
+	return a;
+}
+
 // t-distribution quantile function, like qt() in R
+
+// used for computing confidence intervals
 
 double
 qt(double p, double df)
@@ -22,20 +40,6 @@ qt(double p, double df)
 			t2 = t;
 	}
 	return t;
-}
-
-// t-distribution cdf, like pt() in R
-
-double
-tdist(double t, double df)
-{
-	double a;
-	if (isnan(t) || isnan(df) || df < 1.0)
-		return NAN;
-	a = 0.5 * betai(0.5 * df, 0.5, df / (df + t * t));
-	if (t > 0.0)
-		a = 1.0 - a;
-	return a;
 }
 
 // F-distribution cdf, like pf() in R
