@@ -12,7 +12,7 @@
                               Parameter Estimates
 
                     Estimate     Std Err     t Value     Pr > |t|
-              Y      1.00000     0.00000         inf       0.0000
+              Y      1.00000     0.00000         inf          nan
 
 * Insane regression models ;
 data ;

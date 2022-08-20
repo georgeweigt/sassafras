@@ -26,7 +26,8 @@ parse_var_stmt.o \
 proc_step.o \
 print.o \
 title_stmt.o \
-run.o
+run.o \
+incbeta.o
 
 sassafras: $(objects)
 	gcc -O0 -o sassafras $(objects) -lm
