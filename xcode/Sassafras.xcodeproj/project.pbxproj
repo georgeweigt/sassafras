@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F1646D928B1494A00E8F0EB /* incbeta.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F1646D828B1494A00E8F0EB /* incbeta.c */; };
 		7FB3B40728AFAD640087E021 /* proc_step.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3B3EE28AFAD640087E021 /* proc_step.c */; };
 		7FB3B40828AFAD640087E021 /* title_stmt.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3B3EF28AFAD640087E021 /* title_stmt.c */; };
 		7FB3B40928AFAD640087E021 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3B3F128AFAD640087E021 /* print.c */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F1646D828B1494A00E8F0EB /* incbeta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = incbeta.c; sourceTree = "<group>"; };
 		7F3601FB1799109900F32846 /* Sassafras.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sassafras.entitlements; sourceTree = "<group>"; };
 		7F3E14E027F7BFA300619DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7FB3B3EE28AFAD640087E021 /* proc_step.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proc_step.c; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		7FB3B3ED28AFAD640087E021 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7F1646D828B1494A00E8F0EB /* incbeta.c */,
 				7FB3B40128AFAD640087E021 /* data_step.c */,
 				7FB3B3F028AFAD640087E021 /* defs.h */,
 				7FB3B40228AFAD640087E021 /* demo.c */,
@@ -251,6 +254,7 @@
 				7FB3B41828AFAD640087E021 /* data_step.c in Sources */,
 				7FB3B40C28AFAD640087E021 /* parse_class_stmt.c in Sources */,
 				7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */,
+				7F1646D928B1494A00E8F0EB /* incbeta.c in Sources */,
 				7FB3B40828AFAD640087E021 /* title_stmt.c in Sources */,
 				7FB3B40F28AFAD640087E021 /* parse_var_stmt.c in Sources */,
 				7FB3B40728AFAD640087E021 /* proc_step.c in Sources */,
