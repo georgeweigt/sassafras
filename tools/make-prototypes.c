@@ -1,35 +1,32 @@
-// To build a new prototypes.h:
-//
-//	gcc make-prototypes.c
-//	./a.out >prototypes.h
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
 
+char filename[100];
+
 int filter(const struct dirent *p);
 void scan(char *s);
 
 int
-main()
+main(int argc, char *argv[])
 {
 	int i, n;
 	struct dirent **p;
-	n = scandir(".", &p, filter, alphasort);
-	for (i = 0; i < n; i++)
-		scan(p[i]->d_name);
+	n = scandir(argv[1], &p, filter, alphasort);
+	for (i = 0; i < n; i++) {
+		strcpy(filename, argv[1]);
+		strcat(filename, p[i]->d_name);
+		scan(filename);
+	}
 	return 0;
 }
 
 int
 filter(const struct dirent *p)
 {
-	int len = (int) strlen(p->d_name);
-
-	if (strcmp(p->d_name, "make-prototypes.c") == 0)
-		return 0;
+	int len = strlen(p->d_name);
 
 	if (len > 2 && strcmp(p->d_name + len - 2, ".c") == 0)
 		return 1;
