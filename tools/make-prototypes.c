@@ -34,7 +34,7 @@ filter(const struct dirent *p)
 		return 0;
 }
 
-#define BUFLEN 10000
+#define BUFLEN 1000
 
 char buf1[BUFLEN];
 char buf2[BUFLEN];
