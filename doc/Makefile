@@ -4,7 +4,7 @@ anova.pdf: anova.tex
 	pdflatex anova.tex
 
 clean:
-	rm -f *.aux *.log *.pdf *.synctex.gz *.toc
+	rm -f anova.pdf
 
 update:
 	cp sassafras.html ../xcode/src/Base.lproj/Sassafras.help/Contents/Resources/English.lproj/index.html
