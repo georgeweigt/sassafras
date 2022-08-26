@@ -9,6 +9,9 @@
 #define NAN nan("0")
 #endif
 
+#define STRBUFLEN 1000
+#define ERRBUFLEN 1000
+
 #define MAXVAR 100
 #define MAXSTAT 12
 
@@ -90,8 +93,8 @@ extern char *pgm;
 extern char *inp;
 extern char *token_str;
 extern int token;
-extern char errbuf[];
 extern char strbuf[];
+extern char errbuf[];
 extern double token_num;
 extern FILE *infile;
 extern double alpha;

@@ -18,7 +18,7 @@ main()
 	for (i = 0; i < n; i++)
 		count += check(p[i]->d_name);
 
-	printf("%d diffs failed\n", count);
+	printf("%d failures\n", count);
 }
 
 int

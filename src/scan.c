@@ -1,7 +1,5 @@
 #include "defs.h"
 
-char strbuf[1000];
-
 void
 scan(void)
 {
@@ -45,13 +43,13 @@ scan1(void)
 	// name?
 
 	if (isalpha(*inp) || *inp == '_') {
-		for (i = 0; i < sizeof strbuf; i++) {
+		for (i = 0; i < STRBUFLEN; i++) {
 			if (isalnum(*inp) || *inp == '_')
 				strbuf[i] = toupper(*inp++);
 			else
 				break;
 		}
-		if (i == sizeof strbuf)
+		if (i == STRBUFLEN)
 			stop("Name too long");
 		strbuf[i] = 0;
 		return NAME;
@@ -80,7 +78,7 @@ scan1(void)
 				inp++;
 		}
 		n = (int) (inp - token_str);
-		if (n >= sizeof strbuf)
+		if (n >= STRBUFLEN)
 			stop("Number format?");
 		for (i = 0; i < n; i++)
 			strbuf[i] = token_str[i];
@@ -95,7 +93,7 @@ scan1(void)
 
 	if (*inp == '\'') {
 		inp++;
-		for (i = 0; i < sizeof strbuf; i++) {
+		for (i = 0; i < STRBUFLEN; i++) {
 			if (*inp == 0)
 				break;
 			if (*inp == '\r' || *inp == '\n')
@@ -111,7 +109,7 @@ scan1(void)
 			}
 			strbuf[i] = *inp++;
 		}
-		if (i == sizeof strbuf)
+		if (i == STRBUFLEN)
 			stop("String too long");
 		strbuf[i] = 0;
 		return STRING;
@@ -119,7 +117,7 @@ scan1(void)
 
 	if (*inp == '"') {
 		inp++;
-		for (i = 0; i < sizeof strbuf; i++) {
+		for (i = 0; i < STRBUFLEN; i++) {
 			if (*inp == 0)
 				break;
 			if (*inp == '\r' || *inp == '\n')
@@ -135,7 +133,7 @@ scan1(void)
 			}
 			strbuf[i] = *inp++;
 		}
-		if (i == sizeof strbuf)
+		if (i == STRBUFLEN)
 			stop("String too long");
 		strbuf[i] = 0;
 		return STRING;

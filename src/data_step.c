@@ -13,9 +13,10 @@ int tos;
 
 static struct dataset *dd;
 
-#define BUFLEN 10001
-static char *inb, buf[BUFLEN];
-static char filename[1000], delim[100];
+static char *inb;
+static char buf[10000];
+static char filename[1000];
+static char delim[100];
 static int ctrl;
 static int firstobs;
 FILE *infile;
