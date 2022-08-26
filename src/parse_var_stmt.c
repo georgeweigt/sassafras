@@ -22,7 +22,7 @@ parse_var_stmt(void)
 				break;
 
 		if (i == dataset->nvar) {
-			sprintf(errbuf, "Variable %s?", strbuf);
+			snprintf(errbuf, ERRBUFLEN, "Variable %s?", strbuf);
 			stop(errbuf);
 		}
 

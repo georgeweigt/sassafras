@@ -1,6 +1,7 @@
 .PHONY: clean
+
 CC = gcc
-CFLAGS = -O0
+CFLAGS = -Wall -O0
 
 objs := $(shell ls *.c | sed "s/\.c/\.o/g;s/emit_line\.o//")
 
@@ -10,4 +11,4 @@ sassafras: $(objs)
 $(objs): defs.h prototypes.h
 
 clean:
-	rm -f sassafras *.o
+	rm -f *.o sassafras

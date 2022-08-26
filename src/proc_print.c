@@ -108,7 +108,7 @@ run_proc_print(void)
 
 		// observation number
 
-		sprintf(buf, "%d", i + 1);
+		snprintf(buf, sizeof buf, "%d", i + 1);
 
 		A(i + 1, 0) = strdup(buf);
 
@@ -125,7 +125,7 @@ run_proc_print(void)
 			else {
 				if (dataset->spec[x].ltab == NULL) {
 					w = dataset->spec[x].w;
-					sprintf(buf, fmt[w], d);
+					snprintf(buf, sizeof buf, fmt[w], d);
 					s = buf;
 				} else
 					s = dataset->spec[x].ltab[(int) d];

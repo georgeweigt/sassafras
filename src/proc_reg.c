@@ -109,7 +109,7 @@ parse_model_stmt(void)
 			break;
 
 	if (i == dataset->nvar) {
-		sprintf(errbuf, "Variable %s not in dataset", strbuf);
+		snprintf(errbuf, ERRBUFLEN, "Variable %s not in dataset", strbuf);
 		stop(errbuf);
 	}
 
@@ -137,7 +137,7 @@ parse_model_stmt(void)
 				break;
 
 		if (i == dataset->nvar) {
-			sprintf(errbuf, "Variable %s not in dataset", strbuf);
+			snprintf(errbuf, ERRBUFLEN, "Variable %s not in dataset", strbuf);
 			stop(errbuf);
 		}
 
@@ -660,7 +660,7 @@ regress(void)
 	// sanity check
 
 	if (npar < 1 || npar >= nrow) {
-		sprintf(errbuf, "Regression model kaput, p = %d, n = %d, must have 0 < p < n", npar, nrow);
+		snprintf(errbuf, ERRBUFLEN, "Regression model kaput, p = %d, n = %d, must have 0 < p < n", npar, nrow);
 		stop(errbuf);
 	}
 
@@ -727,16 +727,16 @@ print_parameter_estimates(void)
 			continue;
 		}
 
-		sprintf(s, "%0.5f", B[k]);
+		snprintf(s, sizeof s, "%0.5f", B[k]);
 		A(i, 1) = strdup(s);
 
-		sprintf(s, "%0.5f", SE[k]);
+		snprintf(s, sizeof s, "%0.5f", SE[k]);
 		A(i, 2) = strdup(s);
 
-		sprintf(s, "%0.2f", TVAL[k]);
+		snprintf(s, sizeof s, "%0.2f", TVAL[k]);
 		A(i, 3) = strdup(s);
 
-		sprintf(s, "%0.4f", PVAL[k]);
+		snprintf(s, sizeof s, "%0.4f", PVAL[k]);
 		A(i, 4) = strdup(s);
 
 		k++;
@@ -781,32 +781,32 @@ print_anova_table(void)
 
 	A(1, 0) = strdup("Model");
 
-	sprintf(s, "%d", dfm);
+	snprintf(s, sizeof s, "%d", dfm);
 	A(1, 1) = strdup(s);
 
-	sprintf(s, "%0.5f", ssr);
+	snprintf(s, sizeof s, "%0.5f", ssr);
 	A(1, 2) = strdup(s);
 
-	sprintf(s, "%0.5f", msr);
+	snprintf(s, sizeof s, "%0.5f", msr);
 	A(1, 3) = strdup(s);
 
-	sprintf(s, "%0.2f", fval);
+	snprintf(s, sizeof s, "%0.2f", fval);
 	A(1, 4) = strdup(s);
 
-	sprintf(s, "%0.4f", pval);
+	snprintf(s, sizeof s, "%0.4f", pval);
 	A(1, 5) = strdup(s);
 
 	// 3rd row
 
 	A(2, 0) = strdup("Error");
 
-	sprintf(s, "%d", dfe);
+	snprintf(s, sizeof s, "%d", dfe);
 	A(2, 1) = strdup(s);
 
-	sprintf(s, "%0.5f", sse);
+	snprintf(s, sizeof s, "%0.5f", sse);
 	A(2, 2) = strdup(s);
 
-	sprintf(s, "%0.5f", mse);
+	snprintf(s, sizeof s, "%0.5f", mse);
 	A(2, 3) = strdup(s);
 
 	A(2, 4) = strdup("");
@@ -816,10 +816,10 @@ print_anova_table(void)
 
 	A(3, 0) = strdup("Total");
 
-	sprintf(s, "%d", dft);
+	snprintf(s, sizeof s, "%d", dft);
 	A(3, 1) = strdup(s);
 
-	sprintf(s, "%0.5f", sst);
+	snprintf(s, sizeof s, "%0.5f", sst);
 	A(3, 2) = strdup(s);
 
 	A(3, 3) = strdup("");
@@ -860,16 +860,16 @@ print_diag_table(void)
 
 	// 2nd row
 
-	sprintf(s, "%0.6f", rsquare);
+	snprintf(s, sizeof s, "%0.6f", rsquare);
 	a[1][0] = strdup(s);
 
-	sprintf(s, "%0.6f", cv);
+	snprintf(s, sizeof s, "%0.6f", cv);
 	a[1][1] = strdup(s);
 
-	sprintf(s, "%0.6f", rootmse);
+	snprintf(s, sizeof s, "%0.6f", rootmse);
 	a[1][2] = strdup(s);
 
-	sprintf(s, "%0.6f", ybar);
+	snprintf(s, sizeof s, "%0.6f", ybar);
 	a[1][3] = strdup(s);
 
 	s[0] = 0;
@@ -900,19 +900,19 @@ print_diag_table(void)
 	a[1][2] = "Adj R-Sq";
 	a[2][2] = "";
 
-	sprintf(s, "%0.5f", rootmse);
+	snprintf(s, sizeof s, "%0.5f", rootmse);
 	a[0][1] = strdup(s);
 
-	sprintf(s, "%0.5f", ybar);
+	snprintf(s, sizeof s, "%0.5f", ybar);
 	a[1][1] = strdup(s);
 
-	sprintf(s, "%0.5f", cv);
+	snprintf(s, sizeof s, "%0.5f", cv);
 	a[2][1] = strdup(s);
 
-	sprintf(s, "%0.4f", rsquare);
+	snprintf(s, sizeof s, "%0.4f", rsquare);
 	a[0][3] = strdup(s);
 
-	sprintf(s, "%0.4f", adjrsq);
+	snprintf(s, sizeof s, "%0.4f", adjrsq);
 	a[1][3] = strdup(s);
 
 	a[2][3] = "";

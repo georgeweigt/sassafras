@@ -430,12 +430,12 @@ get_var_index(void)
 		if (strcmp(dataset->spec[i].name, strbuf) == 0)
 			break;
 	if (i == n) {
-		sprintf(buf, "The variable name \"%s\" is not in the data set", strbuf);
-		stop(buf);
+		snprintf(errbuf, ERRBUFLEN, "The variable name \"%s\" is not in the data set", strbuf);
+		stop(errbuf);
 	}
 	if (dataset->spec[i].ltab == NULL) {
-		sprintf(buf, "The variable \"%s\" is numeric, please change to categorical in the data step", strbuf);
-		stop(buf);
+		snprintf(errbuf, ERRBUFLEN, "The variable \"%s\" is numeric, please change to categorical in the data step", strbuf);
+		stop(errbuf);
 	}
 	return i;
 }
@@ -592,7 +592,7 @@ model(void)
 	print_title();
 
 	if (nmiss) {
-		sprintf(buf, "%d observations deleted due to missing data", nmiss);
+		snprintf(buf, sizeof buf, "%d observations deleted due to missing data", nmiss);
 		emit_line(buf);
 	}
 
@@ -978,32 +978,32 @@ print_anova_table_part1(void)
 
 	A(1, 0) = strdup("Model");
 
-	sprintf(buf, "%d", npar - 1);
+	snprintf(buf, sizeof buf, "%d", npar - 1);
 	A(1, 1) = strdup(buf);
 
-	sprintf(buf, "%0.8f", ssr);
+	snprintf(buf, sizeof buf, "%0.8f", ssr);
 	A(1, 2) = strdup(buf);
 
-	sprintf(buf, "%0.8f", msr);
+	snprintf(buf, sizeof buf, "%0.8f", msr);
 	A(1, 3) = strdup(buf);
 
-	sprintf(buf, "%0.2f", fval);
+	snprintf(buf, sizeof buf, "%0.2f", fval);
 	A(1, 4) = strdup(buf);
 
-	sprintf(buf, "%0.4f", pval);
+	snprintf(buf, sizeof buf, "%0.4f", pval);
 	A(1, 5) = strdup(buf);
 
 	// 3rd row
 
 	A(2, 0) = strdup("Error");
 
-	sprintf(buf, "%d", nobs - npar);
+	snprintf(buf, sizeof buf, "%d", nobs - npar);
 	A(2, 1) = strdup(buf);
 
-	sprintf(buf, "%0.8f", sse);
+	snprintf(buf, sizeof buf, "%0.8f", sse);
 	A(2, 2) = strdup(buf);
 
-	sprintf(buf, "%0.8f", mse);
+	snprintf(buf, sizeof buf, "%0.8f", mse);
 	A(2, 3) = strdup(buf);
 
 	A(2, 4) = strdup("");
@@ -1013,10 +1013,10 @@ print_anova_table_part1(void)
 
 	A(3, 0) = strdup("Total");
 
-	sprintf(buf, "%d", nobs - 1);
+	snprintf(buf, sizeof buf, "%d", nobs - 1);
 	A(3, 1) = strdup(buf);
 
-	sprintf(buf, "%0.8f", css);
+	snprintf(buf, sizeof buf, "%0.8f", css);
 	A(3, 2) = strdup(buf);
 
 	A(3, 3) = strdup("");
@@ -1047,19 +1047,19 @@ print_anova_table_part2(void)
 	A(0, 1) = strdup("Coeff Var");
 	A(0, 2) = strdup("Root MSE");
 
-	sprintf(buf, "%s Mean", dataset->spec[yvar].name);
+	snprintf(buf, sizeof buf, "%s Mean", dataset->spec[yvar].name);
 	A(0, 3) = strdup(buf);
 
-	sprintf(buf, "%0.6f", rsquare);
+	snprintf(buf, sizeof buf, "%0.6f", rsquare);
 	A(1, 0) = strdup(buf);
 
-	sprintf(buf, "%0.6f", cv);
+	snprintf(buf, sizeof buf, "%0.6f", cv);
 	A(1, 1) = strdup(buf);
 
-	sprintf(buf, "%0.6f", rootmse);
+	snprintf(buf, sizeof buf, "%0.6f", rootmse);
 	A(1, 2) = strdup(buf);
 
-	sprintf(buf, "%0.6f", ybar);
+	snprintf(buf, sizeof buf, "%0.6f", ybar);
 	A(1, 3) = strdup(buf);
 
 	buf[0] = 0; // right justified
@@ -1099,7 +1099,7 @@ print_anova_table_part3(void)
 
 		// DF
 
-		sprintf(buf, "%d", df[i]);
+		snprintf(buf, sizeof buf, "%d", df[i]);
 		A(i + 1, 1) = strdup(buf);
 
 		if (df[i] == 0) {
@@ -1112,28 +1112,28 @@ print_anova_table_part3(void)
 
 		// Anova SS
 
-		sprintf(buf, "%0.8f", ss[i]);
+		snprintf(buf, sizeof buf, "%0.8f", ss[i]);
 		A(i + 1, 2) = strdup(buf);
 
 		// Mean Square
 
 		msq = ss[i] / df[i];
 
-		sprintf(buf, "%0.8f", msq);
+		snprintf(buf, sizeof buf, "%0.8f", msq);
 		A(i + 1, 3) = strdup(buf);
 
 		// F Value
 
 		fval = msq / mse;
 
-		sprintf(buf, "%0.2f", fval);
+		snprintf(buf, sizeof buf, "%0.2f", fval);
 		A(i + 1, 4) = strdup(buf);
 
 		// Pr > F
 
 		pval = 1 - fdist(fval, df[i], nobs - npar);
 
-		sprintf(buf, "%0.4f", pval);
+		snprintf(buf, sizeof buf, "%0.4f", pval);
 		A(i + 1, 5) = strdup(buf);
 	}
 
@@ -1222,13 +1222,13 @@ print_means(int x)
 	A(0, m + 1) = strdup("N");
 
 	s = dataset->spec[yvar].name;
-	sprintf(buf, "Mean %s", s);
+	snprintf(buf, sizeof buf, "Mean %s", s);
 	A(0, m + 2) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MIN", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MIN", 100 * (1 - alpha));
 	A(0, m + 3) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MAX", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MAX", 100 * (1 - alpha));
 	A(0, m + 4) = strdup(buf);
 
 	for (i = 0; i < n; i++) {
@@ -1248,7 +1248,7 @@ print_means(int x)
 
 		// N
 
-		sprintf(buf, "%d", count[i]);
+		snprintf(buf, sizeof buf, "%d", count[i]);
 		A(i + 1, m + 1) = strdup(buf);
 
 		if (count[i] < 1) {
@@ -1260,17 +1260,17 @@ print_means(int x)
 
 		// Mean
 
-		sprintf(buf, "%0.6f", mean[i]);
+		snprintf(buf, sizeof buf, "%0.6f", mean[i]);
 		A(i + 1, m + 2) = strdup(buf);
 
 		// Confidence Interval
 
 		t = q * sqrt(mse / count[i]);
 
-		sprintf(buf, "%0.6f", mean[i] - t);
+		snprintf(buf, sizeof buf, "%0.6f", mean[i] - t);
 		A(i + 1, m + 3) = strdup(buf);
 
-		sprintf(buf, "%0.6f", mean[i] + t);
+		snprintf(buf, sizeof buf, "%0.6f", mean[i] + t);
 		A(i + 1, m + 4) = strdup(buf);
 	}
 
@@ -1312,13 +1312,13 @@ print_lsd(int x)
 	A(0, 1) = strdup(s);
 
 	s = dataset->spec[yvar].name;
-	sprintf(buf, "Delta %s", s);
+	snprintf(buf, sizeof buf, "Delta %s", s);
 	A(0, 2) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MIN", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MIN", 100 * (1 - alpha));
 	A(0, 3) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MAX", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MAX", 100 * (1 - alpha));
 	A(0, 4) = strdup(buf);
 
 	A(0, 5) = strdup("t Value");
@@ -1358,7 +1358,7 @@ print_lsd(int x)
 			// Difference
 
 			d = mean[i] - mean[j];
-			sprintf(buf, "%0.6f", d);
+			snprintf(buf, sizeof buf, "%0.6f", d);
 			A(k, 2) = strdup(buf);
 
 			// confidence interval
@@ -1371,23 +1371,23 @@ print_lsd(int x)
 
 			pval = 2 * (1 - tdist(fabs(tval), dfe));
 
-			sprintf(buf, "%0.6f", d - lsd);
+			snprintf(buf, sizeof buf, "%0.6f", d - lsd);
 			A(k, 3) = strdup(buf);
 
-			sprintf(buf, "%0.6f", d + lsd);
+			snprintf(buf, sizeof buf, "%0.6f", d + lsd);
 			A(k, 4) = strdup(buf);
 
 			// t Value
 
-			sprintf(buf, "%0.2f", tval);
+			snprintf(buf, sizeof buf, "%0.2f", tval);
 			A(k, 5) = strdup(buf);
 
 			// Pr > |t|
 
 			if (pval > alpha)
-				sprintf(buf, "%0.4f  ", pval);
+				snprintf(buf, sizeof buf, "%0.4f  ", pval);
 			else
-				sprintf(buf, "%0.4f *", pval);
+				snprintf(buf, sizeof buf, "%0.4f *", pval);
 			A(k, 6) = strdup(buf);
 		}
 	}
@@ -1426,13 +1426,13 @@ print_ttest(int x)
 	A(0, 1) = strdup(s);
 
 	s = dataset->spec[yvar].name;
-	sprintf(buf, "Delta %s", s);
+	snprintf(buf, sizeof buf, "Delta %s", s);
 	A(0, 2) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MIN", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MIN", 100 * (1 - alpha));
 	A(0, 3) = strdup(buf);
 
-	sprintf(buf, "%g%% CI MAX", 100 * (1 - alpha));
+	snprintf(buf, sizeof buf, "%g%% CI MAX", 100 * (1 - alpha));
 	A(0, 4) = strdup(buf);
 
 	A(0, 5) = strdup("t Value");
@@ -1472,7 +1472,7 @@ print_ttest(int x)
 			// Difference
 
 			d = mean[i] - mean[j];
-			sprintf(buf, "%0.6f", d);
+			snprintf(buf, sizeof buf, "%0.6f", d);
 			A(k, 2) = strdup(buf);
 
 			// confidence interval
@@ -1499,19 +1499,19 @@ print_ttest(int x)
 
 			t = qt(1 - alpha / 2, dfe) * se;
 
-			sprintf(buf, "%0.6f", d - t);
+			snprintf(buf, sizeof buf, "%0.6f", d - t);
 			A(k, 3) = strdup(buf);
 
-			sprintf(buf, "%0.6f", d + t);
+			snprintf(buf, sizeof buf, "%0.6f", d + t);
 			A(k, 4) = strdup(buf);
 
-			sprintf(buf, "%0.2f", tval);
+			snprintf(buf, sizeof buf, "%0.2f", tval);
 			A(k, 5) = strdup(buf);
 
 			if (pval > alpha)
-				sprintf(buf, "%0.4f  ", pval);
+				snprintf(buf, sizeof buf, "%0.4f  ", pval);
 			else
-				sprintf(buf, "%0.4f *", pval);
+				snprintf(buf, sizeof buf, "%0.4f *", pval);
 			A(k, 6) = strdup(buf);
 		}
 	}

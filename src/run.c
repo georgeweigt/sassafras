@@ -199,10 +199,10 @@ void
 expected(char *s)
 {
 	if (token == 0)
-		sprintf(errbuf, "Expected %s before end of program", s);
+		snprintf(errbuf, ERRBUFLEN, "Expected %s before end of program", s);
 	else if (token == ';')
-		sprintf(errbuf, "Expected %s before end of statement", s);
+		snprintf(errbuf, ERRBUFLEN, "Expected %s before end of statement", s);
 	else
-		sprintf(errbuf, "Expected %s instead of \"%s\"", s, strbuf);
+		snprintf(errbuf, ERRBUFLEN, "Expected %s instead of \"%s\"", s, strbuf);
 	stop(errbuf);
 }

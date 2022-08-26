@@ -1,6 +1,7 @@
 #include "defs.h"
 
-static char **a, s[MAXVAR + MAXSTAT + 1];
+static char **a;
+static char tblfmt[MAXVAR + MAXSTAT + 1];
 static int row, nrow, ncol;
 static int filter[MAXVAR];
 
@@ -97,6 +98,7 @@ run_proc_means(void)
 {
 	int i, j, k, n;
 	char *t;
+	char buf[100];
 
 	// print all numeric variables if not specified with VAR
 
@@ -152,16 +154,16 @@ run_proc_means(void)
 	for (i = 0; i < nstat; i++) {
 		switch (stat[i]) {
 		case KCLM1:
-			sprintf(s, "%g%% CLM MIN", 100 * (1 - alpha));
-			t = s;
+			snprintf(buf, sizeof buf, "%g%% CLM MIN", 100 * (1 - alpha));
+			t = buf;
 			break;
 		case KCLM2:
-			sprintf(s, "%g%% CLM MAX", 100 * (1 - alpha));
-			t = s;
+			snprintf(buf, sizeof buf, "%g%% CLM MAX", 100 * (1 - alpha));
+			t = buf;
 			break;
 		case KLCLM:
-			sprintf(s, "%g%% LCLM", 100 * (1 - alpha));
-			t = s;
+			snprintf(buf, sizeof buf, "%g%% LCLM", 100 * (1 - alpha));
+			t = buf;
 			break;
 		case KMAX:
 			t = "Maximum";
@@ -190,8 +192,8 @@ run_proc_means(void)
 			t = "Std Err";
 			break;
 		case KUCLM:
-			sprintf(s, "%g%% UCLM", 100 * (1 - alpha));
-			t = s;
+			snprintf(buf, sizeof buf, "%g%% UCLM", 100 * (1 - alpha));
+			t = buf;
 			break;
 		case KVAR:
 			t = "Variance";
@@ -211,12 +213,12 @@ run_proc_means(void)
 
 	for (i = 0; i < ncol; i++) {
 		if (i < nclass + 1)
-			s[i] = 1;
+			tblfmt[i] = 1;
 		else
-			s[i] = 0;
+			tblfmt[i] = 0;
 	}
 
-	print_table(a, nrow, ncol, s);
+	print_table(a, nrow, ncol, tblfmt);
 
 	for (i = 0; i < nrow; i++)
 		for (j = 0; j < ncol; j++)
@@ -305,7 +307,7 @@ h(int varnum)
 {
 	int i, j, k, w;
 	double m, t1, t2, x;
-	static char s[100];
+	char buf[100];
 
 	int n = 0;
 
@@ -437,8 +439,8 @@ h(int varnum)
 		if (isnan(x))
 			A(row, nclass + 1 + i) = strdup(".");
 		else {
-			sprintf(s, fmt[w], x);
-			A(row, nclass + 1 + i) = strdup(s);
+			snprintf(buf, sizeof buf, fmt[w], x);
+			A(row, nclass + 1 + i) = strdup(buf);
 		}
 	}
 }

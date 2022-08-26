@@ -22,12 +22,12 @@ parse_by_stmt(void)
 				break;
 
 		if (i == dataset->nvar) {
-			sprintf(errbuf, "The variable %s not in the dataset", strbuf);
+			snprintf(errbuf, ERRBUFLEN, "The variable %s not in the dataset", strbuf);
 			stop(errbuf);
 		}
 
 		if (dataset->spec[i].ltab == NULL) {
-			sprintf(errbuf, "The variable %s is not a categorical variable", strbuf);
+			snprintf(errbuf, ERRBUFLEN, "The variable %s is not a categorical variable", strbuf);
 			stop(errbuf);
 		}
 

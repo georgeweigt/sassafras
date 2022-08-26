@@ -111,7 +111,7 @@ read_file(void)
 	infile = fopen(filename, "r");
 
 	if (infile == NULL) {
-		sprintf(errbuf, "Cannot open %s", filename);
+		snprintf(errbuf, ERRBUFLEN, "Cannot open %s", filename);
 		stop(errbuf);
 	}
 
@@ -666,7 +666,7 @@ select_dataset(char *s)
 			return;
 		dataset = dataset->next;
 	}
-	sprintf(errbuf, "Dataset %s?", s);
+	snprintf(errbuf, ERRBUFLEN, "Dataset %s?", s);
 	stop(errbuf);
 }
 
