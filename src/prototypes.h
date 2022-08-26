@@ -74,7 +74,6 @@ void regress(void);
 void print_parameter_estimates(void);
 void print_anova_table(void);
 void print_diag_table(void);
-void print_diag_table(void);
 void proc_step(void);
 char * read_text_file(char *filename);
 void run(char *s);

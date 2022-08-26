@@ -1,11 +1,8 @@
-.PHONY: default clean
+.PHONY: default
 
 default:
-	make -s a.out
-	./a.out ../src/ >../src/prototypes.h
+	make make-prototypes
+	./make-prototypes ../src/ >../src/prototypes.h
 
-a.out: make-prototypes.c
-	gcc make-prototypes.c
-
-clean:
-	rm -f a.out
+make-prototypes: make-prototypes.c
+	gcc -Wall -O0 -o make-prototypes make-prototypes.c
