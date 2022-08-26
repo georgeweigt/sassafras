@@ -683,7 +683,7 @@ void
 print_parameter_estimates(void)
 {
 	int i, j, k, m, n, x;
-	static char s[1000];
+	char buf[100];
 
 	m = ncol + 1;
 
@@ -709,8 +709,8 @@ print_parameter_estimates(void)
 		else {
 			n = dataset->spec[x].num_levels;
 			for (j = 0; j < n; j++) {
-				snprintf(s, sizeof s, "%s %s", dataset->spec[x].name, dataset->spec[x].ltab[j]);
-				A(k++, 0) = strdup(s);
+				snprintf(buf, sizeof buf, "%s %s", dataset->spec[x].name, dataset->spec[x].ltab[j]);
+				A(k++, 0) = strdup(buf);
 			}
 		}
 	}
@@ -727,28 +727,28 @@ print_parameter_estimates(void)
 			continue;
 		}
 
-		snprintf(s, sizeof s, "%0.5f", B[k]);
-		A(i, 1) = strdup(s);
+		snprintf(buf, sizeof buf, "%0.5f", B[k]);
+		A(i, 1) = strdup(buf);
 
-		snprintf(s, sizeof s, "%0.5f", SE[k]);
-		A(i, 2) = strdup(s);
+		snprintf(buf, sizeof buf, "%0.5f", SE[k]);
+		A(i, 2) = strdup(buf);
 
-		snprintf(s, sizeof s, "%0.2f", TVAL[k]);
-		A(i, 3) = strdup(s);
+		snprintf(buf, sizeof buf, "%0.2f", TVAL[k]);
+		A(i, 3) = strdup(buf);
 
-		snprintf(s, sizeof s, "%0.4f", PVAL[k]);
-		A(i, 4) = strdup(s);
+		snprintf(buf, sizeof buf, "%0.4f", PVAL[k]);
+		A(i, 4) = strdup(buf);
 
 		k++;
 	}
 
-	s[0] = 1; // right justify
-	s[1] = 0;
-	s[2] = 0;
-	s[3] = 0;
-	s[4] = 0;
+	buf[0] = 1; // right justify
+	buf[1] = 0;
+	buf[2] = 0;
+	buf[3] = 0;
+	buf[4] = 0;
 
-	print_table(a, m, 5, s);
+	print_table(a, m, 5, buf);
 
 	for (i = 0; i < m; i++)
 		for (j = 0; j < 5; j++)
@@ -764,7 +764,7 @@ void
 print_anova_table(void)
 {
 	int i, j;
-	char **a, s[100];
+	char **a, buf[100];
 
 	a = (char **) xmalloc(4 * 6 * sizeof (char *));
 
@@ -781,33 +781,33 @@ print_anova_table(void)
 
 	A(1, 0) = strdup("Model");
 
-	snprintf(s, sizeof s, "%d", dfm);
-	A(1, 1) = strdup(s);
+	snprintf(buf, sizeof buf, "%d", dfm);
+	A(1, 1) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", ssr);
-	A(1, 2) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", ssr);
+	A(1, 2) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", msr);
-	A(1, 3) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", msr);
+	A(1, 3) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.2f", fval);
-	A(1, 4) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.2f", fval);
+	A(1, 4) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.4f", pval);
-	A(1, 5) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.4f", pval);
+	A(1, 5) = strdup(buf);
 
 	// 3rd row
 
 	A(2, 0) = strdup("Error");
 
-	snprintf(s, sizeof s, "%d", dfe);
-	A(2, 1) = strdup(s);
+	snprintf(buf, sizeof buf, "%d", dfe);
+	A(2, 1) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", sse);
-	A(2, 2) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", sse);
+	A(2, 2) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", mse);
-	A(2, 3) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", mse);
+	A(2, 3) = strdup(buf);
 
 	A(2, 4) = strdup("");
 	A(2, 5) = strdup("");
@@ -816,24 +816,24 @@ print_anova_table(void)
 
 	A(3, 0) = strdup("Total");
 
-	snprintf(s, sizeof s, "%d", dft);
-	A(3, 1) = strdup(s);
+	snprintf(buf, sizeof buf, "%d", dft);
+	A(3, 1) = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", sst);
-	A(3, 2) = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", sst);
+	A(3, 2) = strdup(buf);
 
 	A(3, 3) = strdup("");
 	A(3, 4) = strdup("");
 	A(3, 5) = strdup("");
 
-	s[0] = 1; // left justify
-	s[1] = 0;
-	s[2] = 0;
-	s[3] = 0;
-	s[4] = 0;
-	s[5] = 0;
+	buf[0] = 1; // left justify
+	buf[1] = 0;
+	buf[2] = 0;
+	buf[3] = 0;
+	buf[4] = 0;
+	buf[5] = 0;
 
-	print_table(a, 4, 6, s);
+	print_table(a, 4, 6, buf);
 
 	for (i = 0; i < 4; i++)
 		for (j = 0; j < 6; j++)
@@ -842,55 +842,10 @@ print_anova_table(void)
 	free(a);
 }
 
-#if 0
-
-// diag table style for proc glm
-
 void
 print_diag_table(void)
 {
-	char *a[2][4], s[100];
-
-	// 1st row
-
-	a[0][0] = "R Square";
-	a[0][1] = "Coeff Var";
-	a[0][2] = "Root MSE";
-	a[0][3] = "Y Mean";
-
-	// 2nd row
-
-	snprintf(s, sizeof s, "%0.6f", rsquare);
-	a[1][0] = strdup(s);
-
-	snprintf(s, sizeof s, "%0.6f", cv);
-	a[1][1] = strdup(s);
-
-	snprintf(s, sizeof s, "%0.6f", rootmse);
-	a[1][2] = strdup(s);
-
-	snprintf(s, sizeof s, "%0.6f", ybar);
-	a[1][3] = strdup(s);
-
-	s[0] = 0;
-	s[1] = 0;
-	s[2] = 0;
-	s[3] = 0;
-
-	print_table(&a[0][0], 2, 4, s);
-
-	free(a[1][0]);
-	free(a[1][1]);
-	free(a[1][2]);
-	free(a[1][3]);
-}
-
-#else
-
-void
-print_diag_table(void)
-{
-	char *a[3][4], s[100];
+	char *a[3][4], buf[100];
 
 	a[0][0] = "Root MSE";
 	a[1][0] = "Dependent Mean";
@@ -900,29 +855,29 @@ print_diag_table(void)
 	a[1][2] = "Adj R-Sq";
 	a[2][2] = "";
 
-	snprintf(s, sizeof s, "%0.5f", rootmse);
-	a[0][1] = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", rootmse);
+	a[0][1] = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", ybar);
-	a[1][1] = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", ybar);
+	a[1][1] = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.5f", cv);
-	a[2][1] = strdup(s);
+	snprintf(buf, sizeof buf, "%0.5f", cv);
+	a[2][1] = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.4f", rsquare);
-	a[0][3] = strdup(s);
+	snprintf(buf, sizeof buf, "%0.4f", rsquare);
+	a[0][3] = strdup(buf);
 
-	snprintf(s, sizeof s, "%0.4f", adjrsq);
-	a[1][3] = strdup(s);
+	snprintf(buf, sizeof buf, "%0.4f", adjrsq);
+	a[1][3] = strdup(buf);
 
 	a[2][3] = "";
 
-	s[0] = 1; // left justify
-	s[1] = 0;
-	s[2] = 1;
-	s[3] = 0;
+	buf[0] = 1; // left justify
+	buf[1] = 0;
+	buf[2] = 1;
+	buf[3] = 0;
 
-	print_table(&a[0][0], 3, 4, s);
+	print_table(&a[0][0], 3, 4, buf);
 
 	free(a[0][1]);
 	free(a[1][1]);
@@ -931,5 +886,3 @@ print_diag_table(void)
 	free(a[0][3]);
 	free(a[1][3]);
 }
-
-#endif
