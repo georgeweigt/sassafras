@@ -15,15 +15,17 @@ emit_line_init(void)
 void
 emit_line(char *s)
 {
-	int len = (int) strlen(s);
+	int len, m;
 
-	// +2 for newline and nul chars
+	len = (int) strlen(s);
 
-	if (output_buffer_index + len + 2 > output_buffer_length) {
-		output_buffer_length += len + 10000;
-		output_buffer = realloc(output_buffer, output_buffer_length);
+	m = 1000 * ((output_buffer_index + len + 1) / 1000 + 1) // m is a multiple of 1000
+
+	if (m > output_buffer_length) {
+		output_buffer = realloc(output_buffer, m);
 		if (output_buffer == NULL)
 			exit(1);
+		output_buffer_length = m;
 	}
 
 	strcpy(output_buffer + output_buffer_index, s);
@@ -36,26 +38,24 @@ emit_line(char *s)
 void
 emit_line_center(char *s)
 {
-	int i, len, m;
+	int i, len, m, n = 0;
 
 	len = (int) strlen(s);
 
-	m = (80 - len) / 2;
+	if (len < 80)
+		n = (80 - len) / 2;
 
-	if (m < 0)
-		m = 0;
+	m = 1000 * ((output_buffer_index + n + len + 1) / 1000 + 1); // m is a multiple of 1000
 
-	if (output_buffer_index + m + len + 2 > output_buffer_length) {
-		output_buffer_length += len + 10000;
-		output_buffer = realloc(output_buffer, output_buffer_length);
+	if (m > output_buffer_length) {
+		output_buffer = realloc(output_buffer, m);
 		if (output_buffer == NULL)
 			exit(1);
+		output_buffer_length = m;
 	}
 
-	for (i = 0; i < m; i++)
-		output_buffer[output_buffer_index + i] = ' ';
-
-	output_buffer_index += m;
+	for (i = 0; i < n; i++)
+		output_buffer[output_buffer_index++] = ' ';
 
 	strcpy(output_buffer + output_buffer_index, s);
 	output_buffer_index += len;
