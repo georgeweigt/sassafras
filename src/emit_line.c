@@ -23,7 +23,7 @@ emit_line(char *s)
 
 	// Then m == 2000 hence there is always room for the terminator '\0'
 
-	m = 1000 * ((output_buffer_index + len + 1) / 1000 + 1) // m is a multiple of 1000
+	m = 1000 * ((output_buffer_index + len + 1) / 1000 + 1); // m is a multiple of 1000
 
 	if (m > output_buffer_length) {
 		output_buffer = realloc(output_buffer, m);
