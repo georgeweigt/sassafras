@@ -19,6 +19,10 @@ emit_line(char *s)
 
 	len = (int) strlen(s);
 
+	// Let output_buffer_index + len + 1 == 1000 (added 1 for newline)
+
+	// Then m == 2000 hence there is always room for the terminator '\0'
+
 	m = 1000 * ((output_buffer_index + len + 1) / 1000 + 1) // m is a multiple of 1000
 
 	if (m > output_buffer_length) {
@@ -44,6 +48,10 @@ emit_line_center(char *s)
 
 	if (len < 80)
 		n = (80 - len) / 2;
+
+	// Let output_buffer_index + n + len + 1 == 1000 (added 1 for newline)
+
+	// Then m == 2000 hence there is always room for the terminator '\0'
 
 	m = 1000 * ((output_buffer_index + n + len + 1) / 1000 + 1); // m is a multiple of 1000
 
