@@ -1,3 +1,5 @@
+[Sassafras Home Page](https://georgeweigt.github.io/sassafras/index.html)
+
 To build and run
 
 ```
