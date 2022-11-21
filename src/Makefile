@@ -1,14 +1,11 @@
 .PHONY: clean
 
-CC = gcc
-CFLAGS = -Wall -O0
+sassafras: defs.h prototypes.h *.c
+	gcc -Wall -O0 -o sassafras *.c -lm
 
-objs := $(shell ls *.c | sed "s/\.c/\.o/g;s/emit_line\.o//")
-
-sassafras: $(objs)
-	gcc -o sassafras $(objs) -lm
-
-$(objs): defs.h prototypes.h
+prototypes.h: *.c
+	make -s -C ../tools make-prototypes
+	../tools/make-prototypes ./ > prototypes.h
 
 clean:
-	rm -f *.o sassafras
+	rm -f sassafras
