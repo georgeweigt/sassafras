@@ -40,10 +40,10 @@ parse_proc_means_stmt(void)
 			parse_maxdec_option();
 			break;
 		case KCLM:
-			if (nstat + 2 > MAXSTAT)
+			if (nstats + 2 > MAXSTAT)
 				stop("Too many statistics keywords");
-			stat[nstat++] = KCLM1;
-			stat[nstat++] = KCLM2;
+			stats[nstats++] = KCLM1;
+			stats[nstats++] = KCLM2;
 			break;
 		case KLCLM:
 		case KMAX:
@@ -57,9 +57,9 @@ parse_proc_means_stmt(void)
 		case KSTDMEAN:
 		case KUCLM:
 		case KVAR:
-			if (nstat == MAXSTAT)
+			if (nstats == MAXSTAT)
 				stop("Too many statistics keywords");
-			stat[nstat++] = token;
+			stats[nstats++] = token;
 			break;
 		default:
 			expected("proc means option");
@@ -112,16 +112,16 @@ run_proc_means(void)
 
 	// default statistics
 
-	if (nstat == 0) {
-		nstat = 5;
-		stat[0] = KN;
-		stat[1] = KMEAN;
-		stat[2] = KSTD;
-		stat[3] = KMIN;
-		stat[4] = KMAX;
+	if (nstats == 0) {
+		nstats = 5;
+		stats[0] = KN;
+		stats[1] = KMEAN;
+		stats[2] = KSTD;
+		stats[3] = KMIN;
+		stats[4] = KMAX;
 	}
 
-	ncol = nclass + nstat + 1;
+	ncol = nclass + nstats + 1;
 
 	nrow = nvar;
 
@@ -151,8 +151,8 @@ run_proc_means(void)
 
 	// statistic names
 
-	for (i = 0; i < nstat; i++) {
-		switch (stat[i]) {
+	for (i = 0; i < nstats; i++) {
+		switch (stats[i]) {
 		case KCLM1:
 			snprintf(buf, sizeof buf, "%g%% CLM MIN", 100 * (1 - alpha));
 			t = buf;
@@ -387,9 +387,9 @@ h(int varnum)
 	t1 = qt(1 - alpha, n - 1.0);
 	t2 = qt(1 - alpha / 2, n - 1.0);
 
-	for (i = 0; i < nstat; i++) {
+	for (i = 0; i < nstats; i++) {
 		w = maxdec;
-		switch (stat[i]) {
+		switch (stats[i]) {
 		case KCLM1:
 			x = mean - t2 * stderror;
 			break;

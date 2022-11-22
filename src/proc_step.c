@@ -5,7 +5,7 @@ proc_step(void)
 {
 	nby = 0;
 	nvar = 0;
-	nstat = 0;
+	nstats = 0;
 	nclass = 0;
 
 	maxdec = 3;
