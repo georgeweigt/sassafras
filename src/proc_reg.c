@@ -10,42 +10,37 @@ static int xtab[MAXVAR];
 static int num_y;
 static int ytab[MAXVAR];
 
-static void parse_proc_reg_stmt(void);
-static void parse_proc_reg_body(void);
-static void parse_model_stmt(void);
-static void parse_model_options(void);
-
 void
 proc_reg(void)
 {
 	num_x = 0;
 	num_y = 0;
 
-	parse_proc_reg_stmt();
+	proc_reg_parse_stmt();
 
 	if (dataset == NULL)
 		stop("No data set");
 
-	parse_proc_reg_body();
+	proc_reg_parse_body();
 
-	regress();
+	proc_reg_regress();
 
 	print_title();
 
 	emit_line_center("Analysis of Variance");
 	emit_line("");
 
-	print_anova_table();
-	print_diag_table();
+	proc_reg_print_anova_table();
+	proc_reg_print_diag_table();
 
 	emit_line_center("Parameter Estimates");
 	emit_line("");
 
-	print_parameter_estimates();
+	proc_reg_print_parameter_estimates();
 }
 
-static void
-parse_proc_reg_stmt(void)
+void
+proc_reg_parse_stmt(void)
 {
 	for (;;) {
 		scan();
@@ -66,8 +61,8 @@ parse_proc_reg_stmt(void)
 	}
 }
 
-static void
-parse_proc_reg_body(void)
+void
+proc_reg_parse_body(void)
 {
 	for (;;) {
 		keyword();
@@ -78,7 +73,7 @@ parse_proc_reg_body(void)
 		case KRUN:
 			return;
 		case KMODEL:
-			parse_model_stmt();
+			proc_reg_parse_model_stmt();
 			break;
 		default:
 			parse_default();
@@ -87,8 +82,8 @@ parse_proc_reg_body(void)
 	}
 }
 
-static void
-parse_model_stmt(void)
+void
+proc_reg_parse_model_stmt(void)
 {
 	int i;
 
@@ -145,13 +140,13 @@ parse_model_stmt(void)
 	}
 
 	if (token == '/')
-		parse_model_options();
+		proc_reg_parse_model_options();
 
 	scan(); // eat the semicolon
 }
 
-static void
-parse_model_options(void)
+void
+proc_reg_parse_model_options(void)
 {
 	for (;;) {
 
@@ -176,21 +171,15 @@ parse_model_options(void)
 
 static int nrow;
 static int ncol;
-
 static int npar;
-
 static double ybar;
-
 static double ssr;
 static double sse;
 static double sst; 
-
 static double msr;
 static double mse;
-
 static double fval;
 static double pval;
-
 static double rsquare; // aka coefficient of determination
 static double adjrsq; // see KNNL p. 226
 static double rootmse;
@@ -198,9 +187,7 @@ static double cv;
 static int dfm; // degrees of freedom model
 static int dfe; // degrees of freedom error
 static int dft; // degrees of freedom total
-
 static int *Z;
-
 static double *B;
 static double *Y;
 static double *SE;
@@ -220,7 +207,7 @@ static double *_X_;
 // X is the design matrix
 
 void
-compute_X(void)
+proc_reg_compute_X(void)
 {
 	int i, j, k, l, m, n, x, y;
 	double v;
@@ -286,7 +273,7 @@ compute_X(void)
 // T = X^T * X
 
 void
-compute_T(void)
+proc_reg_compute_T(void)
 {
 	int i, j, k, l, m;
 	double t;
@@ -313,7 +300,7 @@ compute_T(void)
 // T is clobbered
 
 int
-compute_G(void)
+proc_reg_compute_G(void)
 {
 	int d, i, j, k;
 	double m, max, min, t;
@@ -408,8 +395,8 @@ compute_G(void)
 
 // B = G * X^T * Y
 
-static void
-compute_B(void)
+void
+proc_reg_compute_B(void)
 {
 	int i, j, l;
 	double t;
@@ -440,7 +427,7 @@ compute_B(void)
 // mse = sse / (nrow - npar)
 
 void
-compute_mse(void)
+proc_reg_compute_mse(void)
 {
 	int i, j, k;
 	double yhat;
@@ -489,7 +476,7 @@ compute_mse(void)
 // C = mse * G
 
 void
-compute_C(void)
+proc_reg_compute_C(void)
 {
 	int i, j;
 	for (i = 0; i < npar; i++)
@@ -500,7 +487,7 @@ compute_C(void)
 // SE[i] = sqrt(C[i][i])
 
 void
-compute_SE(void)
+proc_reg_compute_SE(void)
 {
 	int i;
 	for (i = 0; i < npar; i++)
@@ -508,7 +495,7 @@ compute_SE(void)
 }
 
 void
-compute_TVAL(void)
+proc_reg_compute_TVAL(void)
 {
 	int i;
 	for (i = 0; i < npar; i++)
@@ -516,7 +503,7 @@ compute_TVAL(void)
 }
 
 void
-compute_PVAL(void)
+proc_reg_compute_PVAL(void)
 {
 	int i, n;
 	n = nrow - npar;
@@ -525,7 +512,7 @@ compute_PVAL(void)
 }
 
 void
-print_B(void)
+proc_reg_print_B(void)
 {
 	int i;
 	printf("B =\n");
@@ -534,7 +521,7 @@ print_B(void)
 }
 
 void
-print_X(void)
+proc_reg_print_X(void)
 {
 	int i, j;
 	printf("X =\n");
@@ -546,7 +533,7 @@ print_X(void)
 }
 
 void
-print_T(void)
+proc_reg_print_T(void)
 {
 	int i, j;
 	printf("T =\n");
@@ -558,7 +545,7 @@ print_T(void)
 }
 
 void
-print_G(void)
+proc_reg_print_G(void)
 {
 	int i, j;
 	printf("G =\n");
@@ -570,7 +557,7 @@ print_G(void)
 }
 
 void
-print_Z(void)
+proc_reg_print_Z(void)
 {
 	int i;
 	printf("Z =\n");
@@ -579,7 +566,7 @@ print_Z(void)
 }
 
 void
-regress(void)
+proc_reg_regress(void)
 {
 	int i, x;
 
@@ -624,26 +611,26 @@ regress(void)
 	_T_ = xmalloc(ncol * ncol * sizeof (double));
 	_X_ = xmalloc(nrow * ncol * sizeof (double));
 
-	compute_X();
+	proc_reg_compute_X();
 
 	npar = ncol;
 
 	for (i = 0; i < ncol; i++)
 		Z[i] = 0;
 
-	compute_T();
+	proc_reg_compute_T();
 
 	// if singular then put in columns one by one
 
-	if (compute_G() == -1) {
+	if (proc_reg_compute_G() == -1) {
 		npar = 0;
 		for (i = 0; i < ncol; i++)
 			Z[i] = 1;
 		for (i = 0; i < ncol; i++) {
 			npar++;
 			Z[i] = 0;
-			compute_T();
-			if (compute_G() == -1) {
+			proc_reg_compute_T();
+			if (proc_reg_compute_G() == -1) {
 				npar--;
 				Z[i] = 1;
 			}
@@ -652,8 +639,8 @@ regress(void)
 		// did last column get zapped?
 
 		if (Z[ncol - 1]) {
-			compute_T();
-			compute_G();
+			proc_reg_compute_T();
+			proc_reg_compute_G();
 		}
 	}
 
@@ -664,23 +651,23 @@ regress(void)
 		stop(errbuf);
 	}
 
-	compute_B();
+	proc_reg_compute_B();
 
-	compute_mse();
+	proc_reg_compute_mse();
 
-	compute_C();
+	proc_reg_compute_C();
 
-	compute_SE();
+	proc_reg_compute_SE();
 
-	compute_TVAL();
+	proc_reg_compute_TVAL();
 
-	compute_PVAL();
+	proc_reg_compute_PVAL();
 }
 
 #define A(i, j) (a + 5 * (i))[j]
 
 void
-print_parameter_estimates(void)
+proc_reg_print_parameter_estimates(void)
 {
 	int i, j, k, m, n, x;
 	char buf[100];
@@ -761,7 +748,7 @@ print_parameter_estimates(void)
 #define A(i, j) (a + 6 * (i))[j]
 
 void
-print_anova_table(void)
+proc_reg_print_anova_table(void)
 {
 	int i, j;
 	char **a, buf[100];
@@ -843,7 +830,7 @@ print_anova_table(void)
 }
 
 void
-print_diag_table(void)
+proc_reg_print_diag_table(void)
 {
 	char *a[3][4], buf[100];
 

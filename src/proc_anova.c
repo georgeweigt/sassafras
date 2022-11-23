@@ -84,47 +84,21 @@ static double dfe;
 #define T(i, j) (TT + (i) * ncol)[j]
 #define X(i, j) (XX + (i) * ncol)[j]
 
-static void parse_proc_anova_stmt(void);
-static void parse_proc_anova_body(void);
-static void parse_model_stmt(void);
-static void parse_model_options(void);
-static void parse_explanatory_variable(void);
-static void regression(void);
-static int get_var_index(void);
-static void add_interaction(int);
-static void create_interaction_level_names(int);
-static void add_factorial(int);
-static void add_nested(int);
-static void prelim(void);
-static int a_compute_G(void);
-static void fit(void);
-static void fit1(int, int);
-static void compute_B(void);
-static void compute_Yhat(void);
-static void compute_ss(void);
-static void model(void);
-static void compute_means(int x);
-static void print_means(int x);
-static void parse_means_stmt(void);
-static void parse_means_item(void);
-static void print_lsd(int);
-static void print_ttest(int);
-
 void
 proc_anova(void)
 {
 	nx = 0;
 
-	parse_proc_anova_stmt();
+	proc_anova_parse_stmt();
 
 	if (dataset == NULL)
 		stop("No data set");
 
-	parse_proc_anova_body();
+	proc_anova_parse_body();
 }
 
-static void
-parse_proc_anova_stmt(void)
+void
+proc_anova_parse_stmt(void)
 {
 	for (;;) {
 		scan();
@@ -142,8 +116,8 @@ parse_proc_anova_stmt(void)
 	}
 }
 
-static void
-parse_proc_anova_body(void)
+void
+proc_anova_parse_body(void)
 {
 	for (;;) {
 		keyword();
@@ -157,11 +131,11 @@ parse_proc_anova_body(void)
 			parse_class_stmt();
 			break;
 		case KMEANS:
-			parse_means_stmt();
+			proc_anova_parse_means_stmt();
 			break;
 		case KMODEL:
-			parse_model_stmt();
-			model();
+			proc_anova_parse_model_stmt();
+			proc_anova_model();
 			break;
 		default:
 			parse_default();
@@ -170,8 +144,8 @@ parse_proc_anova_body(void)
 	}
 }
 
-static void
-parse_means_stmt(void)
+void
+proc_anova_parse_means_stmt(void)
 {
 	int i, lsd, n, ttest, x;
 	char *s;
@@ -188,7 +162,7 @@ parse_means_stmt(void)
 		if (token == ';' || token == '/')
 			break;
 
-		parse_means_item();
+		proc_anova_parse_means_item();
 
 		for (i = 0; i < dataset->nvar; i++) {
 			s = dataset->spec[i].name;
@@ -237,12 +211,12 @@ parse_means_stmt(void)
 
 	for (i = 0; i < n; i++) {
 		x = item[i];
-		compute_means(x);
-		print_means(x);
+		proc_anova_compute_means(x);
+		proc_anova_print_means(x);
 		if (lsd)
-			print_lsd(x);
+			proc_anova_print_lsd(x);
 		if (ttest)
-			print_ttest(x);
+			proc_anova_print_ttest(x);
 	}
 }
 
@@ -250,8 +224,8 @@ parse_means_stmt(void)
 
 // Returns token in buf[]
 
-static void
-parse_means_item(void)
+void
+proc_anova_parse_means_item(void)
 {
 	if (token != NAME)
 		expected("variable name");
@@ -275,8 +249,8 @@ parse_means_item(void)
 	}
 }
 
-static void
-parse_model_stmt(void)
+void
+proc_anova_parse_model_stmt(void)
 {
 	int i;
 
@@ -318,17 +292,17 @@ parse_model_stmt(void)
 		if (token != NAME)
 			expected("variable name");
 
-		parse_explanatory_variable();
+		proc_anova_parse_explanatory_variable();
 	}
 
 	if (token == '/')
-		parse_model_options();
+		proc_anova_parse_model_options();
 
 	scan(); // eat the semicolon
 }
 
-static void
-parse_model_options(void)
+void
+proc_anova_parse_model_options(void)
 {
 	for (;;) {
 
@@ -359,12 +333,12 @@ parse_model_options(void)
 //
 // 5.	name(name name ...)
 
-static void
-parse_explanatory_variable(void)
+void
+proc_anova_parse_explanatory_variable(void)
 {
 	int n = 1;
 
-	xx[0] = get_var_index();
+	xx[0] = proc_anova_get_var_index();
 
 	scan();
 
@@ -378,10 +352,10 @@ parse_explanatory_variable(void)
 				expected("variable name");
 			if (n == MAXVAR)
 				stop("Too many interaction terms");
-			xx[n++] = get_var_index();
+			xx[n++] = proc_anova_get_var_index();
 			scan();
 		} while (token == '*');
-		add_interaction(n);
+		proc_anova_add_interaction(n);
 		break;
 
 	case '|': // name | name ...
@@ -392,10 +366,10 @@ parse_explanatory_variable(void)
 				expected("variable name");
 			if (n == MAXVAR)
 				stop("Too many interaction terms");
-			xx[n++] = get_var_index();
+			xx[n++] = proc_anova_get_var_index();
 			scan();
 		} while (token == '|');
-		add_factorial(n);
+		proc_anova_add_factorial(n);
 		break;
 
 	case '(': // name(name name ...)
@@ -404,13 +378,13 @@ parse_explanatory_variable(void)
 		while (token == NAME) {
 			if (n == MAXVAR)
 				stop("Too many interaction terms");
-			xx[n++] = get_var_index();
+			xx[n++] = proc_anova_get_var_index();
 			scan();
 		};
 		if (token != ')')
 			expected("right parenthesis ')'");
 		scan();
-		add_nested(n);
+		proc_anova_add_nested(n);
 		break;
 
 	default:
@@ -421,8 +395,8 @@ parse_explanatory_variable(void)
 	}
 }
 
-static int
-get_var_index(void)
+int
+proc_anova_get_var_index(void)
 {
 	int i, n;
 	n = dataset->nvar;
@@ -442,8 +416,8 @@ get_var_index(void)
 
 // There are n interaction names in xx[]
 
-static void
-add_interaction(int n)
+void
+proc_anova_add_interaction(int n)
 {
 	int i, j, k, len, m, x;
 	char *name, *s;
@@ -498,7 +472,7 @@ add_interaction(int n)
 		dataset->spec[m].num_levels = k;
 		dataset->spec[m].v = (double *) xmalloc(dataset->max * sizeof (double));
 
-		create_interaction_level_names(n);
+		proc_anova_create_interaction_level_names(n);
 
 		// data values
 
@@ -526,8 +500,8 @@ add_interaction(int n)
 
 // Create interaction level names for product of n terms
 
-static void
-create_interaction_level_names(int n)
+void
+proc_anova_create_interaction_level_names(int n)
 {
 	int i, j, k, len, m, x;
 	char *name, *s;
@@ -574,20 +548,20 @@ create_interaction_level_names(int n)
 	}
 }
 
-static void
-add_factorial(int n)
+void
+proc_anova_add_factorial(int n)
 {
 }
 
-static void
-add_nested(int n)
+void
+proc_anova_add_nested(int n)
 {
 }
 
-static void
-model(void)
+void
+proc_anova_model(void)
 {
-	regression();
+	proc_anova_regression();
 
 	print_title();
 
@@ -606,12 +580,12 @@ model(void)
 	print_anova_table_part3();
 }
 
-static void
-regression(void)
+void
+proc_anova_regression(void)
 {
-	prelim();
+	proc_anova_prelim();
 
-	fit();
+	proc_anova_fit();
 
 	dfe = nobs - npar;
 
@@ -632,8 +606,8 @@ regression(void)
 	cv = 100 * rootmse / ybar;
 }
 
-static void
-prelim(void)
+void
+proc_anova_prelim(void)
 {
 	int i, j, k, x;
 
@@ -711,8 +685,8 @@ prelim(void)
 		css += (Y[i] - ybar) * (Y[i] - ybar);
 }
 
-static void
-fit(void)
+void
+proc_anova_fit(void)
 {
 	int i, j, n, x;
 
@@ -729,13 +703,13 @@ fit(void)
 		x = xtab[i];
 		n = dataset->spec[x].num_levels;
 		for (j = 0; j < n; j++)
-			fit1(x, j); // fit next column
+			proc_anova_fit1(x, j); // fit next column
 		df[i] = npar;
 		if (gstate == -1)
-			a_compute_G();
-		compute_B();
-		compute_Yhat();
-		compute_ss();
+			proc_anova_compute_G();
+		proc_anova_compute_B();
+		proc_anova_compute_Yhat();
+		proc_anova_compute_ss();
 		ss[i] = ssr;
 	}
 
@@ -749,8 +723,8 @@ fit(void)
 	df[0]--; // subtract 1 for intercept
 }
 
-static void
-fit1(int x, int level)
+void
+proc_anova_fit1(int x, int level)
 {
 	int i, k = 0;
 
@@ -762,14 +736,14 @@ fit1(int x, int level)
 
 	npar++;
 
-	gstate = a_compute_G();
+	gstate = proc_anova_compute_G();
 
 	if (gstate == -1)
 		npar--; // X'X is singular hence remove column
 }
 
-static int
-a_compute_G(void)
+int
+proc_anova_compute_G(void)
 {
 	int d, i, j, k;
 	double m, max, min, t;
@@ -876,8 +850,8 @@ a_compute_G(void)
 
 // B = G * X^T * Y
 
-static void
-compute_B(void)
+void
+proc_anova_compute_B(void)
 {
 	int i, j;
 	double t;
@@ -899,8 +873,8 @@ compute_B(void)
 
 // Yhat = X * B
 
-static void
-compute_Yhat(void)
+void
+proc_anova_compute_Yhat(void)
 {
 	int i, j;
 	double t;
@@ -913,8 +887,8 @@ compute_Yhat(void)
 	}
 }
 
-static void
-compute_ss(void)
+void
+proc_anova_compute_ss(void)
 {
 	int i;
 
@@ -926,34 +900,6 @@ compute_ss(void)
 		sse += (Y[i] - Yhat[i]) * (Y[i] - Yhat[i]);
 	}
 }
-
-#if 0
-
-static void
-print_T(void)
-{
-	int i, j;
-	printf("T =\n");
-	for (i = 0; i < npar; i++) {
-		for (j = 0; j < npar; j++)
-			printf(" %g", X(i, j));
-		printf("\n");
-	}
-}
-
-static void
-print_X(void)
-{
-	int i, j;
-	printf("X =\n");
-	for (i = 0; i < nobs; i++) {
-		for (j = 0; j < npar; j++)
-			printf(" %g", X(i, j));
-		printf("\n");
-	}
-}
-
-#endif
 
 #undef A
 #define A(i, j) (a + 6 * (i))[j]
@@ -1147,8 +1093,8 @@ print_anova_table_part3(void)
 	print_table_and_free(a, nx + 1, 6, buf);
 }
 
-static void
-compute_means(int x)
+void
+proc_anova_compute_means(int x)
 {
 	int i, level, n;
 	double t, y;
@@ -1182,8 +1128,8 @@ compute_means(int x)
 #undef A
 #define A(i, j) (a + (5 + m) * (i))[j]
 
-static void
-print_means(int x)
+void
+proc_anova_print_means(int x)
 {
 	int i, j, m, n;
 	double q, t;
@@ -1287,8 +1233,8 @@ print_means(int x)
 #undef A
 #define A(i, j) (a + ncol * (i))[j]
 
-static void
-print_lsd(int x)
+void
+proc_anova_print_lsd(int x)
 {
 	int i, j, k, n, ncol, nrow;
 	char **a, *s;
@@ -1403,8 +1349,8 @@ print_lsd(int x)
 	print_table_and_free(a, nrow, ncol, buf);
 }
 
-static void
-print_ttest(int x)
+void
+proc_anova_print_ttest(int x)
 {
 	int dfe, i, j, k, n, ncol, nrow;
 	char **a, *s;
