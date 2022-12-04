@@ -1,6 +1,7 @@
 .PHONY: clean
 
 sassafras: *.h *.c
+	make prototypes.h
 	gcc -Wall -O0 -o sassafras *.c -lm
 
 prototypes.h: *.c
