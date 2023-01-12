@@ -4065,13 +4065,13 @@ proc_reg_compute_mse(void)
 
 	fval = msr / mse;
 
-	pval = 1 - fdist(fval, dfm, dfe);
+	pval = 1.0 - fdist(fval, dfm, dfe);
 
-	rsquare = 1 - sse / sst;
+	rsquare = 1.0 - sse / sst;
 
-	adjrsq = 1 - dft / dfe * sse / sst;
+	adjrsq = 1.0 - dft / dfe * sse / sst;
 
-	cv = 100 * rootmse / ybar;
+	cv = 100.0 * rootmse / ybar;
 }
 
 // C = mse * G
