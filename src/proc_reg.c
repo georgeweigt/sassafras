@@ -184,7 +184,7 @@ proc_reg_compute_X(void)
 			continue;
 
 		Y[l] = v;
-		
+
 		if (noint)
 			m = 0;
 		else {

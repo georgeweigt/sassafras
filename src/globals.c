@@ -39,7 +39,7 @@ double rsquare;
 double ss[MAXVAR];
 double sse;
 double ssr;
-double sst; 
+double sst;
 double token_num;
 double variance[MAXLVL];
 double ybar;

@@ -87,7 +87,7 @@ parse_proc_means_body(void)
 			break;
 		}
 	}
-}	
+}
 
 #define A(i, j) (a + (i) * ncol)[j]
 

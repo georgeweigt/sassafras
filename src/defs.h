@@ -139,7 +139,7 @@ extern double rsquare;
 extern double ss[MAXVAR];
 extern double sse;
 extern double ssr;
-extern double sst; 
+extern double sst;
 extern double token_num;
 extern double variance[MAXLVL];
 extern double ybar;
