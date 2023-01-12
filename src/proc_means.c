@@ -1,9 +1,7 @@
-#include "defs.h"
-
-static char **a;
-static char tblfmt[MAXVAR + MAXSTAT + 1];
-static int row, nrow, ncol;
-static int filter[MAXVAR];
+char **a;
+char tblfmt[MAXVAR + MAXSTAT + 1];
+int row;
+int filtertab[MAXVAR];
 
 void
 proc_means(void)
@@ -248,7 +246,7 @@ f(int k)
 	// for each level...
 
 	for (i = 0; i < n; i++) {
-		filter[k] = i;
+		filtertab[k] = i;
 		f(k + 1);
 	}
 }
@@ -269,7 +267,7 @@ g(void)
 		if (i == 0)
 			for (j = 0; j < nclass; j++) {
 				varnum = class[j];
-				level = filter[j];
+				level = filtertab[j];
 				A(row, j) = strdup(dataset->spec[varnum].ltab[level]);
 			}
 		else
@@ -287,18 +285,6 @@ g(void)
 		row++;
 	}
 }
-
-static char *fmt[9] = {
-	"%0.0f",
-	"%0.1f",
-	"%0.2f",
-	"%0.3f",
-	"%0.4f",
-	"%0.5f",
-	"%0.6f",
-	"%0.7f",
-	"%0.8f",
-};
 
 // one row of statistics for varnum
 
@@ -329,7 +315,7 @@ h(int varnum)
 
 		for (j = 0; j < nclass; j++) {
 			k = class[j];
-			if (dataset->spec[k].v[i] != filter[j])
+			if (dataset->spec[k].v[i] != filtertab[j])
 				break;
 		}
 
@@ -444,3 +430,5 @@ h(int varnum)
 		}
 	}
 }
+
+#undef A

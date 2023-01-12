@@ -1,17 +1,3 @@
-#include "defs.h"
-
-static char *fmt[9] = {
-	"%0.0f",
-	"%0.1f",
-	"%0.2f",
-	"%0.3f",
-	"%0.4f",
-	"%0.5f",
-	"%0.6f",
-	"%0.7f",
-	"%0.8f",
-};
-
 void
 proc_print(void)
 {
@@ -67,8 +53,6 @@ parse_proc_print_body(void)
 }
 
 #define A(i, j) (a + (i) * (nvar + 1))[j]
-
-static char buf[100];
 
 void
 run_proc_print(void)
@@ -157,3 +141,5 @@ run_proc_print(void)
 
 	free(a);
 }
+
+#undef A

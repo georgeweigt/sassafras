@@ -1,6 +1,4 @@
-#include "defs.h"
-
-static char lbuf[100]; // level name buffer
+char lbuf[100]; // level name buffer
 
 int nbytecode;
 unsigned char bytecode[10000];
@@ -11,15 +9,13 @@ int tos;
 
 // dd is the head of the linked list of datsets
 
-static struct dataset *dd;
+struct dataset *dd;
 
-static char *inb;
-static char buf[10000];
-static char filename[1000];
-static char delim[100];
-static int ctrl;
-static int firstobs;
-FILE *infile;
+char *inb;
+char filename[1000];
+char delim[100];
+int ctrl;
+int firstobs;
 
 enum {
 	SCAN_NUM,

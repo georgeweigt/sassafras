@@ -1,5 +1,3 @@
-#include "defs.h"
-
 //	B	Regression coefficients
 //
 //	css	Corrected sum of squares
@@ -39,46 +37,6 @@
 //	Yhat	Predicted response X * B
 //
 //	ybar	Mean of response variable Y
-
-static double *B;
-static int df[MAXVAR];
-static double *GG;
-static int kk[MAXVAR];
-int *miss;
-static int ncol;
-static int nobs;
-static int npar;
-static int nx;
-static double *TT;
-static double *XX;
-static int xx[MAXVAR];
-static int xtab[MAXVAR];
-static double *Y;
-static double ybar;
-static int yvar;
-static int gstate;
-static double *Yhat;
-static double css;
-static double ssr;
-static double sse;
-static double ss[MAXVAR];
-static double msr;
-static double mse;
-static double rootmse;
-static double fval;
-static double pval;
-static double rsquare;
-static double adjrsq;
-static double cv;
-static char buf[1000];
-static int nmiss;
-#define MAXLVL 100
-static double mean[MAXLVL];
-static double variance[MAXLVL];
-static int count[MAXLVL];
-#define MAXITEM 100
-static int item[MAXITEM];
-static double dfe;
 
 #define G(i, j) (GG + (i) * ncol)[j]
 #define T(i, j) (TT + (i) * ncol)[j]
@@ -901,7 +859,6 @@ proc_anova_compute_ss(void)
 	}
 }
 
-#undef A
 #define A(i, j) (a + 6 * (i))[j]
 
 void
@@ -1472,3 +1429,8 @@ proc_anova_print_ttest(int x)
 
 	print_table_and_free(a, nrow, ncol, buf);
 }
+
+#undef G
+#undef T
+#undef X
+#undef A

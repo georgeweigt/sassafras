@@ -24,8 +24,6 @@
  */
 
 
-#include <math.h>
-
 #define STOP 1.0e-8
 #define TINY 1.0e-30
 

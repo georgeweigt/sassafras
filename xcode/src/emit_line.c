@@ -1,4 +1,5 @@
 #include "defs.h"
+#include "prototypes.h"
 
 char *output_buffer;
 int output_buffer_index;

@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-
 char *
 read_text_file(char *filename)
 {

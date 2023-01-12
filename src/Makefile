@@ -1,9 +1,7 @@
-.PHONY: clean
+.PHONY: clean sync
 
-# specify prototypes.h in case the file is missing
-
-sassafras: prototypes.h *.h *.c
-	gcc -Wall -O0 -o sassafras *.c -lm
+sassafras: defs.h prototypes.h *.c
+	gcc -Wall -O0 -o sassafras -include defs.h -include prototypes.h *.c -lm
 
 prototypes.h: *.c
 	make -s -C ../tools make-prototypes
@@ -11,3 +9,13 @@ prototypes.h: *.c
 
 clean:
 	rm -f sassafras
+
+# sed removes main.c
+
+files := $(shell ls *.c | sed "s/main\.c//")
+
+sync:
+	cp defs.h ../xcode/src
+	cat defs.h prototypes.h $(files) > ../xcode/src/sassafras.c
+	make -s -C ../tools make-prototypes
+	../tools/make-prototypes ../xcode/src > ../xcode/src/prototypes.h

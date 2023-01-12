@@ -1,5 +1,3 @@
-#include "defs.h"
-
 void
 parse_comment_stmt(void)
 {

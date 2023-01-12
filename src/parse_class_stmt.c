@@ -1,5 +1,3 @@
-#include "defs.h"
-
 void
 parse_class_stmt(void)
 {

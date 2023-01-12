@@ -1,5 +1,3 @@
-#include "defs.h"
-
 #define A(i, j) (a + (i) * ncol)[j]
 
 void
@@ -144,3 +142,5 @@ print_title(void)
 	if (title || title1 || title2 || title3)
 		emit_line("");
 }
+
+#undef A

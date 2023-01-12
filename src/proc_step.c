@@ -1,5 +1,3 @@
-#include "defs.h"
-
 void
 proc_step(void)
 {

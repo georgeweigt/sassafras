@@ -1,5 +1,3 @@
-#include "defs.h"
-
 // t-distribution cdf, like pt() in R, used for computing p-values
 
 double

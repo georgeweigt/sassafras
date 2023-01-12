@@ -1,15 +1,3 @@
-#include "defs.h"
-
-static int noint;
-
-// explanatory variables from the MODEL statement
-static int num_x;
-static int xtab[MAXVAR];
-
-// response variables from the MODEL statement
-static int num_y;
-static int ytab[MAXVAR];
-
 void
 proc_reg(void)
 {
@@ -168,36 +156,6 @@ proc_reg_parse_model_options(void)
 		}
 	}
 }
-
-static int nrow;
-static int ncol;
-static int npar;
-static double ybar;
-static double ssr;
-static double sse;
-static double sst; 
-static double msr;
-static double mse;
-static double fval;
-static double pval;
-static double rsquare; // aka coefficient of determination
-static double adjrsq; // see KNNL p. 226
-static double rootmse;
-static double cv;
-static int dfm; // degrees of freedom model
-static int dfe; // degrees of freedom error
-static int dft; // degrees of freedom total
-static int *Z;
-static double *B;
-static double *Y;
-static double *SE;
-static double *TVAL;
-static double *PVAL;
-
-static double *_C_;
-static double *_G_;
-static double *_T_;
-static double *_X_;
 
 #define C(i, j) (_C_ + (i) * ncol)[j]
 #define G(i, j) (_G_ + (i) * ncol)[j]
@@ -468,7 +426,7 @@ proc_reg_compute_mse(void)
 
 	rsquare = 1 - sse / sst;
 
-	adjrsq = 1 - (double) dft / dfe * sse / sst;
+	adjrsq = 1 - dft / dfe * sse / sst;
 
 	cv = 100 * rootmse / ybar;
 }
@@ -768,7 +726,7 @@ proc_reg_print_anova_table(void)
 
 	A(1, 0) = strdup("Model");
 
-	snprintf(buf, sizeof buf, "%d", dfm);
+	snprintf(buf, sizeof buf, "%d", (int) dfm);
 	A(1, 1) = strdup(buf);
 
 	snprintf(buf, sizeof buf, "%0.5f", ssr);
@@ -787,7 +745,7 @@ proc_reg_print_anova_table(void)
 
 	A(2, 0) = strdup("Error");
 
-	snprintf(buf, sizeof buf, "%d", dfe);
+	snprintf(buf, sizeof buf, "%d", (int) dfe);
 	A(2, 1) = strdup(buf);
 
 	snprintf(buf, sizeof buf, "%0.5f", sse);
@@ -803,7 +761,7 @@ proc_reg_print_anova_table(void)
 
 	A(3, 0) = strdup("Total");
 
-	snprintf(buf, sizeof buf, "%d", dft);
+	snprintf(buf, sizeof buf, "%d", (int) dft);
 	A(3, 1) = strdup(buf);
 
 	snprintf(buf, sizeof buf, "%0.5f", sst);
@@ -873,3 +831,9 @@ proc_reg_print_diag_table(void)
 	free(a[0][3]);
 	free(a[1][3]);
 }
+
+#undef C
+#undef G
+#undef T
+#undef X
+#undef A

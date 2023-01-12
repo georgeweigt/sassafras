@@ -1,7 +1,4 @@
-#include "defs.h"
-
-char *pgm;
-static jmp_buf jmpbuf;
+jmp_buf jmpbuf;
 
 void
 run(char *s)

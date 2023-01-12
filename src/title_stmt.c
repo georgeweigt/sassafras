@@ -1,5 +1,3 @@
-#include "defs.h"
-
 void
 title_stmt(void)
 {

@@ -5,7 +5,6 @@
 To build and run
 
 ```
-cd src
 make
 ./sassafras filename
 ```
@@ -13,7 +12,7 @@ make
 For example
 
 ```
-./sassafras ../demos/corrosion-demo
+./sassafras demos/corrosion-demo
 ```
 
 Result
