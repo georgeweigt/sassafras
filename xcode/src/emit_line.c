@@ -1,9 +1,11 @@
-#include "defs.h"
-#include "prototypes.h"
+#include <stdlib.h>
+#include <string.h>
 
 char *output_buffer;
 int output_buffer_index;
 int output_buffer_length;
+
+void emit_line(char *);
 
 void
 emit_line_init(void)
