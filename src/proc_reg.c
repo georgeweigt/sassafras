@@ -157,10 +157,10 @@ proc_reg_parse_model_options(void)
 	}
 }
 
-#define C(i, j) (_C_ + (i) * ncol)[j]
-#define G(i, j) (_G_ + (i) * ncol)[j]
-#define T(i, j) (_T_ + (i) * ncol)[j]
-#define X(i, j) (_X_ + (i) * ncol)[j]
+#define C(i, j) (CC + (i) * ncol)[j]
+#define G(i, j) (GG + (i) * ncol)[j]
+#define T(i, j) (TT + (i) * ncol)[j]
+#define X(i, j) (XX + (i) * ncol)[j]
 
 // X is the design matrix
 
@@ -551,10 +551,10 @@ proc_reg_regress(void)
 	FREE(SE)
 	FREE(TVAL)
 	FREE(PVAL)
-	FREE(_C_)
-	FREE(_G_)
-	FREE(_T_)
-	FREE(_X_)
+	FREE(CC)
+	FREE(GG)
+	FREE(TT)
+	FREE(XX)
 
 	Z = xmalloc(ncol * sizeof (int));
 
@@ -564,10 +564,10 @@ proc_reg_regress(void)
 	TVAL = xmalloc(ncol * sizeof (double));
 	PVAL = xmalloc(ncol * sizeof (double));
 
-	_C_ = xmalloc(ncol * ncol * sizeof (double));
-	_G_ = xmalloc(ncol * ncol * sizeof (double));
-	_T_ = xmalloc(ncol * ncol * sizeof (double));
-	_X_ = xmalloc(nrow * ncol * sizeof (double));
+	CC = xmalloc(ncol * ncol * sizeof (double));
+	GG = xmalloc(ncol * ncol * sizeof (double));
+	TT = xmalloc(ncol * ncol * sizeof (double));
+	XX = xmalloc(nrow * ncol * sizeof (double));
 
 	proc_reg_compute_X();
 
