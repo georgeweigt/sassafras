@@ -23,7 +23,6 @@
 		7F3601FB1799109900F32846 /* Sassafras.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sassafras.entitlements; sourceTree = "<group>"; };
 		7F3E14E027F7BFA300619DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7F46CBA7297045C80015101B /* sassafras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sassafras.c; sourceTree = "<group>"; };
-		7F46CBAC297047170015101B /* prototypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prototypes.h; sourceTree = "<group>"; };
 		7F9230AF292C3FFD006BD739 /* emit_line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emit_line.c; sourceTree = "<group>"; };
 		7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sassafras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -94,7 +93,6 @@
 				7F12AD0C292D3A2F0066FC62 /* demo.c */,
 				7FB8D975292C49DB0071FC7C /* Info.plist */,
 				7F9230AF292C3FFD006BD739 /* emit_line.c */,
-				7F46CBAC297047170015101B /* prototypes.h */,
 				7FEAE87528A7351400D1E42D /* Sassafras.help */,
 				7FF96C1E28A68AE80067B495 /* Images.xcassets */,
 				7F3601FB1799109900F32846 /* Sassafras.entitlements */,
