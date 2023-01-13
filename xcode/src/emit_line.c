@@ -11,7 +11,10 @@ void
 emit_line_init(void)
 {
 	output_buffer_index = 0;
-	emit_line(""); // make realloc happen if first time
+	// do the following so output_buffer is not null
+	// otherwise initWithCString crashes in SassafrasAppDelegate.m
+	emit_line("");
+	//erase newline
 	output_buffer_index = 0;
 }
 
