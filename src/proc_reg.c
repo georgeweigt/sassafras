@@ -1,3 +1,55 @@
+//	B	Regression coefficients
+//
+//	G	Inverse of X'X
+//
+//	T	Temporary matrix
+//
+//	X	Design matrix
+//
+//	Y	Response vector
+//
+//
+//
+//	alpha	Level of significance
+//
+//	css	Corrected sum of squares (same as sst)
+//
+//	df	Degrees of freedom
+//
+//	dfe	Degrees of freedom error
+//
+//	dfm	Degrees of freedom model
+//
+//	dft	Degrees of freedom total
+//
+//	fval	Summary F-statistic
+//
+//	mse	Mean square error (estimate of model variance)
+//
+//	msr	Mean square regression
+//
+//	pval	p-value for F-statistic
+//
+//	ss	Sequential sum of squares (Type I)
+//
+//	ssr	Sum of squares regression
+//
+//	sse	Sum of squares error
+//
+//	sst	Sum of squares total
+//
+//	ybar	Mean of response variable Y
+//
+//
+//
+//	adjrsq	Adjusted R-squared
+//
+//	cv	Coefficient of variation
+//
+//	rsquare	R-squared
+//
+//	rootmse	Square root of MSE
+
 void
 proc_reg(void)
 {
