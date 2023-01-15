@@ -87,6 +87,7 @@ void proc_reg_compute_X(void);
 void proc_reg_compute_T(void);
 int proc_reg_compute_G(void);
 void proc_reg_compute_B(void);
+void proc_reg_compute_Yhat(void);
 void proc_reg_compute_mse(void);
 void proc_reg_compute_C(void);
 void proc_reg_compute_SE(void);

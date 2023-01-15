@@ -260,6 +260,7 @@ void proc_reg_compute_X(void);
 void proc_reg_compute_T(void);
 int proc_reg_compute_G(void);
 void proc_reg_compute_B(void);
+void proc_reg_compute_Yhat(void);
 void proc_reg_compute_mse(void);
 void proc_reg_compute_C(void);
 void proc_reg_compute_SE(void);
@@ -3688,6 +3689,8 @@ run_proc_print(void)
 //
 //	Y	Response vector
 //
+//	Yhat	Predicted response X * B
+//
 //
 //
 //	alpha	Level of significance
@@ -3712,9 +3715,9 @@ run_proc_print(void)
 //
 //	ss	Sequential sum of squares (Type I)
 //
-//	ssr	Sum of squares regression
-//
 //	sse	Sum of squares error
+//
+//	ssr	Sum of squares regression
 //
 //	sst	Sum of squares total
 //
@@ -4110,17 +4113,28 @@ proc_reg_compute_B(void)
 	}
 }
 
-// E = Y - X * B
+// Yhat = X * B
 
-// sse = E^T * E
-
-// mse = sse / (nrow - npar)
+void
+proc_reg_compute_Yhat(void)
+{
+	int i, j, k;
+	double yhat;
+	for (i = 0; i < nrow; i++) {
+		yhat = 0;
+		k = 0;
+		for (j = 0; j < ncol; j++)
+			if (Z[j] == 0) // if not zapped
+				yhat += X(i, j) * B[k++];
+		Yhat[i] = yhat;
+	}
+}
 
 void
 proc_reg_compute_mse(void)
 {
-	int i, j, k;
-	double yhat;
+	int i;
+	double d;
 
 	dfm = npar - 1;
 	dfe = nrow - npar;
@@ -4136,14 +4150,15 @@ proc_reg_compute_mse(void)
 	sst = 0;
 
 	for (i = 0; i < nrow; i++) {
-		k = 0;
-		yhat = 0;
-		for (j = 0; j < ncol; j++)
-			if (Z[j] == 0)
-				yhat += X(i, j) * B[k++];
-		ssr += (yhat - ybar) * (yhat - ybar);
-		sse += (Y[i] - yhat) * (Y[i] - yhat);
-		sst += (Y[i] - ybar) * (Y[i] - ybar);
+
+		d = Yhat[i] - ybar;
+		ssr += d * d;
+
+		d = Y[i] - Yhat[i];
+		sse += d * d;
+
+		d = Y[i] - ybar;
+		sst += d * d;
 	}
 
 	mse = sse / dfe;
@@ -4279,6 +4294,7 @@ proc_reg_regress(void)
 
 	FREE(Z)
 	FREE(Y)
+	FREE(Yhat)
 	FREE(B)
 	FREE(SE)
 	FREE(TVAL)
@@ -4291,6 +4307,7 @@ proc_reg_regress(void)
 	Z = xmalloc(ncol * sizeof (int));
 
 	Y = xmalloc(nrow * sizeof (double));
+	Yhat = xmalloc(nrow * sizeof (double));
 	B = xmalloc(ncol * sizeof (double));
 	SE = xmalloc(ncol * sizeof (double));
 	TVAL = xmalloc(ncol * sizeof (double));
@@ -4342,6 +4359,8 @@ proc_reg_regress(void)
 	}
 
 	proc_reg_compute_B();
+
+	proc_reg_compute_Yhat();
 
 	proc_reg_compute_mse();
 
