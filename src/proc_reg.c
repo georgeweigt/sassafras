@@ -17,7 +17,7 @@
 //
 //	Yhat [nrow]	Predicted response X * B
 //
-//	Z [ncol]	Zapped columns due to singularity
+//	Z [ncol]	Zapped columns to make X'X nonsingular
 //
 //
 //	alpha	Level of significance
