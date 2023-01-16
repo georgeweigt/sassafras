@@ -3679,18 +3679,26 @@ run_proc_print(void)
 }
 
 #undef A
-//	B	Regression coefficients
+//	ncol	Number explanatory variables
 //
-//	G	Inverse of X'X
+//	nrow	Number of observations
 //
-//	T	Temporary matrix
 //
-//	X	Design matrix
+//	B [ncol]	Regression coefficients
 //
-//	Y	Response vector
+//	C [ncol][ncol]	Coefficient matrix
 //
-//	Yhat	Predicted response X * B
+//	G [ncol][ncol]	Inverse of X'X
 //
+//	T [ncol][ncol]	Temporary matrix
+//
+//	X [nrow][ncol]	Design matrix
+//
+//	Y [nrow]	Response vector
+//
+//	Yhat [nrow]	Predicted response X * B
+//
+//	Z [ncol]	Zapped columns due to singularity
 //
 //
 //	alpha	Level of significance
@@ -3722,7 +3730,6 @@ run_proc_print(void)
 //	sst	Sum of squares total
 //
 //	ybar	Mean of response variable Y
-//
 //
 //
 //	adjrsq	Adjusted R-squared
