@@ -81,7 +81,7 @@ parse_data_body(void)
 		case KRUN:
 			if (*filename == 0)
 				expected("infile or datalines");
-			read_file();
+			read_data_file();
 			return;
 		case KDATALINES:
 			if (*filename)
@@ -102,7 +102,7 @@ parse_data_body(void)
 }
 
 void
-read_file(void)
+read_data_file(void)
 {
 	infile = fopen(filename, "r");
 

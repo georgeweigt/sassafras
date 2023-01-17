@@ -166,7 +166,7 @@ extern int yvar;
 extern struct dataset *dataset;
 void data_step(void);
 void parse_data_body(void);
-void read_file(void);
+void read_data_file(void);
 void input_stmt(void);
 void parse_data_stmt(void);
 void infile_stmt(void);
@@ -193,7 +193,7 @@ void emit_variable(void);
 void emit_number(void);
 void catvar(int x, int obs);
 double incbeta(double a, double b, double x);
-int main(int argc, char **argv);
+int main(int argc, char *argv[]);
 void emit_line_init(void);
 void emit_line(char *s);
 void emit_line_center(char *s);
@@ -269,7 +269,7 @@ void proc_reg_print_parameter_estimates(void);
 void proc_reg_print_anova_table(void);
 void proc_reg_print_diag_table(void);
 void proc_step(void);
-char * read_text_file(char *filename);
+char * read_file(char *filename);
 void run(char *s);
 void run_nib(char *s);
 void parse_default(void);
@@ -462,7 +462,7 @@ parse_data_body(void)
 		case KRUN:
 			if (*filename == 0)
 				expected("infile or datalines");
-			read_file();
+			read_data_file();
 			return;
 		case KDATALINES:
 			if (*filename)
@@ -483,7 +483,7 @@ parse_data_body(void)
 }
 
 void
-read_file(void)
+read_data_file(void)
 {
 	infile = fopen(filename, "r");
 
@@ -4582,10 +4582,11 @@ proc_step(void)
 	}
 }
 char *
-read_text_file(char *filename)
+read_file(char *filename)
 {
 	int fd, n;
 	char *buf;
+	off_t t;
 
 	fd = open(filename, O_RDONLY);
 
@@ -4594,21 +4595,32 @@ read_text_file(char *filename)
 		exit(1);
 	}
 
-	n = lseek(fd, 0, SEEK_END);
+	t = lseek(fd, 0, SEEK_END);
 
-	if (n < 0)
-		exit(1);
+	if (t < 0 || t > 0x1000000) { // 16 MB max
+		close(fd);
+		return NULL;
+	}
 
-	if (lseek(fd, 0, SEEK_SET))
-		exit(1);
+	n = (int) t;
+
+	if (lseek(fd, 0, SEEK_SET)) {
+		close(fd);
+		return NULL;
+	}
 
 	buf = malloc(n + 1);
 
-	if (buf == NULL)
-		exit(1);
+	if (buf == NULL) {
+		close(fd);
+		return NULL;
+	}
 
-	if (read(fd, buf, n) != n)
-		exit(1);
+	if (read(fd, buf, n) != n) {
+		free(buf);
+		close(fd);
+		return NULL;
+	}
 
 	close(fd);
 

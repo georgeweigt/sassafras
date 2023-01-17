@@ -1,14 +1,19 @@
 int
-main(int argc, char **argv)
+main(int argc, char *argv[])
 {
 	char *s;
 
 	if (argc < 2) {
-		fprintf(stderr, "usage: sassafras filename\n");
-		return 0;
+		printf("usage: sassafras filename\n");
+		exit(1);
 	}
 
-	s = read_text_file(argv[1]);
+	s = read_file(argv[1]);
+
+	if (s == NULL) {
+		printf("error reading file %s\n", argv[1]);
+		exit(1);
+	}
 
 	run(s);
 
