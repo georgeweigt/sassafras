@@ -35,7 +35,7 @@ check(char *filename)
 	static char buf[1000];
 	s = strchr(filename, '.');
 	*s = '\0';
-	sprintf(buf, "../sassafras %s.in | diff - %s.out", filename, filename);
+	sprintf(buf, "../src/sassafras %s.in | diff - %s.out", filename, filename);
 	printf("%s\n", buf);
 	return system(buf) != 0;
 }

@@ -5,15 +5,10 @@
 #include <setjmp.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-#define __USE_ISOC99
 #include <math.h>
-#ifndef NAN
-#define NAN nan("0")
-#endif
 
 #define STRBUFLEN 1000
-#define ERRBUFLEN 1000
+#define ERRBUFLEN 2000
 
 #define MAXVAR 100
 #define MAXSTAT 12
