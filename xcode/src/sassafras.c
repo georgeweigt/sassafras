@@ -4590,10 +4590,8 @@ read_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 
-	if (fd == -1) {
-		fprintf(stderr, "cannot open %s\n", filename);
-		exit(1);
-	}
+	if (fd < 0)
+		return NULL;
 
 	t = lseek(fd, 0, SEEK_END);
 

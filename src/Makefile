@@ -8,7 +8,7 @@ prototypes.h: *.c
 	../tools/make-prototypes . > prototypes.h
 
 clean:
-	rm -f sassafras
+	rm -f sassafras prototypes.h
 
 # sed removes main.c
 
