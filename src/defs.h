@@ -16,8 +16,6 @@
 #define MAXLVL 100
 #define MAXITEM 100
 
-#define FREE(x) if (x) { free(x); x = NULL; }
-
 struct dataset {
 	struct dataset *next;
 	char *name;

@@ -112,6 +112,7 @@ void parse_data_option(void);
 void parse_maxdec_option(void);
 void * xmalloc(int size);
 void * xrealloc(void *p, int size);
+void xfree(void *p);
 void print_pgm(void);
 void stop(char *s);
 void expected(char *s);

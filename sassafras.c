@@ -16,8 +16,6 @@
 #define MAXLVL 100
 #define MAXITEM 100
 
-#define FREE(x) if (x) { free(x); x = NULL; }
-
 struct dataset {
 	struct dataset *next;
 	char *name;
@@ -280,6 +278,7 @@ void parse_data_option(void);
 void parse_maxdec_option(void);
 void * xmalloc(int size);
 void * xrealloc(void *p, int size);
+void xfree(void *p);
 void print_pgm(void);
 void stop(char *s);
 void expected(char *s);
@@ -2230,13 +2229,13 @@ proc_anova_prelim(void)
 {
 	int i, j, k, x;
 
-	FREE(miss)
-	FREE(B)
-	FREE(GG)
-	FREE(TT)
-	FREE(XX)
-	FREE(Y)
-	FREE(Yhat)
+	xfree(miss);
+	xfree(B);
+	xfree(GG);
+	xfree(TT);
+	xfree(XX);
+	xfree(Y);
+	xfree(Yhat);
 
 	// missing data
 
@@ -3674,7 +3673,7 @@ run_proc_print(void)
 }
 
 #undef A
-//	ncol	Number explanatory variables
+//	ncol	Number explanatory variables (including intercept)
 //
 //	nrow	Number of observations
 //
@@ -4294,17 +4293,17 @@ proc_reg_regress(void)
 			ncol += dataset->spec[x].num_levels;
 	}
 
-	FREE(Z)
-	FREE(Y)
-	FREE(Yhat)
-	FREE(B)
-	FREE(SE)
-	FREE(TVAL)
-	FREE(PVAL)
-	FREE(CC)
-	FREE(GG)
-	FREE(TT)
-	FREE(XX)
+	xfree(Z);
+	xfree(Y);
+	xfree(Yhat);
+	xfree(B);
+	xfree(SE);
+	xfree(TVAL);
+	xfree(PVAL);
+	xfree(CC);
+	xfree(GG);
+	xfree(TT);
+	xfree(XX);
 
 	Z = xmalloc(ncol * sizeof (int));
 
@@ -4680,10 +4679,10 @@ run(char *s)
 
 	free_datasets();
 
-	FREE(title)
-	FREE(title1)
-	FREE(title2)
-	FREE(title3)
+	xfree(title);
+	xfree(title1);
+	xfree(title2);
+	xfree(title3);
 }
 
 void
@@ -4816,6 +4815,13 @@ xrealloc(void *p, int size)
 	if (p == NULL)
 		exit(1);
 	return p;
+}
+
+void
+xfree(void *p)
+{
+	if (p)
+		free(p);
 }
 
 void

@@ -1,4 +1,4 @@
-//	ncol	Number explanatory variables
+//	ncol	Number explanatory variables (including intercept)
 //
 //	nrow	Number of observations
 //
@@ -618,17 +618,17 @@ proc_reg_regress(void)
 			ncol += dataset->spec[x].num_levels;
 	}
 
-	FREE(Z)
-	FREE(Y)
-	FREE(Yhat)
-	FREE(B)
-	FREE(SE)
-	FREE(TVAL)
-	FREE(PVAL)
-	FREE(CC)
-	FREE(GG)
-	FREE(TT)
-	FREE(XX)
+	xfree(Z);
+	xfree(Y);
+	xfree(Yhat);
+	xfree(B);
+	xfree(SE);
+	xfree(TVAL);
+	xfree(PVAL);
+	xfree(CC);
+	xfree(GG);
+	xfree(TT);
+	xfree(XX);
 
 	Z = xmalloc(ncol * sizeof (int));
 

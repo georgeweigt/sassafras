@@ -569,13 +569,13 @@ proc_anova_prelim(void)
 {
 	int i, j, k, x;
 
-	FREE(miss)
-	FREE(B)
-	FREE(GG)
-	FREE(TT)
-	FREE(XX)
-	FREE(Y)
-	FREE(Yhat)
+	xfree(miss);
+	xfree(B);
+	xfree(GG);
+	xfree(TT);
+	xfree(XX);
+	xfree(Y);
+	xfree(Yhat);
 
 	// missing data
 

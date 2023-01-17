@@ -19,10 +19,10 @@ run(char *s)
 
 	free_datasets();
 
-	FREE(title)
-	FREE(title1)
-	FREE(title2)
-	FREE(title3)
+	xfree(title);
+	xfree(title1);
+	xfree(title2);
+	xfree(title3);
 }
 
 void
@@ -155,6 +155,13 @@ xrealloc(void *p, int size)
 	if (p == NULL)
 		exit(1);
 	return p;
+}
+
+void
+xfree(void *p)
+{
+	if (p)
+		free(p);
 }
 
 void
