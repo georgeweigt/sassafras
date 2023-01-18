@@ -41,7 +41,8 @@ extern void run(char *);
 -(IBAction)openDocument:(id)sender {
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     [panel beginWithCompletionHandler:^(NSInteger result){
-        if (result == NSFileHandlingPanelOKButton) {
+//        if (result == NSFileHandlingPanelOKButton) { [DEPRECATED]
+        if (result == NSModalResponseOK) {
             NSURL *url = [[panel URLs] objectAtIndex:0];
             NSString *s = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
             [self->_userProgram setString:s];
@@ -72,7 +73,8 @@ extern void run(char *);
     [panel setCanSelectHiddenExtension:YES];
     [panel setTreatsFilePackagesAsDirectories:YES];
     [panel beginSheetModalForWindow:[_userProgram window] completionHandler:^(NSInteger result) {
-        if (result == NSFileHandlingPanelOKButton) {
+//        if (result == NSFileHandlingPanelOKButton) { [DEPRECATED]
+        if (result == NSModalResponseOK) {
             NSURL *url = [panel URL];
             NSString *s = [self->_userProgram string];
             [s writeToURL:url atomically:NO encoding:NSUTF8StringEncoding error:nil];
