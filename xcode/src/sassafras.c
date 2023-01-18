@@ -3625,6 +3625,8 @@ run_proc_print(void)
 #undef A
 //	ncol	Number explanatory variables (including intercept)
 //
+//	npar	Number of model parameters (may be less than ncol)
+//
 //	nrow	Number of observations
 //
 //
@@ -3640,7 +3642,7 @@ run_proc_print(void)
 //
 //	Yhat [nrow]	Predicted response X * B
 //
-//	Z [ncol]	Zapped column indicator (to make X'X nonsingular)
+//	Z [ncol]	Zapped column indicator (to make X'X invertible)
 //
 //
 //	alpha	Level of significance
