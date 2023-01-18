@@ -9,7 +9,7 @@
 //
 //	G [ncol][ncol]	Inverse of X'X
 //
-//	T [ncol][ncol]	Temporary matrix
+//	T [ncol][ncol]	X'X
 //
 //	X [nrow][ncol]	Design matrix
 //
@@ -17,7 +17,7 @@
 //
 //	Yhat [nrow]	Predicted response X * B
 //
-//	Z [ncol]	Zapped columns to make X'X nonsingular
+//	Z [ncol]	Zapped column indicator (to make X'X nonsingular)
 //
 //
 //	alpha	Level of significance
