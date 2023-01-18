@@ -10,7 +10,6 @@ char buf[10000];
 char errbuf[ERRBUFLEN];
 char strbuf[STRBUFLEN];
 double *B;
-double *CC;
 double *GG;
 double *PVAL;
 double *SE;

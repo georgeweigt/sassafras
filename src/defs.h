@@ -103,7 +103,6 @@ extern char buf[10000];
 extern char errbuf[ERRBUFLEN];
 extern char strbuf[STRBUFLEN];
 extern double *B;
-extern double *CC;
 extern double *GG;
 extern double *PVAL;
 extern double *SE;
