@@ -249,22 +249,16 @@ void proc_reg_parse_stmt(void);
 void proc_reg_parse_body(void);
 void proc_reg_parse_model_stmt(void);
 void proc_reg_parse_model_options(void);
+void proc_reg_regress(void);
 void proc_reg_compute_X(void);
 void proc_reg_compute_T(void);
 int proc_reg_compute_G(void);
 void proc_reg_compute_B(void);
 void proc_reg_compute_Yhat(void);
 void proc_reg_compute_mse(void);
-void proc_reg_compute_C(void);
 void proc_reg_compute_SE(void);
 void proc_reg_compute_TVAL(void);
 void proc_reg_compute_PVAL(void);
-void proc_reg_print_B(void);
-void proc_reg_print_X(void);
-void proc_reg_print_T(void);
-void proc_reg_print_G(void);
-void proc_reg_print_Z(void);
-void proc_reg_regress(void);
 void proc_reg_print_parameter_estimates(void);
 void proc_reg_print_anova_table(void);
 void proc_reg_print_diag_table(void);
@@ -3638,8 +3632,6 @@ run_proc_print(void)
 //
 //	B [ncol]	Regression coefficients
 //
-//	C [ncol][ncol]	Coefficient matrix
-//
 //	G [ncol][ncol]	Inverse of X'X
 //
 //	T [ncol][ncol]	X'X
@@ -3851,10 +3843,106 @@ proc_reg_parse_model_options(void)
 	}
 }
 
-#define C(i, j) (CC + (i) * ncol)[j]
 #define G(i, j) (GG + (i) * ncol)[j]
 #define T(i, j) (TT + (i) * ncol)[j]
 #define X(i, j) (XX + (i) * ncol)[j]
+
+void
+proc_reg_regress(void)
+{
+	int i, x;
+
+	nrow = dataset->nobs;
+
+	// determine the number of design matrix columns
+
+	if (noint)
+		ncol = 0;
+	else
+		ncol = 1;
+
+	for (i = 0; i < num_x; i++) {
+		x = xtab[i];
+		if (dataset->spec[x].ltab == NULL)
+			ncol++;
+		else
+			ncol += dataset->spec[x].num_levels;
+	}
+
+	xfree(Z);
+	xfree(Y);
+	xfree(Yhat);
+	xfree(B);
+	xfree(SE);
+	xfree(TVAL);
+	xfree(PVAL);
+	xfree(GG);
+	xfree(TT);
+	xfree(XX);
+
+	Z = xmalloc(ncol * sizeof (int));
+	Y = xmalloc(nrow * sizeof (double));
+	Yhat = xmalloc(nrow * sizeof (double));
+	B = xmalloc(ncol * sizeof (double));
+	SE = xmalloc(ncol * sizeof (double));
+	TVAL = xmalloc(ncol * sizeof (double));
+	PVAL = xmalloc(ncol * sizeof (double));
+	GG = xmalloc(ncol * ncol * sizeof (double));
+	TT = xmalloc(ncol * ncol * sizeof (double));
+	XX = xmalloc(nrow * ncol * sizeof (double));
+
+	proc_reg_compute_X();
+
+	npar = ncol;
+
+	for (i = 0; i < ncol; i++)
+		Z[i] = 0;
+
+	proc_reg_compute_T();
+
+	// if singular then put in columns one by one
+
+	if (proc_reg_compute_G() == -1) {
+		npar = 0;
+		for (i = 0; i < ncol; i++)
+			Z[i] = 1;
+		for (i = 0; i < ncol; i++) {
+			npar++;
+			Z[i] = 0;
+			proc_reg_compute_T();
+			if (proc_reg_compute_G() == -1) {
+				npar--;
+				Z[i] = 1;
+			}
+		}
+
+		// did last column get zapped?
+
+		if (Z[ncol - 1]) {
+			proc_reg_compute_T();
+			proc_reg_compute_G();
+		}
+	}
+
+	// sanity check
+
+	if (npar < 1 || npar >= nrow) {
+		snprintf(errbuf, ERRBUFLEN, "Regression model kaput, p = %d, n = %d, must have 0 < p < n", npar, nrow);
+		stop(errbuf);
+	}
+
+	proc_reg_compute_B();
+
+	proc_reg_compute_Yhat();
+
+	proc_reg_compute_mse();
+
+	proc_reg_compute_SE();
+
+	proc_reg_compute_TVAL();
+
+	proc_reg_compute_PVAL();
+}
 
 // X is the design matrix
 
@@ -4137,25 +4225,14 @@ proc_reg_compute_mse(void)
 	cv = 100.0 * rootmse / ybar;
 }
 
-// C = mse * G
-
-void
-proc_reg_compute_C(void)
-{
-	int i, j;
-	for (i = 0; i < npar; i++)
-		for (j = 0; j < npar; j++)
-			C(i, j) = mse * G(i, j);
-}
-
-// SE[i] = sqrt(C[i][i])
+// SE[i] = sqrt(mse * G[i][i])
 
 void
 proc_reg_compute_SE(void)
 {
 	int i;
 	for (i = 0; i < npar; i++)
-		SE[i] = sqrt(C(i, i));
+		SE[i] = sqrt(mse * G(i, i));
 }
 
 void
@@ -4175,162 +4252,9 @@ proc_reg_compute_PVAL(void)
 		PVAL[i] = 2 * (1 - tdist(fabs(TVAL[i]), n));
 }
 
-void
-proc_reg_print_B(void)
-{
-	int i;
-	printf("B =\n");
-	for (i = 0; i < npar; i++)
-		printf("%20g\n", B[i]);
-}
-
-void
-proc_reg_print_X(void)
-{
-	int i, j;
-	printf("X =\n");
-	for (i = 0; i < nrow; i++) {
-		for (j = 0; j < ncol; j++)
-			printf("%20g", X(i, j));
-		printf("\n");
-	}
-}
-
-void
-proc_reg_print_T(void)
-{
-	int i, j;
-	printf("T =\n");
-	for (i = 0; i < npar; i++) {
-		for (j = 0; j < npar; j++)
-			printf("%20g", T(i, j));
-		printf("\n");
-	}
-}
-
-void
-proc_reg_print_G(void)
-{
-	int i, j;
-	printf("G =\n");
-	for (i = 0; i < npar; i++) {
-		for (j = 0; j < npar; j++)
-			printf("%20g", G(i, j));
-		printf("\n");
-	}
-}
-
-void
-proc_reg_print_Z(void)
-{
-	int i;
-	printf("Z =\n");
-	for (i = 0; i < ncol; i++)
-		printf("%20d\n", Z[i]);
-}
-
-void
-proc_reg_regress(void)
-{
-	int i, x;
-
-	nrow = dataset->nobs;
-
-	// determine the number of design matrix columns
-
-	if (noint)
-		ncol = 0;
-	else
-		ncol = 1;
-
-	for (i = 0; i < num_x; i++) {
-		x = xtab[i];
-		if (dataset->spec[x].ltab == NULL)
-			ncol++;
-		else
-			ncol += dataset->spec[x].num_levels;
-	}
-
-	xfree(Z);
-	xfree(Y);
-	xfree(Yhat);
-	xfree(B);
-	xfree(SE);
-	xfree(TVAL);
-	xfree(PVAL);
-	xfree(CC);
-	xfree(GG);
-	xfree(TT);
-	xfree(XX);
-
-	Z = xmalloc(ncol * sizeof (int));
-
-	Y = xmalloc(nrow * sizeof (double));
-	Yhat = xmalloc(nrow * sizeof (double));
-	B = xmalloc(ncol * sizeof (double));
-	SE = xmalloc(ncol * sizeof (double));
-	TVAL = xmalloc(ncol * sizeof (double));
-	PVAL = xmalloc(ncol * sizeof (double));
-
-	CC = xmalloc(ncol * ncol * sizeof (double));
-	GG = xmalloc(ncol * ncol * sizeof (double));
-	TT = xmalloc(ncol * ncol * sizeof (double));
-	XX = xmalloc(nrow * ncol * sizeof (double));
-
-	proc_reg_compute_X();
-
-	npar = ncol;
-
-	for (i = 0; i < ncol; i++)
-		Z[i] = 0;
-
-	proc_reg_compute_T();
-
-	// if singular then put in columns one by one
-
-	if (proc_reg_compute_G() == -1) {
-		npar = 0;
-		for (i = 0; i < ncol; i++)
-			Z[i] = 1;
-		for (i = 0; i < ncol; i++) {
-			npar++;
-			Z[i] = 0;
-			proc_reg_compute_T();
-			if (proc_reg_compute_G() == -1) {
-				npar--;
-				Z[i] = 1;
-			}
-		}
-
-		// did last column get zapped?
-
-		if (Z[ncol - 1]) {
-			proc_reg_compute_T();
-			proc_reg_compute_G();
-		}
-	}
-
-	// sanity check
-
-	if (npar < 1 || npar >= nrow) {
-		snprintf(errbuf, ERRBUFLEN, "Regression model kaput, p = %d, n = %d, must have 0 < p < n", npar, nrow);
-		stop(errbuf);
-	}
-
-	proc_reg_compute_B();
-
-	proc_reg_compute_Yhat();
-
-	proc_reg_compute_mse();
-
-	proc_reg_compute_C();
-
-	proc_reg_compute_SE();
-
-	proc_reg_compute_TVAL();
-
-	proc_reg_compute_PVAL();
-}
+#undef G
+#undef T
+#undef X
 
 #define A(i, j) (a + 5 * (i))[j]
 
@@ -4413,6 +4337,7 @@ proc_reg_print_parameter_estimates(void)
 }
 
 #undef A
+
 #define A(i, j) (a + 6 * (i))[j]
 
 void
@@ -4497,6 +4422,8 @@ proc_reg_print_anova_table(void)
 	free(a);
 }
 
+#undef A
+
 void
 proc_reg_print_diag_table(void)
 {
@@ -4541,12 +4468,6 @@ proc_reg_print_diag_table(void)
 	free(a[0][3]);
 	free(a[1][3]);
 }
-
-#undef C
-#undef G
-#undef T
-#undef X
-#undef A
 void
 proc_step(void)
 {
