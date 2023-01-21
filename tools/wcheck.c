@@ -57,12 +57,6 @@ check(char *buf)
 		}
 	}
 
-//	if (s && s > buf && s[-1] != '\'') {
-//		s++;
-//		while (*s && *s != '"')
-//			*s++ = '*';
-//	}
-
 	n = strlen(buf);
 
 	if (n < 1 || buf[n - 1] != '\n')
