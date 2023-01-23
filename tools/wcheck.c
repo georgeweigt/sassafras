@@ -32,8 +32,10 @@ main(int argc, char *argv[])
 
 		s = check(buf);
 
-		if (s)
+		if (s) {
 			printf("%s, line %d\n", s, line);
+			puts(buf);
+		}
 	}
 
 	fclose(f);
