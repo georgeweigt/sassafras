@@ -45,19 +45,6 @@ char *
 check(char *buf)
 {
 	int i, n;
-	char *s, *t;
-
-	// don't care about spaces in strings, redact them
-
-	s = strchr(buf, '"');
-
-	if (s) {
-		t = strchr(s + 1, '"');
-		if (t) {
-			n = (int) (t - s) - 1;
-			memset(s + 1, '*', n);
-		}
-	}
 
 	n = strlen(buf);
 
