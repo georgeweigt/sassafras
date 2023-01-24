@@ -196,6 +196,10 @@ int main(int argc, char *argv[]);
 void emit_line_init(void);
 void emit_line(char *s);
 void emit_line_center(char *s);
+void parse_default(void);
+void parse_alpha_option(void);
+void parse_data_option(void);
+void parse_maxdec_option(void);
 void parse_by_stmt(void);
 void parse_class_stmt(void);
 void parse_comment_stmt(void);
@@ -265,10 +269,6 @@ void proc_step(void);
 char * read_file(char *filename);
 void run(char *s);
 void run_nib(char *s);
-void parse_default(void);
-void parse_alpha_option(void);
-void parse_data_option(void);
-void parse_maxdec_option(void);
 void * xmalloc(int size);
 void * xrealloc(void *p, int size);
 void xfree(void *p);
@@ -1353,6 +1353,84 @@ incbeta(double a, double b, double x)
 }
 
 void
+parse_default(void)
+{
+	switch (token) {
+	case ';':
+		scan();
+		break;
+	case '*':
+		parse_comment_stmt();
+		break;
+	case KTITLE:
+		title_stmt();
+		break;
+	case KTITLE1:
+		title1_stmt();
+		break;
+	case KTITLE2:
+		title2_stmt();
+		break;
+	case KTITLE3:
+		title3_stmt();
+		break;
+	default:
+		stop("Unexpected token, did you mean proc?");
+	}
+}
+
+void
+parse_alpha_option(void)
+{
+	scan(); // skip alpha token
+
+	if (token != '=')
+		expected("equals sign");
+
+	scan(); // skip equals sign
+
+	if (token != NUMBER)
+		expected("number");
+
+	alpha = atof(strbuf);
+
+	if (alpha < 0 || alpha > 1)
+		expected("number between 0 and 1");
+}
+
+void
+parse_data_option(void)
+{
+	scan();
+	if (token != '=')
+		stop("'=' expected");
+	scan();
+	if (token != NAME)
+		stop("DATA=NAME expected");
+	select_dataset(strbuf);
+}
+
+void
+parse_maxdec_option(void)
+{
+	scan();
+	if (token != '=')
+		stop("'=' expected");
+
+	scan();
+	if (token != NUMBER)
+		stop("Number expected");
+
+	maxdec = (int) token_num;
+
+	if (maxdec < 0)
+		maxdec = 0;
+
+	if (maxdec > 8)
+		maxdec = 8;
+}
+
+void
 parse_by_stmt(void)
 {
 	int i;
@@ -1388,6 +1466,7 @@ parse_by_stmt(void)
 
 	scan(); // eat the semicolon
 }
+
 void
 parse_class_stmt(void)
 {
@@ -1424,6 +1503,7 @@ parse_class_stmt(void)
 
 	scan(); // eat the semicolon
 }
+
 void
 parse_comment_stmt(void)
 {
@@ -1431,6 +1511,7 @@ parse_comment_stmt(void)
 		inp++;
 	scan();
 }
+
 void
 parse_var_stmt(void)
 {
@@ -4608,84 +4689,6 @@ run_nib(char *s)
 			break;
 		}
 	}
-}
-
-void
-parse_default(void)
-{
-	switch (token) {
-	case ';':
-		scan();
-		break;
-	case '*':
-		parse_comment_stmt();
-		break;
-	case KTITLE:
-		title_stmt();
-		break;
-	case KTITLE1:
-		title1_stmt();
-		break;
-	case KTITLE2:
-		title2_stmt();
-		break;
-	case KTITLE3:
-		title3_stmt();
-		break;
-	default:
-		stop("Unexpected token, did you mean proc?");
-	}
-}
-
-void
-parse_alpha_option(void)
-{
-	scan(); // skip alpha token
-
-	if (token != '=')
-		expected("equals sign");
-
-	scan(); // skip equals sign
-
-	if (token != NUMBER)
-		expected("number");
-
-	alpha = atof(strbuf);
-
-	if (alpha < 0 || alpha > 1)
-		expected("number between 0 and 1");
-}
-
-void
-parse_data_option(void)
-{
-	scan();
-	if (token != '=')
-		stop("'=' expected");
-	scan();
-	if (token != NAME)
-		stop("DATA=NAME expected");
-	select_dataset(strbuf);
-}
-
-void
-parse_maxdec_option(void)
-{
-	scan();
-	if (token != '=')
-		stop("'=' expected");
-
-	scan();
-	if (token != NUMBER)
-		stop("Number expected");
-
-	maxdec = (int) token_num;
-
-	if (maxdec < 0)
-		maxdec = 0;
-
-	if (maxdec > 8)
-		maxdec = 8;
 }
 
 void *
