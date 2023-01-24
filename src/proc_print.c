@@ -92,9 +92,9 @@ run_proc_print(void)
 
 		// observation number
 
-		snprintf(buf, sizeof buf, "%d", i + 1);
+		snprintf(bigbuf, BIGBUFLEN, "%d", i + 1);
 
-		A(i + 1, 0) = strdup(buf);
+		A(i + 1, 0) = strdup(bigbuf);
 
 		// for each variable
 
@@ -109,8 +109,8 @@ run_proc_print(void)
 			else {
 				if (dataset->spec[x].ltab == NULL) {
 					w = dataset->spec[x].w;
-					snprintf(buf, sizeof buf, fmt[w], d);
-					s = buf;
+					snprintf(bigbuf, BIGBUFLEN, fmt[w], d);
+					s = bigbuf;
 				} else
 					s = dataset->spec[x].ltab[(int) d];
 			}

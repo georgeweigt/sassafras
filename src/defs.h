@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <math.h>
 
+#define BIGBUFLEN 4000
 #define STRBUFLEN 1000
 #define ERRBUFLEN 2000
 
@@ -99,7 +100,7 @@ extern char *title2;
 extern char *title3;
 extern char *title;
 extern char *token_str;
-extern char buf[10000];
+extern char bigbuf[BIGBUFLEN];
 extern char errbuf[ERRBUFLEN];
 extern char strbuf[STRBUFLEN];
 extern double *B;

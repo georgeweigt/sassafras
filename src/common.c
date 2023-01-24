@@ -6,7 +6,7 @@ char *title2;
 char *title3;
 char *title;
 char *token_str;
-char buf[10000];
+char bigbuf[BIGBUFLEN];
 char errbuf[ERRBUFLEN];
 char strbuf[STRBUFLEN];
 double *B;

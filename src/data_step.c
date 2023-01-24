@@ -439,13 +439,13 @@ getbuf(void)
 	do {
 		if (infile)
 			for (;;) {
-				inb = fgets(buf, sizeof buf, infile);
+				inb = fgets(bigbuf, BIGBUFLEN, infile);
 				if (inb == NULL || firstobs < 2)
 					break;
 				firstobs--;
 			}
 		else
-			inb = get_dataline(buf, sizeof buf);
+			inb = get_dataline(bigbuf, BIGBUFLEN);
 
 		if (inb == NULL)
 			return;
