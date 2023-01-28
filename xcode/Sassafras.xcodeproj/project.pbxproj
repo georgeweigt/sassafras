@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FB4A7BF1777E13A00E9D9D8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,11 +52,9 @@
 			isa = PBXGroup;
 			children = (
 				7FB4A7C41777E13A00E9D9D8 /* src */,
-				7FB4A7BD1777E13A00E9D9D8 /* Frameworks */,
 				7FB4A7BC1777E13A00E9D9D8 /* Products */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		7FB4A7BC1777E13A00E9D9D8 /* Products */ = {
 			isa = PBXGroup;
@@ -65,25 +62,6 @@
 				7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7FB4A7BD1777E13A00E9D9D8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */,
-				7FB4A7C01777E13A00E9D9D8 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7FB4A7C01777E13A00E9D9D8 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7FB4A7C11777E13A00E9D9D8 /* AppKit.framework */,
-				7FB4A7C21777E13A00E9D9D8 /* CoreData.framework */,
-				7FB4A7C31777E13A00E9D9D8 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		7FB4A7C41777E13A00E9D9D8 /* src */ = {
@@ -120,7 +98,7 @@
 			dependencies = (
 			);
 			name = Sassafras;
-			productName = Sassafras;
+			productName = sassafras;
 			productReference = 7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -130,24 +108,21 @@
 		7FB4A7B31777E13A00E9D9D8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = Sassafras;
 				LastUpgradeCheck = 1420;
-				ORGANIZATIONNAME = "George Weigt";
 				TargetAttributes = {
 					7FB4A7BA1777E13A00E9D9D8 = {
-						DevelopmentTeam = D273D35927;
+						CreatedOnToolsVersion = 12.4;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 7FB4A7B61777E13A00E9D9D8 /* Build configuration list for PBXProject "Sassafras" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				English,
 			);
 			mainGroup = 7FB4A7B21777E13A00E9D9D8;
 			productRefGroup = 7FB4A7BC1777E13A00E9D9D8 /* Products */;
@@ -301,7 +276,6 @@
 				DEVELOPMENT_TEAM = D273D35927;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = src/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
@@ -323,7 +297,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = src/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
