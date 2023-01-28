@@ -1,4 +1,5 @@
 *.swp
 *.tmp
+.DS_Store
 sassafras
 sassafras.c

@@ -12,7 +12,7 @@ int tos;
 struct dataset *dd;
 
 char *inb;
-char filename[1000];
+char dfilename[1000];
 char delim[100];
 int ctrl;
 int firstobs;
@@ -43,7 +43,7 @@ data_step(void)
 	ctrl = 0;
 	firstobs = 1;
 	nbytecode = 0;
-	*filename = 0;
+	*dfilename = 0;
 
 	strcpy(delim, "\t ,");
 
@@ -79,12 +79,12 @@ parse_data_body(void)
 		case KDATA:
 		case KPROC:
 		case KRUN:
-			if (*filename == 0)
+			if (*dfilename == 0)
 				expected("infile or datalines");
 			read_data_file();
 			return;
 		case KDATALINES:
-			if (*filename)
+			if (*dfilename)
 				stop("Datalines after infile?");
 			datalines_stmt();
 			return;
@@ -104,10 +104,10 @@ parse_data_body(void)
 void
 read_data_file(void)
 {
-	infile = fopen(filename, "r");
+	infile = fopen(dfilename, "r");
 
 	if (infile == NULL) {
-		snprintf(errbuf, ERRBUFLEN, "Cannot open %s", filename);
+		snprintf(errbuf, ERRBUFLEN, "Cannot open %s", dfilename);
 		stop(errbuf);
 	}
 
@@ -198,14 +198,14 @@ parse_data_stmt(void)
 void
 infile_stmt(void)
 {
-	if (filename[0])
+	if (dfilename[0])
 		stop("Multiple INFILE statements");
 
 	get_next_token();
 
 	switch (token) {
 	case STRING:
-		strcpy(filename, strbuf);
+		strcpy(dfilename, strbuf);
 		break;
 	case KCARDS:
 	case KDATALINES:
