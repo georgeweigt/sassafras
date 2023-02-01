@@ -10,7 +10,6 @@
 		7F12AD0D292D3A2F0066FC62 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F12AD0C292D3A2F0066FC62 /* demo.c */; };
 		7F46CBA8297045C80015101B /* sassafras.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F46CBA7297045C80015101B /* sassafras.c */; };
 		7F9230B0292C3FFE006BD739 /* emit_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F9230AF292C3FFD006BD739 /* emit_line.c */; };
-		7FB4A7BF1777E13A00E9D9D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */; };
 		7FB4A7CB1777E13A00E9D9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7CA1777E13A00E9D9D8 /* main.m */; };
 		7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */; };
 		7FB4A7D51777E13A00E9D9D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB4A7D31777E13A00E9D9D8 /* MainMenu.xib */; };
@@ -25,10 +24,6 @@
 		7F46CBA7297045C80015101B /* sassafras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sassafras.c; sourceTree = "<group>"; };
 		7F9230AF292C3FFD006BD739 /* emit_line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emit_line.c; sourceTree = "<group>"; };
 		7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sassafras.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FB4A7BE1777E13A00E9D9D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		7FB4A7C11777E13A00E9D9D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		7FB4A7C21777E13A00E9D9D8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7FB4A7C31777E13A00E9D9D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FB4A7CA1777E13A00E9D9D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SassafrasAppDelegate.h; sourceTree = "<group>"; };
 		7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SassafrasAppDelegate.m; sourceTree = "<group>"; };
@@ -276,6 +271,7 @@
 				DEVELOPMENT_TEAM = D273D35927;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = src/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
@@ -297,6 +293,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = src/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.04;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
