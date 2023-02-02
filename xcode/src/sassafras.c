@@ -3705,7 +3705,7 @@ run_proc_print(void)
 }
 
 #undef A
-//	ncol	Number explanatory variables (including intercept)
+//	ncol	Number of explanatory variables (including intercept)
 //
 //	npar	Number of model parameters (may be less than ncol)
 //
