@@ -1,18 +1,24 @@
-.PHONY: clean sync
+.PHONY: clean checkall sync
 
-sassafras: defs.h prototypes.h *.c
-	gcc -Wall -O0 -o sassafras -include defs.h -include prototypes.h *.c -lm
+CFILES := $(shell ls *.c)
 
-prototypes.h: *.c
+sassafras: defs.h prototypes.h $(CFILES)
+	gcc -Wall -O0 -o sassafras -include defs.h -include prototypes.h $(CFILES) -lm
+
+prototypes.h: $(CFILES)
 	make -s -C ../tools make-prototypes
 	../tools/make-prototypes . > prototypes.h
 
 clean:
 	rm -f sassafras prototypes.h
 
+checkall:
+	make -s -C ../tools wcheck
+	for FILE in $(CFILES); do ../tools/wcheck $$FILE; done
+
 # sed removes main.c
 
-files := $(shell ls *.c | sed "s/main\.c//")
+XFILES := $(shell ls *.c | sed "s/main\.c//")
 
 sync:
-	cat defs.h prototypes.h $(files) > ../xcode/src/sassafras.c
+	cat defs.h prototypes.h $(XFILES) > ../xcode/src/sassafras.c
