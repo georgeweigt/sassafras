@@ -9,6 +9,12 @@ make
 ./sassafras filename
 ```
 
+[aur.archlinux.org](https://aur.archlinux.org/packages/sassafras-git)
+
+```
+paru -S sassafras-git
+```
+
 For example
 
 ```
