@@ -1,4 +1,4 @@
-.PHONY: clean checkall sync
+.PHONY: clean checkall sync test
 
 CFILES := $(shell ls *.c)
 
@@ -22,3 +22,6 @@ XFILES := $(shell ls *.c | sed "s/main\.c//")
 
 sync:
 	cat defs.h prototypes.h $(XFILES) > ../xcode/src/sassafras.c
+
+test:
+	make -C ../test

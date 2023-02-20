@@ -1,7 +1,6 @@
-.PHONY: clean
+.PHONY: test
 
-selftest: selftest.c
-	gcc -Wall -O0 -o selftest selftest.c
+FILES := $(shell ls *.in | sed "s/\.in//")
 
-clean:
-	rm -f selftest
+test:
+	for FILE in $(FILES); do ../src/sassafras $$FILE.in | diff - $$FILE.out; done
