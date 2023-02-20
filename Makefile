@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean check
 
 CFILES := $(shell ls src/*.c)
 
@@ -10,3 +10,7 @@ sassafras.c: src/defs.h src/prototypes.h $(CFILES)
 
 clean:
 	rm -f sassafras sassafras.c
+
+check:
+	make -s -C tools wcheck
+	for FILE in src/*.c; do tools/wcheck $$FILE; done
