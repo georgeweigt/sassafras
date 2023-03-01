@@ -1352,7 +1352,6 @@ incbeta(double a, double b, double x)
 
 	return 1.0/0.0; /*Needed more loops, did not converge.*/
 }
-
 void
 parse_default(void)
 {
