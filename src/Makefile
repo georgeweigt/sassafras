@@ -1,4 +1,4 @@
-.PHONY: clean sync test
+.PHONY: clean sync check test
 
 CFILES := $(shell ls *.c)
 
@@ -17,7 +17,16 @@ clean:
 XFILES := $(shell ls *.c | sed "s/main\.c//")
 
 sync:
+	make -s
 	cat defs.h prototypes.h $(XFILES) > ../xcode/src/sassafras.c
 
+check:
+	make -s
+	make -s -C ../tools wcheck
+	for FILE in *.c; do ../tools/wcheck $$FILE; done
+
+TESTFILES := $(shell cd ../test; ls *.in | sed "s/\.in//")
+
 test:
-	make -C ../test
+	make -s
+	for FILE in $(TESTFILES); do echo $$FILE; cd ../test; ../src/sassafras $$FILE.in | diff - $$FILE.out; cd ../src; done

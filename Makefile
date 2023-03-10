@@ -1,4 +1,4 @@
-.PHONY: clean check
+.PHONY: clean test
 
 CFILES := $(shell ls src/*.c)
 
@@ -8,9 +8,14 @@ sassafras: sassafras.c
 sassafras.c: src/defs.h src/prototypes.h $(CFILES)
 	cat src/defs.h src/prototypes.h $(CFILES) > sassafras.c
 
+src/prototypes.h: $(CFILES)
+	make -C src
+
 clean:
 	rm -f sassafras sassafras.c
 
-check:
-	make -s -C tools wcheck
-	for FILE in src/*.c; do tools/wcheck $$FILE; done
+TESTFILES := $(shell cd test; ls *.in | sed "s/\.in//")
+
+test:
+	make -s
+	for FILE in $(TESTFILES); do echo $$FILE; cd test; ../sassafras $$FILE.in | diff - $$FILE.out; cd ..; done
