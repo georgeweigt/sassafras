@@ -24,8 +24,6 @@ check:
 	make -s -C ../tools wcheck
 	for FILE in *.c; do ../tools/wcheck $$FILE; done
 
-TESTFILES := $(shell basename ../test/*.in | sed "s/\.in//")
-
 test:
 	make -s sassafras
-	cd ../test; for FILE in $(TESTFILES); do echo $$FILE; ../src/sassafras $$FILE.in | diff - $$FILE.out; done
+	cd ../test; for FILE in *.in; do echo $$FILE; ../src/sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done

@@ -14,8 +14,6 @@ src/prototypes.h: $(CFILES)
 clean:
 	rm -f sassafras sassafras.c
 
-TESTFILES := $(shell basename test/*.in | sed "s/\.in//")
-
 test:
 	make -s sassafras
-	cd test; for FILE in $(TESTFILES); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done
+	cd test; for FILE in *.in; do echo $$FILE; ../sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done
