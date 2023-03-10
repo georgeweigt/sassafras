@@ -9,7 +9,7 @@ sassafras.c: src/defs.h src/prototypes.h $(CFILES)
 	cat src/defs.h src/prototypes.h $(CFILES) > sassafras.c
 
 src/prototypes.h: $(CFILES)
-	make -C src
+	make -C src prototypes.h
 
 clean:
 	rm -f sassafras sassafras.c
@@ -17,5 +17,5 @@ clean:
 TESTFILES := $(shell basename test/*.in | sed "s/\.in//")
 
 test:
-	make -s
+	make -s sassafras
 	cd test; for FILE in $(TESTFILES); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done

@@ -17,16 +17,15 @@ clean:
 XFILES := $(shell ls *.c | sed "s/main\.c//")
 
 sync:
-	make -s
+	make -s prototypes.h
 	cat defs.h prototypes.h $(XFILES) > ../xcode/src/sassafras.c
 
 check:
-	make -s
 	make -s -C ../tools wcheck
 	for FILE in *.c; do ../tools/wcheck $$FILE; done
 
 TESTFILES := $(shell basename ../test/*.in | sed "s/\.in//")
 
 test:
-	make -s
+	make -s sassafras
 	cd ../test; for FILE in $(TESTFILES); do echo $$FILE; ../src/sassafras $$FILE.in | diff - $$FILE.out; done
