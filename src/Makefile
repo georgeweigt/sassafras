@@ -25,7 +25,7 @@ check:
 	make -s -C ../tools wcheck
 	for FILE in *.c; do ../tools/wcheck $$FILE; done
 
-TESTFILES := $(shell cd ../test; ls *.in | sed "s/\.in//")
+TESTFILES := $(shell basename ../test/*.in | sed "s/\.in//")
 
 test:
 	make -s

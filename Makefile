@@ -14,7 +14,7 @@ src/prototypes.h: $(CFILES)
 clean:
 	rm -f sassafras sassafras.c
 
-TESTFILES := $(shell cd test; ls *.in | sed "s/\.in//")
+TESTFILES := $(shell basename test/*.in | sed "s/\.in//")
 
 test:
 	make -s
