@@ -18,4 +18,4 @@ TESTFILES := $(shell basename test/*.in | sed "s/\.in//")
 
 test:
 	make -s
-	for FILE in $(TESTFILES); do echo $$FILE; cd test; ../sassafras $$FILE.in | diff - $$FILE.out; cd ..; done
+	cd test; for FILE in $(TESTFILES); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done
