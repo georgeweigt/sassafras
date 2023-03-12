@@ -3,7 +3,7 @@
 CFILES := $(shell ls *.c)
 
 sassafras: defs.h prototypes.h $(CFILES)
-	gcc -Wall -O0 -o sassafras -include defs.h -include prototypes.h $(CFILES) -lm
+	$(CC) -Wall -O0 -o sassafras -include defs.h -include prototypes.h $(CFILES) -lm
 
 prototypes.h: $(CFILES)
 	make -s -C ../tools make-prototypes
