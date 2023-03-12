@@ -5,11 +5,11 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en_US</string>
     <key>CFBundleIdentifier</key>
-    <string>com.gweigt.Eigenmath.help</string>
+    <string>com.gweigt.Sassafras.help</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Eigenmath</string>
+    <string>Sassafras</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleShortVersionString</key>
@@ -23,7 +23,7 @@
     <key>HPDBookIndexPath</key>
     <string>search.helpindex</string>
     <key>HPDBookTitle</key>
-    <string>Eigenmath Help</string>
+    <string>Sassafras Help</string>
     <key>HPDBookType</key>
     <string>3</string>
 </dict>
