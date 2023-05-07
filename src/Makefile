@@ -7,7 +7,7 @@ sassafras: defs.h prototypes.h $(CFILES)
 
 prototypes.h: $(CFILES)
 	make -s -C ../tools make-prototypes
-	../tools/make-prototypes . > prototypes.h
+	../tools/make-prototypes *.c > prototypes.h
 
 clean:
 	rm -f sassafras prototypes.h
