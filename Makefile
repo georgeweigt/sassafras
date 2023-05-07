@@ -1,14 +1,12 @@
 .PHONY: clean test
 
-CFILES := $(shell ls src/*.c)
-
 sassafras: sassafras.c
 	$(CC) -Wall -O0 -o sassafras sassafras.c -lm
 
-sassafras.c: src/defs.h src/prototypes.h $(CFILES)
-	cat src/defs.h src/prototypes.h $(CFILES) > sassafras.c
+sassafras.c: src/defs.h src/prototypes.h src/*.c
+	cat src/defs.h src/prototypes.h src/*.c > sassafras.c
 
-src/prototypes.h: $(CFILES)
+src/prototypes.h: src/*.c
 	make -C src prototypes.h
 
 clean:
