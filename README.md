@@ -58,11 +58,3 @@ Result
   C4    C3     28.333333     13.757967     42.908700       4.40      0.0017 *
   C4    C1     29.333333     14.757967     43.908700       4.55      0.0014 *
 ```
-
-#
-
-[aur.archlinux.org](https://aur.archlinux.org/packages/sassafras-git)
-
-```
-paru -S sassafras-git
-```
