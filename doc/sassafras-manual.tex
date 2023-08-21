@@ -100,6 +100,10 @@ create new vectors in the data set.
 \item
 The {\tt datalines} statement is followed by observational data.
 At the end of the data a semicolon terminates the statement.
+\item
+For Sassafras installed from the Mac App Store,
+data files need to be put in the directory
+{\scriptsize\verb$~/Library/Containers/com.gweigt.sassafras/Data/$}
 \end{enumerate}
 
 \subsection*{Example 1}
@@ -154,11 +158,14 @@ C 12   C 5    C 16   C 1   C 20
 \subsection*{Example 4}
 
 An infile statement is used to read data from a file.
+For Sassafras installed from the Mac App Store,
+data files need to be put in the directory
+{\scriptsize\verb$~/Library/Containers/com.gweigt.sassafras/Data/$}
 
 {\scriptsize\begin{verbatim}
 data ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 \end{verbatim}}
 
 \subsection*{Example 5}
@@ -170,7 +177,7 @@ vector Y squared element-wise.
 {\scriptsize\begin{verbatim}
 data ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 y2 = y ** 2 ;
 \end{verbatim}}
 
@@ -467,7 +474,7 @@ data set and shows the default action of proc means.
 {\scriptsize\begin{verbatim}
 data wine ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 
 proc means ;
 \end{verbatim}}
@@ -498,7 +505,7 @@ Also, the desired statistics are specified.
 {\scriptsize\begin{verbatim}
 data wine ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 
 proc means n mean clm ;
 var y ;
@@ -519,7 +526,7 @@ to show statistics for each wine color.
 {\scriptsize\begin{verbatim}
 data wine ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 
 proc means n mean clm ;
 var y ;
@@ -650,7 +657,7 @@ a linear model with no intercept term.
 {\scriptsize\begin{verbatim}
 data ;
 input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
-infile "wine-data" ;
+infile "wine.txt" ;
 
 proc reg ;
 model y = color x1 / noint ;
@@ -698,7 +705,7 @@ and PK is price of capital.
 
 {\scriptsize\begin{verbatim}
 data ;
-infile "nerlove-data" ;
+infile "nerlove.txt" ;
 input COST KWH PL PF PK ;
 LCOST = log(COST) ;
 LKWH = log(KWH) ;
@@ -737,7 +744,7 @@ The following result is displayed.
 The following code can be pasted into R to obtain a similar result.
 
 {\scriptsize\begin{verbatim}
-d = read.table("nerlove-data")
+d = read.table("nerlove.txt")
 lcost = log(d[,1])
 lkwh = log(d[,2])
 lpl = log(d[,3])
