@@ -13,18 +13,20 @@
 \newpage
 
 \section{Introduction}
+
 Sassafras is a shell mode program for data analysis.
 
 \subsection*{Example}
+
 A die, which may be loaded, is tossed six times.
 The observed point values are one to six.
 Compute a 95\% confidence interval for the true mean $\mu$
 given the observed data.
 
-\begin{verbatim}
-data
-input y
-datalines
+{\scriptsize\begin{verbatim}
+data ;
+input y ;
+datalines ;
 1
 2
 3
@@ -32,19 +34,19 @@ datalines
 5
 6
 ;
-proc means clm
-\end{verbatim}
+proc means clm ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                     Variable     95% CLM MIN     95% CLM MAX
                     Y                  1.537           5.463
-\end{verbatim}
+\end{verbatim}}
 
 Here is the same result using R.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > y = c(1,2,3,4,5,6)
 > t.test(y)
 
@@ -55,7 +57,7 @@ t = 4.5826, df = 5, p-value = 0.005934
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
  1.536686 5.463314
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
@@ -64,19 +66,20 @@ A data step is used to get data into the program.
 
 \begin{quote}
 {\tt
-data {\it name}
+data {\it name} ;
 
-infile "{\it filename}" dlm="{\it delims}" firstobs=$n$
+infile "{\it filename}" dlm="{\it delims}" firstobs=$n$ ;
 
-input {\it list}
+input {\it list} ;
 
-{\it var} = {\it expression}
+{\it var} = {\it expression} ;
 
-datalines
+datalines ; {\it data} ;
 }
 \end{quote}
 
 \subsection*{Notes}
+
 \begin{enumerate}
 \item
 {\it name} is optional.
@@ -101,71 +104,81 @@ statement.
 \end{enumerate}
 
 \subsection*{Example 1}
+
 The following example is a minimalist data step with in-line data.
-\begin{verbatim}
-data
-input y
-datalines
+
+{\scriptsize\begin{verbatim}
+data ;
+input y ;
+datalines ;
 1
 2
 3
 4
 5
 6
-\end{verbatim}
+;
+\end{verbatim}}
 
 \subsection*{Example 2}
+
 Use \verb$@@$ at the end of an input statement to allow multiple
 values on an input line.
 
-\begin{verbatim}
-data
-input y @@
-datalines
+{\scriptsize\begin{verbatim}
+data ;
+input y @@ ;
+datalines ;
 1 2 3
 4 5 6
-\end{verbatim}
+;
+\end{verbatim}}
 
 \subsection*{Example 3}
+
 A dollar sign after an input variable indicates that the variable
 is categorical instead of numerical.
 
-\begin{verbatim}
-data
-input trt $ y @@
-datalines
+{\scriptsize\begin{verbatim}
+data ;
+input trt $ y @@ ;
+datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
 B 0    B 2    B 3    B 1   B 18
 B 4    B 14   B 9    B 1   B 9
 C 13   C 10   C 18   C 5   C 23
 C 12   C 5    C 16   C 1   C 20
-\end{verbatim}
+;
+\end{verbatim}}
 
 \subsection*{Example 4}
+
 An infile statement is used to read data from a file.
 
-\begin{verbatim}
-data
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
-\end{verbatim}
+{\scriptsize\begin{verbatim}
+data ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
+\end{verbatim}}
 
 \subsection*{Example 5}
+
 Expressions in a data step create new data vectors.
 The following example creates Y2 which is the input
 vector Y squared element-wise.
 
-\begin{verbatim}
-data
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
-y2 = y ** 2
-\end{verbatim}
+{\scriptsize\begin{verbatim}
+data ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
+y2 = y ** 2 ;
+\end{verbatim}}
 
 \newpage
 
 \section{Anova Procedure}
+
 The anova procedure fits a classification model
 to data using ordinary least squares.
 The response variable must be numeric and the
@@ -173,17 +186,18 @@ explanatory variables must be categorical.
 
 \begin{quote}
 {\tt
-proc anova data={\it name}
+proc anova data={\it name} ;
 
-model {\it y} = {\it list}
+model {\it y} = {\it list} ;
 
-means {\it list}
+means {\it list} ;
 
-means {\it list} / lsd ttest alpha={\it value}
+means {\it list} / lsd ttest alpha={\it value} ;
 }
 \end{quote}
 
 \subsection*{Notes}
+
 \begin{enumerate}
 \item
 {\tt data=}{\it name} is optional.
@@ -206,25 +220,27 @@ The means statement can include one or more of the following options.
 \end{enumerate}
 
 \subsection*{Example}
-\begin{verbatim}
-data
-input trt $ y @@
-datalines
+
+{\scriptsize\begin{verbatim}
+data ;
+input trt $ y @@ ;
+datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
 B 0    B 2    B 3    B 1   B 18
 B 4    B 14   B 9    B 1   B 9
 C 13   C 10   C 18   C 5   C 23
 C 12   C 5    C 16   C 1   C 20
+;
 
-proc anova
-model y = trt
-means trt / lsd ttest
-\end{verbatim}
+proc anova ;
+model y = trt ;
+means trt / lsd ttest ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                               Analysis of Variance
 
     Source     DF     Sum of Squares      Mean Square     F Value     Pr > F
@@ -264,19 +280,21 @@ The following result is displayed.
   B      C      -6.200000    -12.467653      0.067653      -2.08      0.0523  
   C      A       7.000000      1.335730     12.664270       2.60      0.0182 *
   C      B       6.200000     -0.067653     12.467653       2.08      0.0523  
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Mean response table}
+
 The confidence interval for a treatment mean is computed as follows.
 \[
 \bar y_i\pm t(1-\alpha/2,dfe)\cdot\sqrt{\frac{MSE}{n_i}}
 \]
+
 Recall that $MSE$ is an estimate of model variance.
 From the anova table
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
     Error      27       995.10000000      36.85555556
-\end{verbatim}
+\end{verbatim}}
 
 we obtain
 \begin{align*}
@@ -287,7 +305,7 @@ dfe&=27
 Using R, the confidence interval for the mean of treatment A can be
 checked as follows.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > MSE = 36.8556
 > dfe = 27
 > t = qt(0.975,dfe)
@@ -295,21 +313,24 @@ checked as follows.
 [1] 1.360934
 > 5.3 + t * sqrt(MSE/10)
 [1] 9.239066
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Least significant difference test}
+
 The least significant difference of two means
 $\bar y_i$ and $\bar y_j$ is
 \[
 LSD_{ij}=t(1-\alpha/2,dfe)\cdot\sqrt{MSE\cdot
 \left(\frac{1}{n_i}+\frac{1}{n_j}\right)}
 \]
+
 The corresponding confidence interval is
 \[
 \bar y_i-\bar y_j\pm LSD_{ij}
 \]
 
 \subsection*{Two sample $t$-test}
+
 The two sample $t$-test is computed as follows.
 \begin{align*}
 SSE&=\widehat{Var}_i\cdot(n_i-1)+\widehat{Var}_j\cdot(n_j-1)\\
@@ -318,6 +339,7 @@ MSE&=\frac{SSE}{dfe}\\
 SE&=\sqrt{MSE\cdot\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}\\
 t^*&=\frac{\bar y_i-\bar y_j}{SE}
 \end{align*}
+
 $SSE$ is the sum of squares error recovered from
 variance estimates, $dfe$ is the degrees of freedom error, $MSE$
 is mean square error, $SE$ is the standard error, and $t^*$ is the
@@ -328,10 +350,12 @@ The confidence interval is
 \[
 \bar y_i-\bar y_j\pm t(1-\alpha/2,dfe)\cdot SE
 \]
+
 The null hypothesis is that the two treatment means are equal.
 \[
 H_0:\bar y_i=\bar y_j
 \]
+
 If $|t^*|$ is greater than the critical value $t(1-\alpha/2,dfe)$,
 or equivalently, if the confidence interval does not cross zero,
 then reject $H_0$ and conclude that the treatment means are not equal.
@@ -339,7 +363,7 @@ The following R session uses the above equations
 to duplicate the Sassafras result for
 treatments A and B.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > YA = c(6,0,2,8,11,4,13,1,8,0)
 > YB = c(0,2,3,1,18,4,14,9,1,9)
 > sse = var(YA) * (length(YA) - 1) + var(YB) * (length(YB) - 1)
@@ -353,11 +377,11 @@ treatments A and B.
 [1] 4.322307
 > 2 * (1 - pt(abs(t),dfe))
 [1] 0.746606
-\end{verbatim}
+\end{verbatim}}
 
 The same result is obtained with the t-test function.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > t.test(YA,YB,var.equal=TRUE)
 
 	Two Sample t-test
@@ -370,24 +394,26 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean of x mean of y 
       5.3       6.1 
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
 \section{Means Procedure}
+
 The means procedure prints statistics about a data set.
 
 \begin{quote}
 {\tt
-proc means data={\it name} alpha={\it value} maxdec=$n$ {\it stats}
+proc means data={\it name} alpha={\it value} maxdec=$n$ {\it stats} ;
 
-var {\it list}
+var {\it list} ;
 
-class {\it list}
+class {\it list} ;
 }
 \end{quote}
 
 \subsection*{Notes}
+
 \begin{enumerate}
 \item
 The settings that follow the {\tt means} keyword are optional.
@@ -432,23 +458,24 @@ Variable names in {\it list} are separated by spaces.
 \end{enumerate}
 
 \subsection*{Example 1}
+
 The following example reads in the wine\footnote{
 P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
 {\it Modeling wine preferences by data mining from physicochemical properties.}
 In Decision Support Systems, Elsevier, 47(4):547-553, 2009.}
 data set and shows the default action of proc means.
 
-\begin{verbatim}
-data wine
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
+{\scriptsize\begin{verbatim}
+data wine ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
 
-proc means
-\end{verbatim}
+proc means ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 Variable        N        Mean     Std Dev     Minimum     Maximum
 X1           6497       7.215       1.296       3.800      15.900
 X2           6497       0.340       0.165       0.080       1.580
@@ -462,64 +489,68 @@ X9           6497       3.219       0.161       2.720       4.010
 X10          6497       0.531       0.149       0.220       2.000
 X11          6497      10.492       1.193       8.000      14.900
 Y            6497       5.818       0.873       3.000       9.000
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Example 2}
+
 The following example adds a var statement to show Y by itself.
 Also, the desired statistics are specified.
 
-\begin{verbatim}
-data wine
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
+{\scriptsize\begin{verbatim}
+data wine ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
 
-proc means n mean clm
-var y
-\end{verbatim}
+proc means n mean clm ;
+var y ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 Variable        N      Mean     95% CLM MIN     95% CLM MAX
 Y            6497     5.818           5.797           5.840
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Example 3}
+
 The following example adds a class statement
 to show statistics for each wine color.
 
-\begin{verbatim}
-data wine
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
+{\scriptsize\begin{verbatim}
+data wine ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
 
-proc means n mean clm
-var y
-class color
-\end{verbatim}
+proc means n mean clm ;
+var y ;
+class color ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 COLOR     Variable        N      Mean     95% CLM MIN     95% CLM MAX
 red       Y            1599     5.636           5.596           5.676
 white     Y            4898     5.878           5.853           5.903
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
 \section{Print Procedure}
+
 The print procedure prints data in a data set.
 
 \begin{quote}
 {\tt
-proc print data={\it name}
+proc print data={\it name} ;
 
-var {\it list}
+var {\it list} ;
 }
 \end{quote}
 
 \subsection*{Notes}
+
 \begin{enumerate}
 \item
 {\tt data=}{\it name} is optional.
@@ -532,24 +563,26 @@ Variable names in {\it list} are separated by spaces.
 \end{enumerate}
 
 \subsection*{Example}
+
 The following example reads a data set
 and prints it.
 
-\begin{verbatim}
-data
-input trt $ y @@
-datalines
+{\scriptsize\begin{verbatim}
+data ;
+input trt $ y @@ ;
+datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
 B 0    B 2    B 3    B 1   B 18
 B 4    B 14   B 9    B 1   B 9
+;
 
-proc print
-\end{verbatim}
+proc print ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                                Obs     TRT      Y
                                  1     A        6
                                  2     A        0
@@ -571,11 +604,12 @@ The following result is displayed.
                                 18     B        9
                                 19     B        1
                                 20     B        9
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
 \section{Reg Procedure}
+
 The reg procedure fits a linear model to data
 using ordinary least squares.
 The response variable must be numeric.
@@ -585,15 +619,16 @@ for models with no intercept.
 
 \begin{quote}
 {\tt
-proc reg data={\it name}
+proc reg data={\it name} ;
 
-model {\it y} = {\it list}
+model {\it y} = {\it list} ;
 
-model {\it y} = {\it list} / noint
+model {\it y} = {\it list} / noint ;
 }
 \end{quote}
 
 \subsection*{Notes}
+
 \begin{enumerate}
 \item
 {\tt data=}{\it name} is optional.
@@ -609,21 +644,22 @@ The {\tt noint} option fits a linear model with no intercept term.
 \end{enumerate}
 
 \subsection*{Example 1}
+
 The following example reads in the wine data set and fits
 a linear model with no intercept term.
 
-\begin{verbatim}
-data
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y
-infile "wine-data"
+{\scriptsize\begin{verbatim}
+data ;
+input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+infile "wine-data" ;
 
-proc reg
-model y = color x1 / noint
-\end{verbatim}
+proc reg ;
+model y = color x1 / noint ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                               Analysis of Variance
 
                 DF     Sum of Squares     Mean Square     F Value     Pr > F
@@ -641,9 +677,10 @@ The following result is displayed.
          COLOR red        5.77309     0.08194       70.45       0.0000
          COLOR white      5.99084     0.06628       90.39       0.0000
          X1              -0.01647     0.00950       -1.73       0.0829
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Example 2}
+
 The following exercise is from {\it Econometrics}\footnote{
 Hansen, Bruce E. {\it Econometrics.}
 www.ssc.wisc.edu/$\sim$bhansen}.
@@ -660,23 +697,23 @@ PL is price of labor,
 PF is price of fuel,
 and PK is price of capital.
 
-\begin{verbatim}
-data
-infile "nerlove-data"
-input COST KWH PL PF PK
-LCOST = log(COST)
-LKWH = log(KWH)
-LPL = log(PL)
-LPF = log(PF)
-LPK = log(PK)
+{\scriptsize\begin{verbatim}
+data ;
+infile "nerlove-data" ;
+input COST KWH PL PF PK ;
+LCOST = log(COST) ;
+LKWH = log(KWH) ;
+LPL = log(PL) ;
+LPF = log(PF) ;
+LPK = log(PK) ;
 
-proc reg
-model LCOST = LKWH LPL LPF LPK
-\end{verbatim}
+proc reg ;
+model LCOST = LKWH LPL LPF LPK ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                               Analysis of Variance
 
                DF     Sum of Squares     Mean Square     F Value     Pr > F
@@ -696,11 +733,11 @@ The following result is displayed.
           LPL            0.43634     0.29105        1.50       0.1361
           LPF            0.42652     0.10037        4.25       0.0000
           LPK           -0.21989     0.33943       -0.65       0.5182
-\end{verbatim}
+\end{verbatim}}
 
 The following code can be pasted into R to obtain a similar result.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 d = read.table("nerlove-data")
 lcost = log(d[,1])
 lkwh = log(d[,2])
@@ -709,11 +746,11 @@ lpf = log(d[,4])
 lpk = log(d[,5])
 m = lm(lcost ~ lkwh + lpl + lpf + lpk)
 summary(m)
-\end{verbatim}
+\end{verbatim}}
 
 The following result is displayed in R.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 Call:
 lm(formula = lcost ~ lkwh + lpl + lpf + lpk)
 
@@ -734,18 +771,19 @@ Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1
 Residual standard error: 0.3924 on 140 degrees of freedom
 Multiple R-squared:  0.926,	Adjusted R-squared:  0.9238 
 F-statistic: 437.7 on 4 and 140 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\end{verbatim}}
 
 \subsection*{Example 3}
+
 The following model uses the ``trees'' data set from R.
 
-\begin{verbatim}
-data
-input Girth Height Volume
-LG = log(Girth)
-LH = log(Height)
-LV = log(Volume)
-datalines
+{\scriptsize\begin{verbatim}
+data ;
+input Girth Height Volume ;
+LG = log(Girth) ;
+LH = log(Height) ;
+LV = log(Volume) ;
+datalines ;
   8.3     70   10.3
   8.6     65   10.3
   8.8     63   10.2
@@ -777,14 +815,15 @@ datalines
  18.0     80   51.5
  18.0     80   51.0
  20.6     87   77.0
+;
 
-proc reg
-model LV = LG LH
-\end{verbatim}
+proc reg ;
+model LV = LG LH ;
+\end{verbatim}}
 
 The following result is displayed.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
                               Analysis of Variance
 
     Source     DF     Sum of Squares     Mean Square     F Value     Pr > F
@@ -802,7 +841,7 @@ The following result is displayed.
          (Intercept)     -2.88007     0.34734       -8.29       0.0000
          log(Girth)       1.98265     0.07501       26.43       0.0000
          log(Height)      1.11712     0.20444        5.46       0.0000
-\end{verbatim}
+\end{verbatim}}
 
 Let us see if the above parameters correspond to the volume of a cone
 given by
@@ -814,10 +853,12 @@ The model from the regression is
 $$
 \log V=-2.88+1.98\log d+1.12\log h
 $$
+
 Take the antilog of both sides and obtain
 $$
 V=0.00132\times d^{1.98}\times h^{1.12}
 $$
+
 The exponents resemble the volume formula but the overall coefficient 0.00132
 is two orders of magnitude smaller than $\pi/12\approx0.262$.
 It turns out the discrepancy is due to the units of measure.
@@ -834,17 +875,17 @@ which is in the ballpark of 0.00132 from the regression model.
 Let us compare the Reg results to R.
 The following block of code can be pasted directly into the R shell prompt.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 d=log10(trees[,1])
 h=log10(trees[,2])
 V=log10(trees[,3])
 m=lm(V~d+h)
 summary(m)
-\end{verbatim}
+\end{verbatim}}
 
 This is the R result, which matches Reg.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
 (Intercept) -2.88007    0.34734  -8.292 5.06e-09 ***
@@ -856,7 +897,7 @@ Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1
 Residual standard error: 0.03535 on 28 degrees of freedom
 Multiple R-squared:  0.9777,	Adjusted R-squared:  0.9761 
 F-statistic: 613.2 on 2 and 28 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
@@ -866,8 +907,7 @@ F-statistic: 613.2 on 2 and 28 DF,  p-value: < 2.2e-16
 
 The components of an analysis of variance table are computed as follows.
 
-\begin{center}
-\begin{tabular}{|l|c|c|c|c|c|}
+{\scriptsize\begin{center}\begin{tabular}{|l|c|c|c|c|c|}
 \hline
 & DF & SS & Mean Square & $F$-value & $p$-value\\
 \hline
@@ -887,8 +927,7 @@ Total
 & $SST$
 & & &\\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular}\end{center}}
 
 \bigskip
 
@@ -953,7 +992,7 @@ and $t_{1-\alpha/2, n-1}$ is the quantile function.
 In R, the confidence interval of the mean of \verb$1:10$
 can be computed as follows.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > x = 1:10
 > n = length(x)
 > alpha = 0.05
@@ -961,11 +1000,11 @@ can be computed as follows.
 [1] 3.334149
 > mean(x) + qt(1-alpha/2,n-1) * sd(x)/sqrt(n)
 [1] 7.665851
-\end{verbatim}
+\end{verbatim}}
 
 Alternatively, the \verb$t.test$ function can be used.
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > t.test(1:10)
 
 	One Sample t-test
@@ -978,7 +1017,7 @@ alternative hypothesis: true mean is not equal to 0
 sample estimates:
 mean of x 
       5.5 
-\end{verbatim}
+\end{verbatim}}
 
 Recall that the quantile function
 is the inverse of the cumulative
@@ -991,13 +1030,13 @@ F(t_{1-\alpha/2,n-1})=1-\alpha/2
 
 For example, in R we have
 
-\begin{verbatim}
+{\scriptsize\begin{verbatim}
 > t = qt(0.975,8)
 > t
 [1] 2.306004
 > pt(t,8)
 [1] 0.975
-\end{verbatim}
+\end{verbatim}}
 
 \newpage
 
