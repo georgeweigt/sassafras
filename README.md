@@ -1,4 +1,4 @@
-[Sassafras Home Page](https://georgeweigt.github.io/sassafras/index.html)
+[Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
 
 #
 
