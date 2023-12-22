@@ -14,5 +14,5 @@ clean:
 	rm -f sassafras sassafras.c
 
 test:
-	make -s sassafras
+	make
 	cd test; for FILE in *.in; do echo $$FILE; ../sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done

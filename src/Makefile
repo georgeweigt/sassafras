@@ -15,5 +15,5 @@ check:
 	../tools/wcheck *.c
 
 test:
-	make -s sassafras
+	make
 	cd ../test; for FILE in *.in; do echo $$FILE; ../src/sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done
