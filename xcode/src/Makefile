@@ -12,4 +12,4 @@ sassafras.c: ../../src/defs.h ../../src/prototypes.h $(FILES)
 	cat ../../src/defs.h ../../src/prototypes.h $(FILES) > sassafras.c
 
 clean:
-	rm -f defs.h prototypes.h sassafras.c
+	rm -f sassafras.c
