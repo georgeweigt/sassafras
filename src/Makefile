@@ -1,4 +1,4 @@
-.PHONY: clean sync check test
+.PHONY: clean check test
 
 sassafras: defs.h prototypes.h *.c
 	$(CC) -Wall -O0 -o sassafras -include defs.h -include prototypes.h *.c -lm
@@ -9,14 +9,6 @@ prototypes.h: *.c
 
 clean:
 	rm -f sassafras prototypes.h
-
-# sed removes main.c
-
-FILES := $(shell ls *.c | sed "s/main\.c//")
-
-sync:
-	make -s prototypes.h
-	cat defs.h prototypes.h $(FILES) > ../xcode/src/sassafras.c
 
 check:
 	make -s -C ../tools wcheck

@@ -1,13 +1,14 @@
-.PHONY: clean test
+.PHONY: default clean test
+
+default:
+	make -C src prototypes.h
+	make sassafras
 
 sassafras: sassafras.c
 	$(CC) -Wall -O0 -o sassafras sassafras.c -lm
 
 sassafras.c: src/defs.h src/prototypes.h src/*.c
 	cat src/defs.h src/prototypes.h src/*.c > sassafras.c
-
-src/prototypes.h: src/*.c
-	make -C src prototypes.h
 
 clean:
 	rm -f sassafras sassafras.c
