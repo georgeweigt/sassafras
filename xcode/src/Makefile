@@ -8,8 +8,8 @@ default:
 	make -C ../../src prototypes.h
 	make sassafras.c
 
-sassafras.c: ../../src/defs.h ../../src/prototypes.h $(FILES)
-	cat ../../src/defs.h ../../src/prototypes.h $(FILES) > sassafras.c
+sassafras.c: ../../src/LICENSE ../../src/defs.h ../../src/prototypes.h $(FILES)
+	cat ../../src/LICENSE ../../src/defs.h ../../src/prototypes.h $(FILES) > sassafras.c
 
 clean:
 	rm -f sassafras.c
