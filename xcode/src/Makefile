@@ -7,7 +7,7 @@ HELPBOOK = Base.lproj/Sassafras.help/Contents/Resources/English.lproj/index.html
 FILES := $(shell ls ../../src/*.c | sed "s/\.\.\/\.\.\/src\/main\.c//")
 
 default:
-	rsync ../../doc/sassafras.html $(HELPBOOK)
+	rsync -c ../../doc/sassafras.html $(HELPBOOK)
 	make -C ../../src prototypes.h
 	make sassafras.c
 
