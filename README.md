@@ -1,23 +1,15 @@
-[Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
-
-#
-
-To build and run
+Build and run
 
 ```
 make
 ./sassafras filename
 ```
 
-For example
+Example
 
 ```
 ./sassafras demos/corrosion-demo
-```
 
-Result
-
-```
                               Analysis of Variance
 
    Source     DF     Sum of Squares       Mean Square     F Value     Pr > F
