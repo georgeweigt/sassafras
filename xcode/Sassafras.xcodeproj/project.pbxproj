@@ -268,7 +268,7 @@
 				CODE_SIGN_ENTITLEMENTS = src/Sassafras.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 106;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = D273D35927;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -276,7 +276,7 @@
 				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.07;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -290,7 +290,7 @@
 				CODE_SIGN_ENTITLEMENTS = src/Sassafras.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 106;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = D273D35927;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -298,7 +298,7 @@
 				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.07;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gweigt.sassafras;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
