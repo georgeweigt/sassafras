@@ -1,4 +1,6 @@
-Build and run
+[Sassafras Home Page](https://georgeweigt.github.io/sassafras/index.html)
+
+Build and run for Linux
 
 ```
 make
