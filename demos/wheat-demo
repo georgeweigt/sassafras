@@ -1,7 +1,7 @@
-* See Boik p. 355 ;
+* See R. Boik p. 355 ;
 
 data ;
-input Fert $ Wheat $ y ;
+input Fert$ Wheat$ y ;
 datalines ;
 D Q 17.4
 D R 23.0

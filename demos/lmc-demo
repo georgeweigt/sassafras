@@ -7,7 +7,7 @@
 * PM is +/- ;
 
 data ;
-input TYPE $ DM PM ;
+input TYPE$ DM PM ;
 datalines ;
 I 18.70     0.16   Feast & Catchpole 1997
 I 18.55     0.06   Laney & Stobie 1994

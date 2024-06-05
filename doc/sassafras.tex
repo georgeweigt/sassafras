@@ -174,7 +174,7 @@ is categorical instead of numerical.
 
 {\footnotesize\begin{verbatim}
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
@@ -194,7 +194,7 @@ data files need to be put in the directory
 
 {\footnotesize\begin{verbatim}
 data ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 \end{verbatim}}
 
@@ -206,7 +206,7 @@ vector Y squared element-wise.
 
 {\footnotesize\begin{verbatim}
 data ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 y2 = y ** 2 ;
 \end{verbatim}}
@@ -259,7 +259,7 @@ The means statement can include one or more of the following options.
 
 {\footnotesize\begin{verbatim}
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
@@ -503,7 +503,7 @@ data set and shows the default action of proc means.
 
 {\footnotesize\begin{verbatim}
 data wine ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 
 proc means ;
@@ -534,7 +534,7 @@ Also, the desired statistics are specified.
 
 {\footnotesize\begin{verbatim}
 data wine ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 
 proc means n mean clm ;
@@ -555,7 +555,7 @@ to show statistics for each wine color.
 
 {\footnotesize\begin{verbatim}
 data wine ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 
 proc means n mean clm ;
@@ -605,7 +605,7 @@ and prints it.
 
 {\footnotesize\begin{verbatim}
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
@@ -686,7 +686,7 @@ a linear model with no intercept term.
 
 {\footnotesize\begin{verbatim}
 data ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 infile "wine.txt" ;
 
 proc reg ;
@@ -1083,7 +1083,7 @@ Note that the least significant difference test has more power (more stars) than
 
 {\footnotesize\begin{verbatim}
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0

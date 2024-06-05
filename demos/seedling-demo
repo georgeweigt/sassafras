@@ -5,7 +5,7 @@
 * http://www.ohio.edu/plantbio/staff/mccarthy/quantmet/lectures/ANOVA-III.pdf ;
 
 data ;
-input Forest $ Tree $ Height ;
+input Forest$ Tree$ Height ;
 datalines ;
 A T1 15.8
 A T1 15.6

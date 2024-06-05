@@ -6,7 +6,7 @@
 * 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/FishTank.txt ;
 
 data ;
-input Diet $ Tank $ WtGain ;
+input Diet$ Tank$ WtGain ;
 datalines ;
 1	1	9.759
 1	1	7.399

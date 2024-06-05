@@ -8,7 +8,7 @@
 * Y - Corrosion resistance of steel bars ;
 
 data ;
-input W $ T $ C $ Y ;
+input W$ T$ C$ Y ;
 datalines ;
 1 360 C2 73
 1 360 C3 83

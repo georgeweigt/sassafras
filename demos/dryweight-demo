@@ -3,7 +3,7 @@
 * https://archived.stat.ufl.edu/casella/StatDesign/WebDataSets/DryWeight.txt ;
 
 data ;
-input Fert $ DryWeight ;
+input Fert$ DryWeight ;
 datalines ;
 A	1.02
 A	0.79

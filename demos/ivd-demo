@@ -6,7 +6,7 @@
 * 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/IVD.txt ;
 
 data ;
-input Temp $ IVD ;
+input Temp$ IVD ;
 datalines ;
 17   94.2
 17   94.5

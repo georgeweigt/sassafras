@@ -6,7 +6,7 @@
 * 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Strawberry.txt ;
 
 data ;
-input Block $ Treatment $ Yield ;
+input Block$ Treatment$ Yield ;
 datalines ;
 1   A   10.1
 1   B   6.3

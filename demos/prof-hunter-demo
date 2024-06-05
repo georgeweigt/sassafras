@@ -37,7 +37,7 @@
 title "Completely Randomized Design" ;
 
 data ;
-input trt $ y ;
+input trt$ y ;
 datalines ;
 I 74.0
 I 68.8
@@ -68,7 +68,7 @@ means trt / lsd ;
 title "Randomized Block Design" ;
 
 data ;
-input car $ trt $ y ;
+input car$ trt$ y ;
 datalines ;
 A I 74.0
 B I 68.8

@@ -6,7 +6,7 @@
 * 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/RedClover.txt ;
 
 data ;
-input Nitrogen $ Sulphur $ Yield ;
+input Nitrogen$ Sulphur$ Yield ;
 datalines ;
 0    0   4.48
 0    0   4.52

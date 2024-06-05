@@ -6,7 +6,7 @@
 * 2. http://www.stat.ufl.edu/~casella/StatDesign/WebDataSets/Alfalfa.txt ;
 
 data ;
-input Variety $ Block $ Rep $ Yield ;
+input Variety$ Block$ Rep$ Yield ;
 datalines ;
 Ladak   1   1   3.1
 Ladak   2   1   4.06

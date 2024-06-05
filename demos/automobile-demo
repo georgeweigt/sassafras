@@ -1,5 +1,5 @@
 data auto ;
-input Make $ Model $ Score @@ ;
+input Make$ Model$ Score @@ ;
 datalines ;
 a a1 62 a a2 77 a a3 59
 a a1 67 a a2 73 a a3 64
