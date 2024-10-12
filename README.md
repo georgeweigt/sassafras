@@ -1,4 +1,4 @@
-[Sassafras Home Page](https://georgeweigt.github.io/sassafras/index.html)
+[sassafras.pdf](https://georgeweigt.github.io/sassafras.pdf)
 
 #
 
