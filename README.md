@@ -1,7 +1,3 @@
-[sassafras.pdf](https://georgeweigt.github.io/sassafras.pdf)
-
-#
-
 Build and run for Linux
 
 ```
