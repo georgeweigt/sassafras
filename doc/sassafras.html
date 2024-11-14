@@ -33,30 +33,30 @@ A data step reads data into the program.<br>
 
 <h3>Synopsis</h3>
 
-<tt>data</tt> &nbsp; <i>name</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">data</span> &nbsp; <i>name</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>infile</tt>
+<span style="font-family:courier">infile</span>
 &nbsp;
 "<i>filename</i>"
 &nbsp;
-<tt>dlm</tt> <tt>=</tt> "<i>delims</i>"
+<span style="font-family:courier">dlm</span> <span style="font-family:courier">=</span> "<i>delims</i>"
 &nbsp;
-<tt>firstobs</tt> <tt>=</tt> <i>n</i>
+<span style="font-family:courier">firstobs</span> <span style="font-family:courier">=</span> <i>n</i>
 &nbsp;
-<tt>;</tt><br><br>
+<span style="font-family:courier">;</span><br><br>
 
-<tt>input</tt> &nbsp; <i>var-list</i> &nbsp; <tt>@@</tt> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">input</span> &nbsp; <i>var-list</i> &nbsp; <span style="font-family:courier">@@</span> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<i>var</i> <tt>=</tt> <i>arithmetic-expression</i> &nbsp; <tt>;</tt><br><br>
+<i>var</i> <span style="font-family:courier">=</span> <i>arithmetic-expression</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>datalines</tt> &nbsp; <tt>;</tt> &nbsp; <i>data</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">datalines</span> &nbsp; <span style="font-family:courier">;</span> &nbsp; <i>data</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
 <br>
 
-1. &nbsp; <tt>data</tt> is the first statement in a data step.
+1. &nbsp; <span style="font-family:courier">data</span> is the first statement in a data step.
 <i>name</i> is optional.<br><br>
 
-2. &nbsp; Settings <tt>dlm</tt> and <tt>firstobs</tt> are optional.<br><br>
+2. &nbsp; Settings <span style="font-family:courier">dlm</span> and <span style="font-family:courier">firstobs</span> are optional.<br><br>
 
 3. &nbsp; <i>delims</i> is a sequence of delimiter characters.
 The default is tab, comma, and space.<br><br>
@@ -65,14 +65,14 @@ The default is tab, comma, and space.<br><br>
 This setting is used to skip header records in a file.<br><br>
 
 5. &nbsp; <i>var-list</i> is a list of variable names separated by spaces.
-For each categorical variable place a <tt>$</tt> after the variable name.<br><br>
+For each categorical variable place a <span style="font-family:courier">$</span> after the variable name.<br><br>
 
-6. &nbsp; <tt>@@</tt> is optional.
+6. &nbsp; <span style="font-family:courier">@@</span> is optional.
 When used, newlines in the data are ignored.<br><br>
 
-7. &nbsp; Optional <i>var</i> <tt>=</tt> <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
+7. &nbsp; Optional <i>var</i> <span style="font-family:courier">=</span> <i>arithmetic-expression</i> statements add columns to the data set.<br><br>
 
-8. &nbsp; If used, <tt>datalines</tt> is the last statement in a data step.<br><br>
+8. &nbsp; If used, <span style="font-family:courier">datalines</span> is the last statement in a data step.<br><br>
 
 <h3>Example 1</h3>
 
@@ -93,7 +93,7 @@ datalines ;
 
 <h3>Example 2</h3>
 
-Use <tt>@@</tt> at the end of an input statement to read multiple records per input line.
+Use <span style="font-family:courier">@@</span> at the end of an input statement to read multiple records per input line.
 
 <pre>
 data ;
@@ -122,9 +122,9 @@ C 12   C 5    C 16   C 1   C 20
 </pre>
 
 <h3>Example 4</h3>
-Use <tt>infile</tt> to read data from a file.
+Use <span style="font-family:courier">infile</span> to read data from a file.
 For Sassafras installed from the Mac App Store, data files need to be put in the directory
-<span style="font-family:courier">~/Library/Containers/com.gweigt.sassafras/Data/</span>
+<span style="font-family:courier">~/Library/Containers/sassafras/Data/</span>
 
 <pre>
 data ;
@@ -134,7 +134,7 @@ input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 
 <h3>Example 5</h3>
 
-The following example adds variable <tt>y2</tt> which is <tt>y</tt> squared.
+The following example adds variable <span style="font-family:courier">y2</span> which is <span style="font-family:courier">y</span> squared.
 
 <pre>
 data ;
@@ -150,34 +150,34 @@ y2 = y ** 2 ;
 The anova procedure fits a classification model to data using ordinary least squares.<br><br>
 
 To use this procedure, all explanatory variables are required to be categorical.
-Otherwise, use <tt>proc</tt> <tt>reg</tt>.
+Otherwise, use <span style="font-family:courier">proc</span> <span style="font-family:courier">reg</span>.
 
 <h3>Synopsis</h3>
 
-<tt>proc</tt> &nbsp; <tt>anova</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">proc</span> &nbsp; <span style="font-family:courier">anova</span> &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>model</tt> &nbsp; <i>y</i> <tt>=</tt> <i>var-list</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">model</span> &nbsp; <i>y</i> <span style="font-family:courier">=</span> <i>var-list</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>means</tt> &nbsp; <i>var-list</i> &nbsp; <tt>/</tt> &nbsp; <tt>lsd</tt> &nbsp; <tt>ttest</tt> &nbsp; <tt>alpha</tt> <tt>=</tt> <i>value</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">means</span> &nbsp; <i>var-list</i> &nbsp; <span style="font-family:courier">/</span> &nbsp; <span style="font-family:courier">lsd</span> &nbsp; <span style="font-family:courier">ttest</span> &nbsp; <span style="font-family:courier">alpha</span> <span style="font-family:courier">=</span> <i>value</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
 <br>
 
-1. &nbsp; <tt>data</tt> <tt>=</tt> </tt><i>name</i> is optional.
+1. &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
 2. &nbsp; <i>y</i> is the response variable which is required to be numerical.<br><br>
 
 3. &nbsp; <i>var-list</i> is a list of explanatory variables and interaction terms separated by spaces.
-Interaction terms are specified using the syntax <tt>A*B</tt>.<br><br>
+Interaction terms are specified using the syntax <span style="font-family:courier">A*B</span>.<br><br>
 
-4. &nbsp; Optional <tt>means</tt> statement prints the mean of variables and interaction terms in <i>var-list</i>.<br><br>
+4. &nbsp; Optional <span style="font-family:courier">means</span> statement prints the mean of variables and interaction terms in <i>var-list</i>.<br><br>
 
-5. &nbsp; The <tt>means</tt> statement can include the following options in any order.<br><br>
+5. &nbsp; The <span style="font-family:courier">means</span> statement can include the following options in any order.<br><br>
 
 <table style="font-size:16pt">
-<tr><td><tt>lsd</tt></td><td>Compare treatment means using least significance difference.</td></tr>
-<tr><td><tt>ttest</tt></td><td>Compare treatment means using two sample <i>t</i>-tests.</td></tr>
-<tr><td><tt>alpha</tt></td><td>Set the level of significance. Default is 0.05.</td></tr>
+<tr><td><span style="font-family:courier">lsd</span></td><td>Compare treatment means using least significance difference.</td></tr>
+<tr><td><span style="font-family:courier">ttest</span></td><td>Compare treatment means using two sample <i>t</i>-tests.</td></tr>
+<tr><td><span style="font-family:courier">alpha</span></td><td>Set the level of significance. Default is 0.05.</td></tr>
 </table>
 
 <h3>Example</h3>
@@ -218,72 +218,72 @@ The means procedure prints statistics for a data set.
 
 <h3>Synopsis</h3>
 
-<tt>proc</tt>
+<span style="font-family:courier">proc</span>
 &nbsp;
-<tt>means</tt>
+<span style="font-family:courier">means</span>
 &nbsp;
-<tt>data</tt> <tt>=</tt> <i>name</i>
+<span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i>
 &nbsp;
-<tt>alpha</tt> <tt>=</tt> <i>value</i>
+<span style="font-family:courier">alpha</span> <span style="font-family:courier">=</span> <i>value</i>
 &nbsp;
-<tt>maxdec</tt> <tt>=</tt> <i>value</i>
+<span style="font-family:courier">maxdec</span> <span style="font-family:courier">=</span> <i>value</i>
 &nbsp;
 <i>stats</i>
 &nbsp;
-<tt>;</tt><br><br>
+<span style="font-family:courier">;</span><br><br>
 
-<tt>var</tt> &nbsp; <i>var-list</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">var</span> &nbsp; <i>var-list</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>class</tt> &nbsp; <i>var-list</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">class</span> &nbsp; <i>var-list</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
 <br>
 
-1. &nbsp; <tt>data</tt>, <tt>alpha</tt>, <tt>maxdec</tt>, and <i>stats</i> are all optional.
+1. &nbsp; <span style="font-family:courier">data</span>, <span style="font-family:courier">alpha</span>, <span style="font-family:courier">maxdec</span>, and <i>stats</i> are all optional.
 The settings can appear in any order.<br><br>
 
-2. &nbsp; If <tt>data</tt> is omitted then data from the previous data step is used.<br><br>
+2. &nbsp; If <span style="font-family:courier">data</span> is omitted then data from the previous data step is used.<br><br>
 
-3. &nbsp; <tt>alpha</tt> sets the level of significance.
+3. &nbsp; <span style="font-family:courier">alpha</span> sets the level of significance.
 The default is 0.05.<br><br>
 
-4. &nbsp; <tt>maxdec</tt> sets the decimal precision in the output.
+4. &nbsp; <span style="font-family:courier">maxdec</span> sets the decimal precision in the output.
 <i>value</i> ranges from 0 to 8.
 The default is 3.<br><br>
 
 5. &nbsp; <i>stats</i> is a list of keywords from the following table.
-If <i>stats</i> is omitted then the default list is <tt>n</tt> <tt>mean</tt> <tt>std</tt> <tt>min</tt> <tt>max</tt>.<br><br>
+If <i>stats</i> is omitted then the default list is <span style="font-family:courier">n</span> <span style="font-family:courier">mean</span> <span style="font-family:courier">std</span> <span style="font-family:courier">min</span> <span style="font-family:courier">max</span>.<br><br>
 
 <table style="font-size:16pt">
 
-<tr><td><tt>clm</tt></td><td>Print confidence limits of the mean</td></tr>
+<tr><td><span style="font-family:courier">clm</span></td><td>Print confidence limits of the mean</td></tr>
 
-<tr><td><tt>max</tt></td><td>Print maximum value</td></tr>
+<tr><td><span style="font-family:courier">max</span></td><td>Print maximum value</td></tr>
 
-<tr><td><tt>mean</tt></td><td>Print mean value</td></tr>
+<tr><td><span style="font-family:courier">mean</span></td><td>Print mean value</td></tr>
 
-<tr><td><tt>min</tt></td><td>Print minimum value</td></tr>
+<tr><td><span style="font-family:courier">min</span></td><td>Print minimum value</td></tr>
 
-<tr><td><tt>n</tt></td><td>Print number of observations</td></tr>
+<tr><td><span style="font-family:courier">n</span></td><td>Print number of observations</td></tr>
 
-<tr><td><tt>range</tt></td><td>Print <tt>max</tt> minus <tt>min</tt></td></tr>
+<tr><td><span style="font-family:courier">range</span></td><td>Print <span style="font-family:courier">max</span> minus <span style="font-family:courier">min</span></td></tr>
 
-<tr><td><tt>std</tt></td><td>Print standard deviation</td></tr>
+<tr><td><span style="font-family:courier">std</span></td><td>Print standard deviation</td></tr>
 
-<tr><td><tt>stddev</tt></td><td>Print standard deviation (same as <tt>std</tt>)</td></tr>
+<tr><td><span style="font-family:courier">stddev</span></td><td>Print standard deviation (same as <span style="font-family:courier">std</span>)</td></tr>
 
-<tr><td><tt>stderr</tt></td><td>Print standard error (<tt>stddev</tt> divided by square root of <tt>n</tt>)</td></tr>
+<tr><td><span style="font-family:courier">stderr</span></td><td>Print standard error (<span style="font-family:courier">stddev</span> divided by square root of <span style="font-family:courier">n</span>)</td></tr>
 
-<tr><td><tt>var</tt></td><td>Print variance</td></tr>
+<tr><td><span style="font-family:courier">var</span></td><td>Print variance</td></tr>
 
 </table>
 
 <br>
 
-6. &nbsp; Optional <tt>var</tt> statement prints statistics for variables in <i>var-list</i>.
+6. &nbsp; Optional <span style="font-family:courier">var</span> statement prints statistics for variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.
-If <tt>var</tt> is omitted then statistics for all numerical variables are printed.<br><br>
+If <span style="font-family:courier">var</span> is omitted then statistics for all numerical variables are printed.<br><br>
 
-7. &nbsp; Optional <tt>class</tt> statement prints statistics for levels of categorical variables in <i>var-list</i>.
+7. &nbsp; Optional <span style="font-family:courier">class</span> statement prints statistics for levels of categorical variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.<br><br>
 
 <h3>Example</h3>
@@ -306,18 +306,18 @@ The print procedure prints a data set.
 
 <h3>Synopsis</h3>
 
-<tt>proc</tt> &nbsp; <tt>print</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">proc</span> &nbsp; <span style="font-family:courier">print</span> &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>var</tt> &nbsp;  <i>var-list</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">var</span> &nbsp;  <i>var-list</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
 <br>
 
-1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
+1. &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
-2. &nbsp; Optional <tt>var</tt> statement prints variables in <i>var-list</i>.
+2. &nbsp; Optional <span style="font-family:courier">var</span> statement prints variables in <i>var-list</i>.
 Variable names in <i>var-list</i> are separated by spaces.
-If <tt>var</tt> is omitted then all variables are printed.<br><br>
+If <span style="font-family:courier">var</span> is omitted then all variables are printed.<br><br>
 
 <h3>Example</h3>
 
@@ -347,20 +347,20 @@ This is because R switches to uncorrected sums of squares for models with no int
 
 <h3>Synopsis</h3>
 
-<tt>proc</tt> &nbsp; <tt>reg</tt> &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">proc</span> &nbsp; <span style="font-family:courier">reg</span> &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> &nbsp; <span style="font-family:courier">;</span><br><br>
 
-<tt>model</tt> &nbsp; <i>y</i> <tt>=</tt> <i>var-list</i> &nbsp; <tt>/</tt> &nbsp; <tt>noint</tt> &nbsp; <tt>;</tt><br><br>
+<span style="font-family:courier">model</span> &nbsp; <i>y</i> <span style="font-family:courier">=</span> <i>var-list</i> &nbsp; <span style="font-family:courier">/</span> &nbsp; <span style="font-family:courier">noint</span> &nbsp; <span style="font-family:courier">;</span><br><br>
 
 <br>
 
-1. &nbsp; <tt>data</tt> <tt>=</tt> <i>name</i> is optional.
+1. &nbsp; <span style="font-family:courier">data</span> <span style="font-family:courier">=</span> <i>name</i> is optional.
 If omitted, data from the previous data step is used.<br><br>
 
 2. &nbsp; <i>y</i> is the response variable which is required to be numerical.<br><br>
 
 3. &nbsp; <i>var-list</i> is a list of explanatory variables separated by spaces.<br><br>
 
-4. &nbsp; The <tt>noint</tt> option, if used, fits a linear model with no intercept term.<br><br>
+4. &nbsp; The <span style="font-family:courier">noint</span> option, if used, fits a linear model with no intercept term.<br><br>
 
 <h3>Example</h3>
 
@@ -414,7 +414,7 @@ model LV = LG LH ;
 
 <h2 id="titlestatement">Title statement</h2>
 
-Report titles can be set with the <tt>title</tt> statement.
+Report titles can be set with the <span style="font-family:courier">title</span> statement.
 The title is printed at the top of procedure results.
 
 <h3>Example</h3>
