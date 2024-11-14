@@ -23,7 +23,7 @@
 		7F3E14E027F7BFA300619DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7F46CBA7297045C80015101B /* sassafras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sassafras.c; sourceTree = "<group>"; };
 		7F9230AF292C3FFD006BD739 /* emit_line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emit_line.c; sourceTree = "<group>"; };
-		7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sassafras.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Sassafras.app; path = /Users/georgeweigt/github/sassafras/xcode/build/Debug/Sassafras.app; sourceTree = "<absolute>"; };
 		7FB4A7CA1777E13A00E9D9D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SassafrasAppDelegate.h; sourceTree = "<group>"; };
 		7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SassafrasAppDelegate.m; sourceTree = "<group>"; };
@@ -46,27 +46,18 @@
 		7FB4A7B21777E13A00E9D9D8 = {
 			isa = PBXGroup;
 			children = (
-				7F46CBA7297045C80015101B /* sassafras.c */,
-				7FB8D975292C49DB0071FC7C /* Info.plist */,
-				7F9230AF292C3FFD006BD739 /* emit_line.c */,
-				7FEAE87528A7351400D1E42D /* Sassafras.help */,
-				7FF96C1E28A68AE80067B495 /* Images.xcassets */,
-				7F3601FB1799109900F32846 /* Sassafras.entitlements */,
-				7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */,
-				7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */,
-				7FB4A7D31777E13A00E9D9D8 /* MainMenu.xib */,
-				7FB4A7CA1777E13A00E9D9D8 /* main.m */,
 				7F12AD0C292D3A2F0066FC62 /* demo.c */,
-				7FB4A7BC1777E13A00E9D9D8 /* Products */,
+				7F9230AF292C3FFD006BD739 /* emit_line.c */,
+				7FF96C1E28A68AE80067B495 /* Images.xcassets */,
+				7FB8D975292C49DB0071FC7C /* Info.plist */,
+				7FB4A7CA1777E13A00E9D9D8 /* main.m */,
+				7FB4A7D31777E13A00E9D9D8 /* MainMenu.xib */,
+				7F46CBA7297045C80015101B /* sassafras.c */,
+				7F3601FB1799109900F32846 /* Sassafras.entitlements */,
+				7FEAE87528A7351400D1E42D /* Sassafras.help */,
+				7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */,
+				7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */,
 			);
-			sourceTree = "<group>";
-		};
-		7FB4A7BC1777E13A00E9D9D8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7FB4A7BB1777E13A00E9D9D8 /* Sassafras.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,7 +103,7 @@
 			);
 			mainGroup = 7FB4A7B21777E13A00E9D9D8;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7FB4A7BC1777E13A00E9D9D8 /* Products */;
+			productRefGroup = 7FB4A7B21777E13A00E9D9D8;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
