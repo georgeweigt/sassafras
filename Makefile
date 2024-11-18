@@ -18,6 +18,7 @@ test:
 	cd test; for FILE in *.in; do echo $$FILE; ../sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done
 
 all:
+	make -C doc
 	make -C src
 	make -C xcode
 	make sassafras
