@@ -2,7 +2,7 @@
 
 HELPBOOK = Base.lproj/Sassafras.help/Contents/Resources/English.lproj/index.html
 
-# sed removes ../main.c
+# sed removes main.c
 
 FILES := $(shell ls ../src/*.c | sed "s/\.\.\/src\/main\.c//")
 
