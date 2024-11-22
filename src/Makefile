@@ -1,4 +1,4 @@
-.PHONY: clean check test
+.PHONY: clean check
 
 sassafras: defs.h prototypes.h *.c
 	$(CC) -Wall -O0 -o sassafras -include defs.h -include prototypes.h *.c -lm
@@ -13,7 +13,3 @@ clean:
 check:
 	make -s -C ../tools wcheck
 	../tools/wcheck *.c
-
-test:
-	make
-	cd ../test; for FILE in *.in; do echo $$FILE; ../src/sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done

@@ -1,4 +1,4 @@
-.PHONY: default clean test all
+.PHONY: default clean all
 
 default:
 	make -C src prototypes.h
@@ -12,10 +12,6 @@ sassafras.c: src/LICENSE src/defs.h src/prototypes.h src/*.c
 
 clean:
 	rm -f sassafras sassafras.c
-
-test:
-	make
-	cd test; for FILE in *.in; do echo $$FILE; ../sassafras $$FILE | diff - `echo $$FILE | sed "s/\.in/\.out/"`; done
 
 all:
 	make -C doc
