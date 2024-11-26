@@ -1,4 +1,4 @@
-.PHONY: default clean all
+.PHONY: default clean all test
 
 default:
 	make -C src prototypes.h
@@ -18,3 +18,6 @@ all:
 	make -C src
 	make -C xcode
 	make sassafras
+
+test:
+	cd test; for FILE in $$(basename -a -s .in *.in); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done
