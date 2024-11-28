@@ -10,6 +10,8 @@ default:
 	rsync -c ../doc/sassafras.html $(HELPBOOK)
 	make -C ../src prototypes.h
 	make sassafras.c
+	xcodebuild -project Sassafras.xcodeproj
+	find build -name Sassafras.app -print
 
 sassafras.c: ../src/LICENSE ../src/defs.h ../src/prototypes.h $(FILES)
 	cat ../src/LICENSE ../src/defs.h ../src/prototypes.h $(FILES) > sassafras.c
