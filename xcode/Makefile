@@ -13,8 +13,8 @@ default:
 	xcodebuild -project Sassafras.xcodeproj
 	find build -name Sassafras.app -print
 
-sassafras.c: ../src/LICENSE ../src/defs.h ../src/prototypes.h $(FILES)
-	cat ../src/LICENSE ../src/defs.h ../src/prototypes.h $(FILES) > sassafras.c
+sassafras.c: ../src/defs.h ../src/prototypes.h $(FILES)
+	cat ../src/defs.h ../src/prototypes.h $(FILES) > sassafras.c
 
 clean:
 	rm -f sassafras.c
