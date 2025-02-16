@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h2>Sassafras Manual</h2>
+<a href="https://georgeweigt.github.io/sassafras.pdf">Sassafras Manual</a><br><br>
 
 <a href="#quickstart">Quick start</a><br>
 <a href="#datastep">Data step</a><br>
@@ -110,7 +110,7 @@ A dollar sign after an input variable indicates that the variable is categorical
 
 <pre>
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
@@ -129,7 +129,7 @@ For Sassafras installed from the Mac App Store, data files need to be put in the
 <pre>
 data ;
 infile "wine.txt" ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 </pre>
 
 <h3>Example 5</h3>
@@ -139,7 +139,7 @@ The following example adds variable <span style="font-family:courier">y2</span> 
 <pre>
 data ;
 infile "wine.txt" ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 y2 = y ** 2 ;
 </pre>
 
@@ -189,7 +189,7 @@ Interaction terms are specified using the syntax <span style="font-family:courie
 * https://archived.stat.ufl.edu/casella/StatDesign/WebDataSets/Strawberry.txt ;
 
 data ;
-input Block $ Treatment $ Yield ;
+input Block$ Treatment$ Yield ;
 datalines ;
 1   A   10.1
 1   B   6.3
@@ -291,7 +291,7 @@ Variable names in <i>var-list</i> are separated by spaces.<br><br>
 <pre>
 data ;
 infile "wine.txt" ;
-input color $ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
+input color$ x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 y ;
 
 proc means n mean clm ;
 var y ;
@@ -323,7 +323,7 @@ If <span style="font-family:courier">var</span> is omitted then all variables ar
 
 <pre>
 data ;
-input trt $ y @@ ;
+input trt$ y @@ ;
 datalines ;
 A 6    A 0    A 2    A 8   A 11
 A 4    A 13   A 1    A 8   A 0
