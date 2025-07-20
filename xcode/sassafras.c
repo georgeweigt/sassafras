@@ -1,30 +1,3 @@
-/*
-BSD 2-Clause License
-
-Copyright (c) 2019, George Weigt
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -1326,19 +1299,14 @@ catvar(int x, int obs)
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
+
 #define STOP 1.0e-8
 #define TINY 1.0e-30
 
 double
 incbeta(double a, double b, double x)
 {
-	// begin altered source
-	// if (x < 0.0 || x > 1.0) return 1.0/0.0;
-	if (x <= 0.0)
-		return 0.0;
-	if (x >= 1.0)
-		return 1.0;
-	// end altered source
+	if (x < 0.0 || x > 1.0) return 1.0/0.0;
 
 	/*The continued fraction converges nicely for x < (a+1)/(a+b+2)*/
 	if (x > (a+1.0)/(a+b+2.0)) {
@@ -1383,53 +1351,6 @@ incbeta(double a, double b, double x)
 	}
 
 	return 1.0/0.0; /*Needed more loops, did not converge.*/
-}
-int
-main(int argc, char *argv[])
-{
-	char *s;
-
-	if (argc < 2) {
-		printf("usage: sassafras filename\n");
-		exit(1);
-	}
-
-	s = read_file(argv[1]);
-
-	if (s == NULL) {
-		printf("error reading file %s\n", argv[1]);
-		exit(1);
-	}
-
-	run(s);
-
-	free(s);
-}
-
-void
-emit_line_init(void)
-{
-}
-
-void
-emit_line(char *s)
-{
-	printf("%s\n", s);
-}
-
-void
-emit_line_center(char *s)
-{
-	int i, n;
-
-	n = strlen(s);
-
-	n = (80 - n) / 2;
-
-	for (i = 0; i < n; i++)
-		printf(" ");
-
-	printf("%s\n", s);
 }
 void
 parse_default(void)

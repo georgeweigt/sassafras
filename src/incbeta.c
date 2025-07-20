@@ -23,14 +23,19 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-
 #define STOP 1.0e-8
 #define TINY 1.0e-30
 
 double
 incbeta(double a, double b, double x)
 {
-	if (x < 0.0 || x > 1.0) return 1.0/0.0;
+	// begin altered source
+	// if (x < 0.0 || x > 1.0) return 1.0/0.0;
+	if (x <= 0.0)
+		return 0.0;
+	if (x >= 1.0)
+		return 1.0;
+	// end altered source
 
 	/*The continued fraction converges nicely for x < (a+1)/(a+b+2)*/
 	if (x > (a+1.0)/(a+b+2.0)) {
