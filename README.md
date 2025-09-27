@@ -1,16 +1,10 @@
-[Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
-
-#
-
-Build and run for Linux
-
+Build and run
 ```
 make
 ./sassafras filename
 ```
 
 Example
-
 ```
 ./sassafras demos/corrosion-demo
 
