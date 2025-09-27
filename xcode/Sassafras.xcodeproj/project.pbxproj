@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		7F12AD0D292D3A2F0066FC62 /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F12AD0C292D3A2F0066FC62 /* demo.c */; };
+		7F301CAB2E888B2D00A10F88 /* icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 7F301CAA2E888B2D00A10F88 /* icon.icon */; };
 		7F46CBA8297045C80015101B /* sassafras.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F46CBA7297045C80015101B /* sassafras.c */; };
 		7F9230B0292C3FFE006BD739 /* emit_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F9230AF292C3FFD006BD739 /* emit_line.c */; };
 		7FB4A7CB1777E13A00E9D9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7CA1777E13A00E9D9D8 /* main.m */; };
 		7FB4A7D21777E13A00E9D9D8 /* SassafrasAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */; };
 		7FB4A7D51777E13A00E9D9D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB4A7D31777E13A00E9D9D8 /* MainMenu.xib */; };
 		7FEAE87728A7351400D1E42D /* Sassafras.help in Resources */ = {isa = PBXBuildFile; fileRef = 7FEAE87528A7351400D1E42D /* Sassafras.help */; };
-		7FF96C1F28A68AE80067B495 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FF96C1E28A68AE80067B495 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7F12AD0C292D3A2F0066FC62 /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
+		7F301CAA2E888B2D00A10F88 /* icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icon.icon; sourceTree = "<group>"; };
 		7F35511F2CE6838400EA1DBC /* Sassafras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sassafras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3601FB1799109900F32846 /* Sassafras.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sassafras.entitlements; sourceTree = "<group>"; };
 		7F3E14E027F7BFA300619DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -29,7 +30,6 @@
 		7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SassafrasAppDelegate.m; sourceTree = "<group>"; };
 		7FB8D975292C49DB0071FC7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FEAE87628A7351400D1E42D /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Base; path = Base.lproj/Sassafras.help; sourceTree = "<group>"; };
-		7FF96C1E28A68AE80067B495 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,16 +48,16 @@
 			children = (
 				7F12AD0C292D3A2F0066FC62 /* demo.c */,
 				7F9230AF292C3FFD006BD739 /* emit_line.c */,
-				7FF96C1E28A68AE80067B495 /* Images.xcassets */,
+				7F301CAA2E888B2D00A10F88 /* icon.icon */,
 				7FB8D975292C49DB0071FC7C /* Info.plist */,
 				7FB4A7CA1777E13A00E9D9D8 /* main.m */,
 				7FB4A7D31777E13A00E9D9D8 /* MainMenu.xib */,
 				7F46CBA7297045C80015101B /* sassafras.c */,
+				7F35511F2CE6838400EA1DBC /* Sassafras.app */,
 				7F3601FB1799109900F32846 /* Sassafras.entitlements */,
 				7FEAE87528A7351400D1E42D /* Sassafras.help */,
 				7FB4A7D01777E13A00E9D9D8 /* SassafrasAppDelegate.h */,
 				7FB4A7D11777E13A00E9D9D8 /* SassafrasAppDelegate.m */,
-				7F35511F2CE6838400EA1DBC /* Sassafras.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,7 +88,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					7FB4A7BA1777E13A00E9D9D8 = {
 						CreatedOnToolsVersion = 12.4;
@@ -119,8 +119,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FB4A7D51777E13A00E9D9D8 /* MainMenu.xib in Resources */,
-				7FF96C1F28A68AE80067B495 /* Images.xcassets in Resources */,
 				7FEAE87728A7351400D1E42D /* Sassafras.help in Resources */,
+				7F301CAB2E888B2D00A10F88 /* icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +201,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -242,13 +243,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
 		7FB4A7D91777E13A00E9D9D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Sassafras.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -256,7 +259,10 @@
 				CURRENT_PROJECT_VERSION = 110;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_PRINTING = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sassafras;
@@ -272,7 +278,8 @@
 		7FB4A7DA1777E13A00E9D9D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Sassafras.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -280,7 +287,10 @@
 				CURRENT_PROJECT_VERSION = 110;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_PRINTING = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sassafras;
