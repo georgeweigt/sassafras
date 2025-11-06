@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24412" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24412"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -412,7 +412,7 @@
         <window title="Sassafras" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="80" y="0.0" width="1402" height="632"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="869"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="1402" height="632"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -422,7 +422,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="QdR-JM-rUW">
                             <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" id="zgs-O1-wqu">
                                     <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
@@ -457,7 +457,7 @@
                             <action selector="runButton:" target="494" id="730"/>
                         </connections>
                     </button>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="698">
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="698">
                         <rect key="frame" x="88" y="8" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </progressIndicator>
@@ -466,7 +466,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wUV-1G-ubV">
                             <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" id="651">
                                     <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
@@ -490,6 +490,11 @@
                     </scrollView>
                 </subviews>
             </view>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" name="gridColor" catalog="System" colorSpace="catalog"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="3516" y="-132"/>
         </window>
         <customObject id="494" customClass="SassafrasAppDelegate">
