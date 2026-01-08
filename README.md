@@ -1,19 +1,10 @@
 [Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
 
-#
-
 This app analyzes data the old-school way with data steps and procedure steps.
 
-Build and run
 ```
-make
-./sassafras filename
-```
-
-Example
-```
-./sassafras demos/corrosion-demo
-
+% make
+% ./sassafras demos/corrosion-demo
                               Analysis of Variance
 
    Source     DF     Sum of Squares       Mean Square     F Value     Pr > F
@@ -53,4 +44,6 @@ Example
   C4    C2     33.833333     19.257967     48.408700       5.25      0.0005 *
   C4    C3     28.333333     13.757967     42.908700       4.40      0.0017 *
   C4    C1     29.333333     14.757967     43.908700       4.55      0.0014 *
+
+%
 ```
