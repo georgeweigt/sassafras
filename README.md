@@ -4,7 +4,7 @@ This app analyzes data the old-school way with data steps and procedure steps.
 
 ```
 % make
-% ./sassafras demos/corrosion-demo
+% ./sassafras demo/corrosion-demo
                               Analysis of Variance
 
    Source     DF     Sum of Squares       Mean Square     F Value     Pr > F
