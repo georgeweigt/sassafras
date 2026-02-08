@@ -309,7 +309,7 @@ void keyword(void);
 char * get_dataline(char *buf, int len);
 void get_next_token(void);
 double tdist(double t, double df);
-double qt(double p, double df);
+double qt(double x, double df);
 double fdist(double t, double df1, double df2);
 void title_stmt(void);
 void title1_stmt(void);
@@ -5139,29 +5139,31 @@ tdist(double t, double df)
 // used for computing confidence intervals
 
 double
-qt(double p, double df)
+qt(double x, double df)
 {
 	int i;
-	double a, t, t1, t2;
-	if (isnan(p) || p < 0.0 || p > 1.0 || !isfinite(df) || df <= 0.0)
+	double a, b, c, y;
+	if (!isfinite(x) || !isfinite(df))
 		return NAN;
-	if (p == 0.0)
-		return -INFINITY; // qt(0,1) == -Inf
-	if (p == 1.0)
-		return INFINITY; // qt(1,1) == Inf
-	t1 = -1e5;
-	t2 = 1e5;
-	for (i = 0; i < 100; i++) {
-		t = 0.5 * (t1 + t2);
-		a = tdist(t, df);
-		if (fabs(a - p) < 1e-9)
-			break;
-		if (a < p)
-			t1 = t;
+	if (x < 1e-12)
+		return -INFINITY;
+	if (x == 0.5)
+		return 0.0;
+	if (x > 1.0 - 1e-12)
+		return INFINITY;
+	a = -100.0;
+	b = 100.0;
+	for (i = 0; i < 50; i++) {
+		c = 0.5 * (a + b);
+		y = tdist(c, df);
+		if (!isfinite(y))
+			return NAN;
+		if (y < x)
+			a = c;
 		else
-			t2 = t;
+			b = c;
 	}
-	return t;
+	return c;
 }
 
 // F-distribution cdf, like pf() in R

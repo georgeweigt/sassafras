@@ -116,7 +116,7 @@ void keyword(void);
 char * get_dataline(char *buf, int len);
 void get_next_token(void);
 double tdist(double t, double df);
-double qt(double p, double df);
+double qt(double x, double df);
 double fdist(double t, double df1, double df2);
 void title_stmt(void);
 void title1_stmt(void);
