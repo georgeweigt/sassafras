@@ -1,5 +1,3 @@
-[Sassafras Manual](https://georgeweigt.github.io/sassafras.pdf)
-
 This app analyzes data the old-school way with data steps and procedure steps.
 
 ```
