@@ -294,7 +294,7 @@ void proc_reg_print_parameter_estimates(void);
 void proc_reg_print_anova_table(void);
 void proc_reg_print_diag_table(void);
 void proc_step(void);
-char * read_file(char *filename);
+char * readfile(char *filename);
 void run(char *s);
 void run_nib(char *s);
 void * xmalloc(int size);
@@ -1394,7 +1394,7 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
-	s = read_file(argv[1]);
+	s = readfile(argv[1]);
 
 	if (s == NULL) {
 		printf("error reading file %s\n", argv[1]);
@@ -4663,13 +4663,17 @@ proc_step(void)
 	}
 }
 char *
-read_file(char *filename)
+readfile(char *filename)
 {
 	int fd, n;
 	char *buf;
 	off_t t;
 
-	fd = open(filename, O_RDONLY);
+#ifndef O_BINARY
+#define O_BINARY 0
+#endif
+
+	fd = open(filename, O_RDONLY | O_BINARY);
 
 	if (fd < 0)
 		return NULL;

@@ -101,7 +101,7 @@ void proc_reg_print_parameter_estimates(void);
 void proc_reg_print_anova_table(void);
 void proc_reg_print_diag_table(void);
 void proc_step(void);
-char * read_file(char *filename);
+char * readfile(char *filename);
 void run(char *s);
 void run_nib(char *s);
 void * xmalloc(int size);

@@ -1,11 +1,15 @@
 char *
-read_file(char *filename)
+readfile(char *filename)
 {
 	int fd, n;
 	char *buf;
 	off_t t;
 
-	fd = open(filename, O_RDONLY);
+#ifndef O_BINARY
+#define O_BINARY 0
+#endif
+
+	fd = open(filename, O_RDONLY | O_BINARY);
 
 	if (fd < 0)
 		return NULL;

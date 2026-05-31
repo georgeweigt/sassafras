@@ -8,7 +8,7 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
-	s = read_file(argv[1]);
+	s = readfile(argv[1]);
 
 	if (s == NULL) {
 		printf("error reading file %s\n", argv[1]);
