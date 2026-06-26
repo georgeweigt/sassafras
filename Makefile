@@ -7,9 +7,8 @@ sassafras.c: src/LICENSE src/defs.h src/prototypes.h src/*.c
 	cat src/LICENSE src/defs.h src/prototypes.h src/*.c > sassafras.c
 
 all:
-	make -C src
+	make -C src prototypes.h
 	make sassafras
-#
 	make -C doc
 	make -C xcode
 
