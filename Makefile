@@ -18,4 +18,5 @@ test:
 	cd test; for FILE in $$(basename -a -s .in *.in); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done
 
 clean:
-	rm -f sassafras src/sassafras tools/make-prototypes tools/wcheck
+	make -C tools clean
+	rm -f sassafras src/sassafras
