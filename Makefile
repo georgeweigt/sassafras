@@ -15,7 +15,7 @@ all:
 	make -C xcode
 
 test:
-	cd test; for FILE in $$(basename -a -s .in *.in); do echo $$FILE; ../sassafras $$FILE.in | diff - $$FILE.out; done
+	cd test ; for FILE in *.in ; do echo $$FILE ; ../sassafras $$FILE | diff - $${FILE%.in}.out ; done
 
 clean:
 	make -C tools clean
