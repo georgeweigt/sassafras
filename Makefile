@@ -12,11 +12,11 @@ src/prototypes.h: src/*.c
 all:
 	make sassafras
 	make -C doc
+	make -C src
 	make -C xcode
 
 test:
 	cd test ; for FILE in *.in ; do echo $$FILE ; ../sassafras $$FILE | diff - $${FILE%.in}.out ; done
 
 clean:
-	make -C tools clean
 	rm -f sassafras src/sassafras

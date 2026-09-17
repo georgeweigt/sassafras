@@ -5083,11 +5083,13 @@ qt(double x, double df)
 		return INFINITY;
 	a = -100.0;
 	b = 100.0;
-	for (i = 0; i < 50; i++) {
+	for (i = 0; i < 100; i++) {
 		c = 0.5 * (a + b);
 		y = tdist(c, df);
 		if (!isfinite(y))
 			return NAN;
+		if (y == x)
+			break;
 		if (y < x)
 			a = c;
 		else
